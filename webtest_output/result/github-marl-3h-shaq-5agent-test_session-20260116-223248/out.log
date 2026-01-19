@@ -1,0 +1,68 @@
+2026-01-16 22:32:48,297 - __main__ - INFO - [Debug] 程序已启动
+2026-01-16 22:32:48,297 - __main__ - INFO - [Debug] Chrome Options 配置完成
+2026-01-16 22:32:48,297 - __main__ - INFO - [Debug] profile is github-marl-3h-shaq-5agent
+2026-01-16 22:32:48,847 - web_test.multi_agent_thread - INFO - SHAQ initializing on device: cpu
+2026-01-16 22:33:43,863 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver created successfully
+2026-01-16 22:33:43,869 - web_test.multi_agent_thread - INFO - Thread 0: Execution start
+2026-01-16 22:33:44,757 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver created successfully
+2026-01-16 22:33:44,757 - web_test.multi_agent_thread - INFO - Thread 1: Execution start
+2026-01-16 22:33:45,665 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver created successfully
+2026-01-16 22:33:45,666 - web_test.multi_agent_thread - INFO - Thread 2: Execution start
+2026-01-16 22:33:46,622 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver created successfully
+2026-01-16 22:33:46,622 - web_test.multi_agent_thread - INFO - Thread 3: Execution start
+2026-01-16 22:33:47,645 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver created successfully
+2026-01-16 22:33:47,646 - web_test.multi_agent_thread - INFO - Thread 4: Execution start
+2026-01-16 22:35:02,105 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': 'https://github.githubassets.com/assets/light-dac525bbd821.css - Failed to load resource: net::ERR_TIMED_OUT', 'source': 'network', 'timestamp': 1768574059772}
+2026-01-16 22:35:02,105 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'SEVERE', 'message': 'https://github.com/ - Failed to load resource: net::ERR_CONNECTION_CLOSED', 'source': 'network', 'timestamp': 1768574092065}
+2026-01-16 22:35:02,105 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': 'https://github.githubassets.com/assets/light_high_contrast-56ccf4057897.css - Failed to load resource: net::ERR_TIMED_OUT', 'source': 'network', 'timestamp': 1768574059773}
+2026-01-16 22:35:02,105 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': 'https://github.githubassets.com/assets/dark-784387e86ac0.css - Failed to load resource: net::ERR_TIMED_OUT', 'source': 'network', 'timestamp': 1768574059773}
+2026-01-16 22:35:02,105 - web_test.multi_agent_thread - INFO - Thread 3: Initial state: ActionSetWithExecutionTimesState(action_number=0, action_execution_time_histogram=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 22:35:02,105 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': 'https://github.githubassets.com/assets/dark_high_contrast-79bd5fd84a86.css - Failed to load resource: net::ERR_TIMED_OUT', 'source': 'network', 'timestamp': 1768574059773}
+2026-01-16 22:35:02,105 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': 'https://github.githubassets.com/assets/primer-primitives-c37d781e2da5.css - Failed to load resource: net::ERR_TIMED_OUT', 'source': 'network', 'timestamp': 1768574062081}
+2026-01-16 22:35:02,105 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': 'https://github.githubassets.com/assets/primer-dc3bfaf4b78e.css - Failed to load resource: net::ERR_TIMED_OUT', 'source': 'network', 'timestamp': 1768574064594}
+2026-01-16 22:35:02,105 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': 'https://github.com/ - Failed to load resource: net::ERR_CONNECTION_CLOSED', 'source': 'network', 'timestamp': 1768574092064}
+2026-01-16 22:35:02,105 - web_test.multi_agent_thread - INFO - Thread 4: Initial state: ActionSetWithExecutionTimesState(action_number=0, action_execution_time_histogram=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 22:35:12,361 - multi_agent.multi_agent_system - INFO - [3] State initialized.
+2026-01-16 22:35:12,361 - multi_agent.multi_agent_system - WARNING - [3] No actions available in the current state.
+2026-01-16 22:35:12,361 - web_test.multi_agent_thread - WARNING - Thread 3: Choose action failed, no actions, New state: ActionExecuteFailedState(action=RestartAction(restart_url=https://github.com))
+2026-01-16 22:35:12,362 - multi_agent.multi_agent_system - INFO - [4] State initialized.
+2026-01-16 22:35:12,362 - multi_agent.multi_agent_system - WARNING - [4] No actions available in the current state.
+2026-01-16 22:35:12,362 - web_test.multi_agent_thread - WARNING - Thread 4: Choose action failed, no actions, New state: ActionExecuteFailedState(action=RestartAction(restart_url=https://github.com))
+2026-01-16 22:35:22,622 - multi_agent.multi_agent_system - ERROR - [4] Error in generating action: 'SHAQ' object has no attribute 'state_list'
+2026-01-16 22:35:22,623 - web_test.multi_agent_thread - ERROR - Thread 4: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 93, in get_action
+    raise e  # 根据需要，可选择抛异常或返回默认动作
+    ^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 83, in get_action
+    chosen_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 139, in get_action_algorithm
+    self.update(web_state, html, agent_name)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 244, in update
+    if web_state not in self.state_list:
+                        ^^^^^^^^^^^^^^^
+AttributeError: 'SHAQ' object has no attribute 'state_list'. Did you mean: 'state_dict'?
+2026-01-16 22:35:22,624 - multi_agent.multi_agent_system - ERROR - [3] Error in generating action: 'SHAQ' object has no attribute 'state_list'
+2026-01-16 22:35:22,627 - web_test.multi_agent_thread - ERROR - Thread 3: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 93, in get_action
+    raise e  # 根据需要，可选择抛异常或返回默认动作
+    ^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 83, in get_action
+    chosen_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 139, in get_action_algorithm
+    self.update(web_state, html, agent_name)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 244, in update
+    if web_state not in self.state_list:
+                        ^^^^^^^^^^^^^^^
+AttributeError: 'SHAQ' object has no attribute 'state_list'. Did you mean: 'state_dict'?
+2026-01-16 22:35:24,138 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver restart successfully
+2026-01-16 22:35:24,362 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver restart successfully

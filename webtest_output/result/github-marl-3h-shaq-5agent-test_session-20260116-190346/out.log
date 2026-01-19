@@ -1,0 +1,198 @@
+2026-01-16 19:03:46,581 - __main__ - INFO - [Debug] 程序已启动
+2026-01-16 19:03:46,581 - __main__ - INFO - [Debug] Chrome Options 配置完成
+2026-01-16 19:03:46,581 - __main__ - INFO - [Debug] profile is github-marl-3h-shaq-5agent
+2026-01-16 19:03:47,110 - web_test.multi_agent_thread - INFO - SHAQ initializing on device: cpu
+2026-01-16 19:04:32,521 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver created successfully
+2026-01-16 19:04:32,526 - web_test.multi_agent_thread - INFO - Thread 0: Execution start
+2026-01-16 19:04:33,413 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver created successfully
+2026-01-16 19:04:33,413 - web_test.multi_agent_thread - INFO - Thread 1: Execution start
+2026-01-16 19:04:34,388 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver created successfully
+2026-01-16 19:04:34,389 - web_test.multi_agent_thread - INFO - Thread 2: Execution start
+2026-01-16 19:04:35,397 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver created successfully
+2026-01-16 19:04:35,399 - web_test.multi_agent_thread - INFO - Thread 3: Execution start
+2026-01-16 19:04:36,551 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver created successfully
+2026-01-16 19:04:36,552 - web_test.multi_agent_thread - INFO - Thread 4: Execution start
+2026-01-16 19:04:57,314 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561477702}
+2026-01-16 19:04:57,314 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561477705}
+2026-01-16 19:04:57,314 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768561477819}
+2026-01-16 19:04:57,314 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561484646}
+2026-01-16 19:04:57,314 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561495473}
+2026-01-16 19:04:57,315 - web_test.multi_agent_thread - INFO - Thread 1: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 19:04:58,294 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561476993}
+2026-01-16 19:04:58,294 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561476996}
+2026-01-16 19:04:58,294 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768561478204}
+2026-01-16 19:04:58,295 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561486815}
+2026-01-16 19:04:58,295 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561495700}
+2026-01-16 19:04:58,295 - web_test.multi_agent_thread - INFO - Thread 0: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 19:05:02,187 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561479598}
+2026-01-16 19:05:02,187 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561479602}
+2026-01-16 19:05:02,187 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768561481831}
+2026-01-16 19:05:02,187 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561491567}
+2026-01-16 19:05:02,187 - web_test.multi_agent_thread - INFO - Thread 2: Initial state: ActionSetWithExecutionTimesState(action_number=103, action_execution_time_histogram=[103, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 19:05:07,513 - multi_agent.multi_agent_system - INFO - [1] State initialized.
+2026-01-16 19:05:07,625 - multi_agent.multi_agent_system - INFO - [1] Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[5]/div[1]/div[4]/div/div/div[1]/a, text=Technology
+
+Figma streamlines development and strengthens security
+
+Read customer story)
+2026-01-16 19:05:07,625 - web_test.multi_agent_thread - INFO - Thread 1: Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[5]/div[1]/div[4]/div/div/div[1]/a, text=Technology
+
+Figma streamlines development and strengthens security
+
+Read customer story)
+2026-01-16 19:05:08,471 - multi_agent.multi_agent_system - INFO - [0] State initialized.
+2026-01-16 19:05:08,600 - multi_agent.multi_agent_system - INFO - [0] Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[1]/div[2]/div/div[1]/div/button[3], text=Collaborate)
+2026-01-16 19:05:08,600 - web_test.multi_agent_thread - INFO - Thread 0: Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[1]/div[2]/div/div[1]/div/button[3], text=Collaborate)
+2026-01-16 19:05:12,445 - multi_agent.multi_agent_system - INFO - [2] State initialized.
+2026-01-16 19:05:12,580 - multi_agent.multi_agent_system - INFO - [2] Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/locale-selector/experimental-action-menu/button, text= English )
+2026-01-16 19:05:12,580 - web_test.multi_agent_thread - INFO - Thread 2: Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/locale-selector/experimental-action-menu/button, text= English )
+2026-01-16 19:05:12,699 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561484719}
+2026-01-16 19:05:12,699 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561484722}
+2026-01-16 19:05:12,699 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768561487164}
+2026-01-16 19:05:12,699 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561505014}
+2026-01-16 19:05:12,699 - web_test.multi_agent_thread - INFO - Thread 3: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 19:05:14,730 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561507725}
+2026-01-16 19:05:14,781 - web_test.multi_agent_thread - INFO - Thread 0: Execute action success, New state: ActionSetWithExecutionTimesState(action_number=90, action_execution_time_histogram=[90, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 19:05:14,850 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561508449}
+2026-01-16 19:05:14,850 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561508453}
+2026-01-16 19:05:14,850 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768561508522}
+2026-01-16 19:05:16,672 - web_test.multi_agent_thread - INFO - Thread 1: Execute action success, New state: ActionSetWithExecutionTimesState(action_number=80, action_execution_time_histogram=[80, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/customer-stories/figma)
+2026-01-16 19:05:19,094 - web_test.multi_agent_thread - INFO - Thread 2: Execute action success, New state: ActionSetWithExecutionTimesState(action_number=93, action_execution_time_histogram=[93, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 19:05:20,055 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561491638}
+2026-01-16 19:05:20,055 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561491641}
+2026-01-16 19:05:20,055 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768561494098}
+2026-01-16 19:05:20,055 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561509234}
+2026-01-16 19:05:20,055 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561512302}
+2026-01-16 19:05:20,055 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561515369}
+2026-01-16 19:05:20,055 - web_test.multi_agent_thread - INFO - Thread 4: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[99, 2, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 19:05:22,951 - multi_agent.multi_agent_system - INFO - [3] State initialized.
+2026-01-16 19:05:23,018 - multi_agent.multi_agent_system - INFO - [3] Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[6]/a, text=Pricing)
+2026-01-16 19:05:23,018 - web_test.multi_agent_thread - INFO - Thread 3: Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[6]/a, text=Pricing)
+2026-01-16 19:05:24,992 - multi_agent.multi_agent_system - ERROR - [0] Error in generating action: 'SHAQ' object has no attribute 'get_reward'
+2026-01-16 19:05:24,992 - web_test.multi_agent_thread - ERROR - Thread 0: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 93, in get_action
+    raise e  # 根据需要，可选择抛异常或返回默认动作
+    ^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 83, in get_action
+    chosen_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 123, in get_action_algorithm
+    self.update(web_state, html, agent_name)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 206, in update
+    reward = self.get_reward(web_state, agent_name)
+             ^^^^^^^^^^^^^^^
+AttributeError: 'SHAQ' object has no attribute 'get_reward'
+2026-01-16 19:05:26,209 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver restart successfully
+2026-01-16 19:05:26,901 - multi_agent.multi_agent_system - ERROR - [1] Error in generating action: 'SHAQ' object has no attribute 'get_reward'
+2026-01-16 19:05:26,901 - web_test.multi_agent_thread - ERROR - Thread 1: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 93, in get_action
+    raise e  # 根据需要，可选择抛异常或返回默认动作
+    ^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 83, in get_action
+    chosen_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 123, in get_action_algorithm
+    self.update(web_state, html, agent_name)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 206, in update
+    reward = self.get_reward(web_state, agent_name)
+             ^^^^^^^^^^^^^^^
+AttributeError: 'SHAQ' object has no attribute 'get_reward'
+2026-01-16 19:05:28,000 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver restart successfully
+2026-01-16 19:05:28,124 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561524690}
+2026-01-16 19:05:28,124 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561524693}
+2026-01-16 19:05:28,124 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768561524756}
+2026-01-16 19:05:29,316 - multi_agent.multi_agent_system - ERROR - [2] Error in generating action: 'SHAQ' object has no attribute 'get_reward'
+2026-01-16 19:05:29,316 - web_test.multi_agent_thread - ERROR - Thread 2: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 93, in get_action
+    raise e  # 根据需要，可选择抛异常或返回默认动作
+    ^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 83, in get_action
+    chosen_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 123, in get_action_algorithm
+    self.update(web_state, html, agent_name)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 206, in update
+    reward = self.get_reward(web_state, agent_name)
+             ^^^^^^^^^^^^^^^
+AttributeError: 'SHAQ' object has no attribute 'get_reward'
+2026-01-16 19:05:30,396 - multi_agent.multi_agent_system - INFO - [4] State initialized.
+2026-01-16 19:05:30,485 - multi_agent.multi_agent_system - ERROR - [4] Error in generating action: mat1 and mat2 shapes cannot be multiplied (10x229 and 265x256)
+2026-01-16 19:05:30,485 - web_test.multi_agent_thread - ERROR - Thread 4: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 93, in get_action
+    raise e  # 根据需要，可选择抛异常或返回默认动作
+    ^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 83, in get_action
+    chosen_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 142, in get_action_algorithm
+    phi_i = self.compute_shapley_value(int(agent_name), global_state)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 117, in compute_shapley_value
+    v_with = self.coalition_net(in_with)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (10x229 and 265x256)
+2026-01-16 19:05:30,639 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver restart successfully
+2026-01-16 19:05:31,876 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver restart successfully
+2026-01-16 19:05:32,735 - web_test.multi_agent_thread - INFO - Thread 3: Execute action success, New state: ActionSetWithExecutionTimesState(action_number=194, action_execution_time_histogram=[194, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/pricing)
+2026-01-16 19:05:43,098 - multi_agent.multi_agent_system - ERROR - [3] Error in generating action: 'SHAQ' object has no attribute 'get_reward'
+2026-01-16 19:05:43,098 - web_test.multi_agent_thread - ERROR - Thread 3: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 93, in get_action
+    raise e  # 根据需要，可选择抛异常或返回默认动作
+    ^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 83, in get_action
+    chosen_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 123, in get_action_algorithm
+    self.update(web_state, html, agent_name)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 206, in update
+    reward = self.get_reward(web_state, agent_name)
+             ^^^^^^^^^^^^^^^
+AttributeError: 'SHAQ' object has no attribute 'get_reward'
+2026-01-16 19:05:45,580 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver restart successfully
+2026-01-16 19:05:46,760 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561530425}
+2026-01-16 19:05:46,760 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561530429}
+2026-01-16 19:05:46,760 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768561531695}
+2026-01-16 19:05:46,760 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561539118}
+2026-01-16 19:05:46,760 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561543136}
+2026-01-16 19:05:46,760 - web_test.multi_agent_thread - INFO - Thread 0: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[98, 3, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 19:05:46,761 - multi_agent.multi_agent_system - ERROR - [0] Handling exception, resetting state.
+2026-01-16 19:05:46,761 - multi_agent.multi_agent_system - INFO - [0] State initialized.
+2026-01-16 19:05:47,011 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561532419}
+2026-01-16 19:05:47,011 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768561532423}
+2026-01-16 19:05:47,011 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768561532732}
+2026-01-16 19:05:47,011 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768561540043}
+2026-01-16 19:05:47,011 - web_test.multi_agent_thread - INFO - Thread 1: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[98, 3, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 19:05:47,011 - multi_agent.multi_agent_system - ERROR - [1] Handling exception, resetting state.
+2026-01-16 19:05:47,011 - multi_agent.multi_agent_system - INFO - [1] State initialized.

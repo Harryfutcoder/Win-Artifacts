@@ -1,0 +1,74 @@
+2026-01-17 00:29:09,094 - __main__ - INFO - [Debug] 程序已启动
+2026-01-17 00:29:09,094 - __main__ - INFO - [Debug] Chrome Options 配置完成
+2026-01-17 00:29:09,094 - __main__ - INFO - [Debug] profile is github-marl-3h-shaq-5agent
+2026-01-17 00:29:09,642 - web_test.multi_agent_thread - INFO - SHAQ initializing on device: cpu
+2026-01-17 00:30:25,575 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver created successfully
+2026-01-17 00:30:25,579 - web_test.multi_agent_thread - INFO - Thread 0: Execution start
+2026-01-17 00:30:26,554 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver created successfully
+2026-01-17 00:30:26,556 - web_test.multi_agent_thread - INFO - Thread 1: Execution start
+2026-01-17 00:30:27,720 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver created successfully
+2026-01-17 00:30:27,721 - web_test.multi_agent_thread - INFO - Thread 2: Execution start
+2026-01-17 00:30:28,692 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver created successfully
+2026-01-17 00:30:28,692 - web_test.multi_agent_thread - INFO - Thread 3: Execution start
+2026-01-17 00:30:29,703 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver created successfully
+2026-01-17 00:30:29,705 - web_test.multi_agent_thread - INFO - Thread 4: Execution start
+2026-01-17 00:31:05,892 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': 'chrome-error://chromewebdata/ 6774:10 "crbug/1173575, non-JS module files deprecated."', 'source': 'console-api', 'timestamp': 1768581055646}
+2026-01-17 00:31:05,892 - web_test.multi_agent_thread - INFO - Thread 0: Initial state: ActionSetWithExecutionTimesState(action_number=3, action_execution_time_histogram=[3, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-17 00:31:06,858 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': 'chrome-error://chromewebdata/ 6774:10 "crbug/1173575, non-JS module files deprecated."', 'source': 'console-api', 'timestamp': 1768581056615}
+2026-01-17 00:31:06,858 - web_test.multi_agent_thread - INFO - Thread 1: Initial state: ActionSetWithExecutionTimesState(action_number=3, action_execution_time_histogram=[3, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-17 00:31:08,022 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'WARNING', 'message': 'chrome-error://chromewebdata/ 6774:10 "crbug/1173575, non-JS module files deprecated."', 'source': 'console-api', 'timestamp': 1768581057786}
+2026-01-17 00:31:08,022 - web_test.multi_agent_thread - INFO - Thread 2: Initial state: ActionSetWithExecutionTimesState(action_number=3, action_execution_time_histogram=[3, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-17 00:31:16,188 - multi_agent.multi_agent_system - INFO - [0] State initialized.
+2026-01-17 00:31:17,201 - multi_agent.multi_agent_system - INFO - [1] State initialized.
+2026-01-17 00:31:18,348 - multi_agent.multi_agent_system - INFO - [2] State initialized.
+2026-01-17 00:31:33,843 - multi_agent.multi_agent_system - INFO - [2] Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/button, text=詳細資料)
+2026-01-17 00:31:33,843 - web_test.multi_agent_thread - INFO - Thread 2: Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/button, text=詳細資料)
+2026-01-17 00:31:36,443 - web_test.multi_agent_thread - INFO - Thread 2: Execute action success, New state: ActionSetWithExecutionTimesState(action_number=3, action_execution_time_histogram=[3, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-17 00:31:42,848 - multi_agent.multi_agent_system - INFO - [1] Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[1]/div[2]/div[1]/div/div/div/div[1]/ul/li[2]/a, text=檢查 Proxy 和防火牆)
+2026-01-17 00:31:42,849 - web_test.multi_agent_thread - INFO - Thread 1: Chosen action: ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[1]/div[2]/div[1]/div/div/div/div[1]/ul/li[2]/a, text=檢查 Proxy 和防火牆)
+2026-01-17 00:31:44,925 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': 'chrome-error://chromewebdata/ - Not allowed to load local resource: chrome-error://chromewebdata/#buttons', 'source': 'security', 'timestamp': 1768581102906}
+2026-01-17 00:31:45,475 - web_test.multi_agent_thread - INFO - Thread 1: Execute action success, New state: ActionSetWithExecutionTimesState(action_number=3, action_execution_time_histogram=[3, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-17 00:31:46,760 - multi_agent.multi_agent_system - ERROR - [2] Error in generating action: 'SHAQ' object has no attribute 'state_list'
+2026-01-17 00:31:46,761 - web_test.multi_agent_thread - ERROR - Thread 2: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 93, in get_action
+    raise e  # 根据需要，可选择抛异常或返回默认动作
+    ^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 83, in get_action
+    chosen_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 140, in get_action_algorithm
+    self.update(web_state, html, agent_name)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 257, in update
+    reward = self.get_reward(web_state, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 228, in get_reward
+    for state in self.state_list[-50:]:  # 在状态池里取最近50条
+                 ^^^^^^^^^^^^^^^
+AttributeError: 'SHAQ' object has no attribute 'state_list'. Did you mean: 'state_dict'?
+2026-01-17 00:31:48,224 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver restart successfully
+2026-01-17 00:31:55,788 - multi_agent.multi_agent_system - ERROR - [1] Error in generating action: 'SHAQ' object has no attribute 'state_list'
+2026-01-17 00:31:55,788 - web_test.multi_agent_thread - ERROR - Thread 1: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 93, in get_action
+    raise e  # 根据需要，可选择抛异常或返回默认动作
+    ^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 83, in get_action
+    chosen_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 140, in get_action_algorithm
+    self.update(web_state, html, agent_name)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 257, in update
+    reward = self.get_reward(web_state, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 228, in get_reward
+    for state in self.state_list[-50:]:  # 在状态池里取最近50条
+                 ^^^^^^^^^^^^^^^
+AttributeError: 'SHAQ' object has no attribute 'state_list'. Did you mean: 'state_dict'?
+2026-01-17 00:31:56,940 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver restart successfully
+2026-01-17 00:32:01,791 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'SEVERE', 'message': 'https://github.com/ - Failed to load resource: net::ERR_CONNECTION_CLOSED', 'source': 'network', 'timestamp': 1768581111714}
+2026-01-17 00:32:01,792 - web_test.multi_agent_thread - INFO - Thread 3: Initial state: ActionSetWithExecutionTimesState(action_number=1, action_execution_time_histogram=[1, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)

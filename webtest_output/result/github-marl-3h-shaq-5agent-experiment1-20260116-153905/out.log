@@ -1,0 +1,407 @@
+2026-01-16 15:39:05,146 - __main__ - INFO - [Debug] 程序已启动
+2026-01-16 15:39:05,146 - __main__ - INFO - [Debug] Chrome Options 配置完成
+2026-01-16 15:39:05,146 - __main__ - INFO - [Debug] profile is github-marl-3h-shaq-5agent
+2026-01-16 15:39:05,671 - web_test.multi_agent_thread - INFO - SHAQ initializing on device: cpu
+2026-01-16 15:39:50,913 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver created successfully
+2026-01-16 15:39:50,917 - web_test.multi_agent_thread - INFO - Thread 0: Execution start
+2026-01-16 15:39:51,850 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver created successfully
+2026-01-16 15:39:51,850 - web_test.multi_agent_thread - INFO - Thread 1: Execution start
+2026-01-16 15:39:52,859 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver created successfully
+2026-01-16 15:39:52,859 - web_test.multi_agent_thread - INFO - Thread 2: Execution start
+2026-01-16 15:39:53,876 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver created successfully
+2026-01-16 15:39:53,877 - web_test.multi_agent_thread - INFO - Thread 3: Execution start
+2026-01-16 15:39:55,016 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver created successfully
+2026-01-16 15:39:55,018 - web_test.multi_agent_thread - INFO - Thread 4: Execution start
+2026-01-16 15:40:13,999 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549195482}
+2026-01-16 15:40:13,999 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549195486}
+2026-01-16 15:40:14,000 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768549196492}
+2026-01-16 15:40:14,000 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549208484}
+2026-01-16 15:40:14,000 - web_test.multi_agent_thread - INFO - Thread 0: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 15:40:15,273 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549196338}
+2026-01-16 15:40:15,273 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549196341}
+2026-01-16 15:40:15,273 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768549197326}
+2026-01-16 15:40:15,273 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549209758}
+2026-01-16 15:40:15,273 - web_test.multi_agent_thread - INFO - Thread 1: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 15:40:16,679 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549198548}
+2026-01-16 15:40:16,679 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549198551}
+2026-01-16 15:40:16,679 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768549198713}
+2026-01-16 15:40:16,679 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549208394}
+2026-01-16 15:40:16,679 - web_test.multi_agent_thread - INFO - Thread 3: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 15:40:16,891 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549197501}
+2026-01-16 15:40:16,891 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549197504}
+2026-01-16 15:40:16,891 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768549198963}
+2026-01-16 15:40:16,891 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549211340}
+2026-01-16 15:40:16,892 - web_test.multi_agent_thread - INFO - Thread 2: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 15:40:19,059 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549200849}
+2026-01-16 15:40:19,059 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549200854}
+2026-01-16 15:40:19,059 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768549201933}
+2026-01-16 15:40:19,059 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549210244}
+2026-01-16 15:40:19,059 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549213547}
+2026-01-16 15:40:19,060 - web_test.multi_agent_thread - INFO - Thread 4: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 15:40:24,298 - web_test.multi_agent_thread - ERROR - Thread 0: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 54, in get_action
+    choose_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 225, in get_action_algorithm
+    q_values = self.agents_q[agent_name](input_tensor).flatten()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/artifacts/model/dense_net.py", line 75, in forward
+    x = self.conv1(x)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 371, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 366, in _conv_forward
+    return F.conv1d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Given groups=1, weight of size [24, 1, 7], expected input[1, 101, 52] to have 1 channels, but got 101 channels instead
+2026-01-16 15:40:25,408 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver restart successfully
+2026-01-16 15:40:25,553 - web_test.multi_agent_thread - ERROR - Thread 1: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 54, in get_action
+    choose_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 225, in get_action_algorithm
+    q_values = self.agents_q[agent_name](input_tensor).flatten()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/artifacts/model/dense_net.py", line 75, in forward
+    x = self.conv1(x)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 371, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 366, in _conv_forward
+    return F.conv1d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Given groups=1, weight of size [24, 1, 7], expected input[1, 101, 52] to have 1 channels, but got 101 channels instead
+2026-01-16 15:40:26,631 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver restart successfully
+2026-01-16 15:40:26,952 - web_test.multi_agent_thread - ERROR - Thread 3: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 54, in get_action
+    choose_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 225, in get_action_algorithm
+    q_values = self.agents_q[agent_name](input_tensor).flatten()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/artifacts/model/dense_net.py", line 75, in forward
+    x = self.conv1(x)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 371, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 366, in _conv_forward
+    return F.conv1d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Given groups=1, weight of size [24, 1, 7], expected input[1, 101, 52] to have 1 channels, but got 101 channels instead
+2026-01-16 15:40:27,149 - web_test.multi_agent_thread - ERROR - Thread 2: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 54, in get_action
+    choose_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 225, in get_action_algorithm
+    q_values = self.agents_q[agent_name](input_tensor).flatten()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/artifacts/model/dense_net.py", line 75, in forward
+    x = self.conv1(x)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 371, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 366, in _conv_forward
+    return F.conv1d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Given groups=1, weight of size [24, 1, 7], expected input[1, 101, 52] to have 1 channels, but got 101 channels instead
+2026-01-16 15:40:28,294 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver restart successfully
+2026-01-16 15:40:28,460 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver restart successfully
+2026-01-16 15:40:29,329 - web_test.multi_agent_thread - ERROR - Thread 4: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 54, in get_action
+    choose_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 225, in get_action_algorithm
+    q_values = self.agents_q[agent_name](input_tensor).flatten()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/artifacts/model/dense_net.py", line 75, in forward
+    x = self.conv1(x)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 371, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 366, in _conv_forward
+    return F.conv1d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Given groups=1, weight of size [24, 1, 7], expected input[1, 101, 52] to have 1 channels, but got 101 channels instead
+2026-01-16 15:40:30,579 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver restart successfully
+2026-01-16 15:40:45,505 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549230089}
+2026-01-16 15:40:45,506 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549230094}
+2026-01-16 15:40:45,506 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768549230220}
+2026-01-16 15:40:45,506 - web_test.multi_agent_thread - INFO - Thread 0: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549237628}
+2026-01-16 15:40:45,506 - web_test.multi_agent_thread - INFO - Thread 0: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 15:40:46,470 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549232381}
+2026-01-16 15:40:46,470 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549232385}
+2026-01-16 15:40:46,471 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768549232578}
+2026-01-16 15:40:46,471 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549239524}
+2026-01-16 15:40:46,471 - web_test.multi_agent_thread - INFO - Thread 3: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549243965}
+2026-01-16 15:40:46,471 - web_test.multi_agent_thread - INFO - Thread 3: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 15:40:46,723 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549231652}
+2026-01-16 15:40:46,723 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549231655}
+2026-01-16 15:40:46,723 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768549232731}
+2026-01-16 15:40:46,723 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549240426}
+2026-01-16 15:40:46,723 - web_test.multi_agent_thread - INFO - Thread 1: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549244331}
+2026-01-16 15:40:46,724 - web_test.multi_agent_thread - INFO - Thread 1: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 15:40:47,184 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549233335}
+2026-01-16 15:40:47,184 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549233338}
+2026-01-16 15:40:47,184 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768549234914}
+2026-01-16 15:40:47,187 - web_test.multi_agent_thread - INFO - Thread 2: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549243289}
+2026-01-16 15:40:47,187 - web_test.multi_agent_thread - INFO - Thread 2: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 15:40:47,838 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549236169}
+2026-01-16 15:40:47,839 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'SEVERE', 'message': "https://github.githubassets.com/assets/78298-e2b301acbc0e.js 0:4954 Uncaught DOMException: Failed to execute 'matches' on 'Element': '[open]:not(:modal)' is not a valid selector.", 'source': 'javascript', 'timestamp': 1768549236173}
+2026-01-16 15:40:47,839 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'WARNING', 'message': 'https://github.githubassets.com/assets/14312-5e06208defc2.js 9 Deprecated API for given entry type.', 'source': 'javascript', 'timestamp': 1768549237091}
+2026-01-16 15:40:47,839 - web_test.multi_agent_thread - INFO - Thread 4: Detect browser error: {'level': 'WARNING', 'message': "https://github.com/ - The resource https://github.githubassets.com/assets/mona-sans-14595085164a.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.", 'source': 'javascript', 'timestamp': 1768549244048}
+2026-01-16 15:40:47,839 - web_test.multi_agent_thread - INFO - Thread 4: Initial state: ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[101, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)
+2026-01-16 15:40:55,660 - web_test.multi_agent_thread - ERROR - Thread 0: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 54, in get_action
+    choose_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 225, in get_action_algorithm
+    q_values = self.agents_q[agent_name](input_tensor).flatten()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/artifacts/model/dense_net.py", line 75, in forward
+    x = self.conv1(x)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 371, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 366, in _conv_forward
+    return F.conv1d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Given groups=1, weight of size [24, 1, 7], expected input[1, 101, 52] to have 1 channels, but got 101 channels instead
+2026-01-16 15:40:56,755 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver restart successfully
+2026-01-16 15:40:56,983 - web_test.multi_agent_thread - ERROR - Thread 3: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 54, in get_action
+    choose_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 225, in get_action_algorithm
+    q_values = self.agents_q[agent_name](input_tensor).flatten()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/artifacts/model/dense_net.py", line 75, in forward
+    x = self.conv1(x)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 371, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 366, in _conv_forward
+    return F.conv1d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Given groups=1, weight of size [24, 1, 7], expected input[1, 101, 52] to have 1 channels, but got 101 channels instead
+2026-01-16 15:40:56,985 - web_test.multi_agent_thread - ERROR - Thread 1: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 54, in get_action
+    choose_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 225, in get_action_algorithm
+    q_values = self.agents_q[agent_name](input_tensor).flatten()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/artifacts/model/dense_net.py", line 75, in forward
+    x = self.conv1(x)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 371, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 366, in _conv_forward
+    return F.conv1d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Given groups=1, weight of size [24, 1, 7], expected input[1, 101, 52] to have 1 channels, but got 101 channels instead
+2026-01-16 15:40:57,831 - web_test.multi_agent_thread - ERROR - Thread 2: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 54, in get_action
+    choose_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 225, in get_action_algorithm
+    q_values = self.agents_q[agent_name](input_tensor).flatten()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/artifacts/model/dense_net.py", line 75, in forward
+    x = self.conv1(x)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 371, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 366, in _conv_forward
+    return F.conv1d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Given groups=1, weight of size [24, 1, 7], expected input[1, 101, 52] to have 1 channels, but got 101 channels instead
+2026-01-16 15:40:58,103 - web_test.multi_agent_thread - ERROR - Thread 4: Error happened
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/web_test/multi_agent_thread.py", line 89, in run
+    chosen_action = self.multi_agent_system.get_action(self.current_state, html, self.agent_name,
+                                                       self.current_url, self.check_result)
+  File "/Users/harryhou/artifacts/multi_agent/multi_agent_system.py", line 54, in get_action
+    choose_action = self.get_action_algorithm(web_state, html, agent_name)
+  File "/Users/harryhou/artifacts/multi_agent/impl/shaq.py", line 225, in get_action_algorithm
+    q_values = self.agents_q[agent_name](input_tensor).flatten()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/artifacts/model/dense_net.py", line 75, in forward
+    x = self.conv1(x)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 371, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harryhou/miniconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 366, in _conv_forward
+    return F.conv1d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Given groups=1, weight of size [24, 1, 7], expected input[1, 101, 52] to have 1 channels, but got 101 channels instead
+2026-01-16 15:40:58,544 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver restart successfully
+2026-01-16 15:40:58,569 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver restart successfully
+2026-01-16 15:40:59,310 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver restart successfully
+2026-01-16 15:40:59,715 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver restart successfully

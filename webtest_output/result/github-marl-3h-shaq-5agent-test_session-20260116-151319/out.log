@@ -1,0 +1,4 @@
+2026-01-16 15:13:19,940 - __main__ - INFO - [Debug] 程序已启动
+2026-01-16 15:13:19,941 - __main__ - INFO - [Debug] Chrome Options 配置完成
+2026-01-16 15:13:19,941 - __main__ - INFO - [Debug] profile is github-marl-3h-shaq-5agent
+2026-01-16 15:13:19,941 - __main__ - ERROR - 程序运行时出错: <class 'AttributeError'> - module 'multi_agent.impl.shaq' has no attribute 'SHAQ'

@@ -1,0 +1,29 @@
+2026-01-16 15:30:44,809 - __main__ - INFO - [Debug] 程序已启动
+2026-01-16 15:30:44,809 - __main__ - INFO - [Debug] Chrome Options 配置完成
+2026-01-16 15:30:44,809 - __main__ - INFO - [Debug] profile is github-marl-3h-shaq-5agent
+2026-01-16 15:30:45,308 - web_test.multi_agent_thread - INFO - SHAQ initializing on device: cpu
+2026-01-16 15:37:56,219 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver created successfully
+2026-01-16 15:37:56,222 - web_test.multi_agent_thread - INFO - Thread 0: Execution start
+2026-01-16 15:37:57,225 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver created successfully
+2026-01-16 15:37:57,225 - web_test.multi_agent_thread - INFO - Thread 1: Execution start
+2026-01-16 15:37:58,253 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver created successfully
+2026-01-16 15:37:58,254 - web_test.multi_agent_thread - INFO - Thread 2: Execution start
+2026-01-16 15:37:59,302 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver created successfully
+2026-01-16 15:37:59,305 - web_test.multi_agent_thread - INFO - Thread 3: Execution start
+2026-01-16 15:38:01,090 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver created successfully
+2026-01-16 15:38:01,092 - web_test.multi_agent_thread - INFO - Thread 4: Execution start
+2026-01-16 15:38:01,095 - web_test.webtest_multi_agent - WARNING - Agent thread 0 is not alive. Restarting...
+2026-01-16 15:38:02,442 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver created successfully
+2026-01-16 15:38:02,443 - web_test.multi_agent_thread - INFO - Thread 0: Execution start
+2026-01-16 15:38:02,444 - web_test.webtest_multi_agent - WARNING - Agent thread 1 is not alive. Restarting...
+2026-01-16 15:38:03,639 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver created successfully
+2026-01-16 15:38:03,639 - web_test.multi_agent_thread - INFO - Thread 1: Execution start
+2026-01-16 15:38:03,639 - web_test.webtest_multi_agent - WARNING - Agent thread 2 is not alive. Restarting...
+2026-01-16 15:38:04,826 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver created successfully
+2026-01-16 15:38:04,827 - web_test.multi_agent_thread - INFO - Thread 2: Execution start
+2026-01-16 15:38:04,827 - web_test.webtest_multi_agent - WARNING - Agent thread 3 is not alive. Restarting...
+2026-01-16 15:38:06,027 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver created successfully
+2026-01-16 15:38:06,030 - web_test.multi_agent_thread - INFO - Thread 3: Execution start
+2026-01-16 15:38:06,031 - web_test.webtest_multi_agent - WARNING - Agent thread 4 is not alive. Restarting...
+2026-01-16 15:38:07,574 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver created successfully
+2026-01-16 15:38:07,576 - web_test.multi_agent_thread - INFO - Thread 4: Execution start

@@ -1,0 +1,12 @@
+2026-01-15 17:24:25,725 - __main__ - INFO - [Debug] 程序已启动
+2026-01-15 17:24:25,725 - __main__ - INFO - [Debug] Chrome Options 配置完成
+[Debug] 程序已启动
+[Debug] Chrome Options 配置完成
+Traceback (most recent call last):
+  File "/Users/harryhou/artifacts/main.py", line 121, in <module>
+    main()
+    ~~~~^^
+  File "/Users/harryhou/artifacts/main.py", line 65, in main
+    print(f"[Debug] 加载配置文件，使用的 default_profile: {settings.default_profile}")
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Settings' object has no attribute 'default_profile'

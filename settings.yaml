@@ -1,0 +1,360 @@
+default_profile: github-marl-3h-marg-dql-5agent
+default_output_path: ./webtest_output/result
+default_model_path: ./webtest_model
+default_session: test_session
+default_restart_interval: 60
+default_continuous_restart_threshold: 5
+default_enable_screen_shot: True
+
+profiles:
+  # SHAQ (SHapley Q-value) 算法配置
+  # 使用 Lovasz 扩展高效计算 Shapley value，避免 Monte Carlo 采样的指数级计算复杂度
+  github-marl-3h-shaq-5agent:
+    agent_num: 5
+    alive_time: 10800
+    record_interval: 300  # 每 5 分钟记录一次
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --window-size=1280,1000
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.shaq
+      class: SHAQ
+      params:
+        agent_num: 5
+        entry_url: https://github.com
+        alive_time: 10800
+        algo_type: shaq
+        reward_function: A
+        # 状态/动作编码器
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        # Q 网络模型
+        model_module: model.dense_net
+        model_class: DenseNet
+        # 探索参数 (epsilon-greedy)
+        max_random: 0.9          # 初始探索率
+        min_random: 0.1          # 最终探索率
+        # 学习参数
+        batch_size: 32           # 批次大小
+        gamma: 0.99              # 折扣因子
+        learning_rate: 0.001     # 学习率
+        # 网络更新参数
+        update_target_interval: 100   # 目标网络更新间隔
+        update_network_interval: 10   # 训练网络更新间隔
+        # SHAQ 特有参数 - Lovasz 扩展
+        shapley_samples: 5       # 采样点数（仅 multipoint/gradient 方法使用）
+        shapley_method: fast     # Shapley 计算方法:
+                                 #   - fast: 最快，单次梯度计算 O(1)
+                                 #   - gradient: 多次梯度计算取平均
+                                 #   - multipoint: 最精确，沿排列路径积分 O(n*samples)
+        shapley_update_interval: 5   # 每 N 步计算一次 Shapley（减少开销）
+        # SHAQ 特有优势 - Shapley 引导探索
+        use_shapley_exploration: true   # 使用 Shapley 引导探索策略
+        shapley_exploration_bonus: 0.5  # 探索奖励系数
+        async_joint_learning: true      # 异步联合学习（不等待所有智能体同步）
+
+  # SHAQ 快速测试配置（2个智能体，短时间）
+  quick-test-shaq:
+    agent_num: 2
+    alive_time: 300
+    record_interval: 60
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --window-size=1280,1000
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.shaq
+      class: SHAQ
+      params:
+        agent_num: 2
+        entry_url: https://github.com
+        alive_time: 300
+        algo_type: shaq
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        max_random: 0.8
+        min_random: 0.2
+        batch_size: 16
+        gamma: 0.95
+        learning_rate: 0.001
+        update_target_interval: 50
+        update_network_interval: 5
+        shapley_samples: 3
+        shapley_method: fast
+        shapley_update_interval: 3
+        use_shapley_exploration: true
+        shapley_exploration_bonus: 0.5
+        async_joint_learning: true
+
+  quick-test-mac:
+    agent_num: 2
+    record_interval: 60
+    alive_time: 300
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --window-size=1280,1000
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.marg
+      class: Marg
+      params:
+        agent_type: dql
+        alpha: 1
+        gamma: 0.5
+        epsilon: 0.5
+        initial_q_value: 10.0
+
+  github-marl-3h-marg-dql-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      #- --window-size=1280,1000
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.marg
+      class: Marg
+      params:
+        agent_type: dql
+        alpha: 1
+        gamma: 0.5
+        epsilon: 0.5
+        initial_q_value: 10.0
+
+  github-marl-3h-qtran-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --window-size=1280,1000
+      # - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.marg_d
+      class: MargD
+      params:
+        model_module: model.dense_net
+        model_class: DenseNet
+        algo_type: qtran
+        using_mix: T
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        reward_function: A
+        batch_size: 32
+        mix_batch_size: 16
+        learning_rate: 0.001
+        max_random: 0.9
+        min_random: 0.3
+        update_target_interval: 8
+        update_network_interval: 4
+        update_mixing_network_interval: 1
+        gamma: 0.5
+
+  github-marl-3h-nndql-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      # - --window-size=1280,1000
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.marg_d
+      class: MargD
+      params:
+        model_module: model.dense_net
+        model_class: DenseNet
+        algo_type: nndql
+        using_mix: F
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        reward_function: A
+        batch_size: 32
+        mix_batch_size: 16
+        learning_rate: 0.001
+        max_random: 0.9
+        min_random: 0.3
+        update_target_interval: 8
+        update_network_interval: 4
+        update_mixing_network_interval: 1
+        gamma: 0.5
+
+
+
+  github-marl-3h-nn-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      #- --window-size=1280,1000
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.marg_d
+      class: MargD
+      params:
+        model_module: model.dense_net
+        model_class: DenseNet
+        algo_type: nn
+        using_mix: F
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        reward_function: A
+        batch_size: 32
+        mix_batch_size: 16
+        learning_rate: 0.001
+        max_random: 0.9
+        min_random: 0.3
+        update_target_interval: 8
+        update_network_interval: 4
+        update_mixing_network_interval: 1
+        gamma: 0.5

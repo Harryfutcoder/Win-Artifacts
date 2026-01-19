@@ -1,0 +1,14 @@
+2026-01-16 22:37:30,771 - __main__ - INFO - [Debug] 程序已启动
+2026-01-16 22:37:30,771 - __main__ - INFO - [Debug] Chrome Options 配置完成
+2026-01-16 22:37:30,771 - __main__ - INFO - [Debug] profile is github-marl-3h-shaq-5agent
+2026-01-16 22:37:31,295 - web_test.multi_agent_thread - INFO - SHAQ initializing on device: cpu
+2026-01-16 22:38:38,124 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver created successfully
+2026-01-16 22:38:38,128 - web_test.multi_agent_thread - INFO - Thread 0: Execution start
+2026-01-16 22:38:39,017 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver created successfully
+2026-01-16 22:38:39,020 - web_test.multi_agent_thread - INFO - Thread 1: Execution start
+2026-01-16 22:38:39,939 - web_test.multi_agent_thread - INFO - Thread 2: Webdriver created successfully
+2026-01-16 22:38:39,940 - web_test.multi_agent_thread - INFO - Thread 2: Execution start
+2026-01-16 22:38:40,875 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver created successfully
+2026-01-16 22:38:40,877 - web_test.multi_agent_thread - INFO - Thread 3: Execution start
+2026-01-16 22:38:41,831 - web_test.multi_agent_thread - INFO - Thread 4: Webdriver created successfully
+2026-01-16 22:38:41,832 - web_test.multi_agent_thread - INFO - Thread 4: Execution start

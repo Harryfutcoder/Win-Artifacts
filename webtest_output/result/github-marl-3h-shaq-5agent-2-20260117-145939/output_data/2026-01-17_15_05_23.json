@@ -1,0 +1,3563 @@
+{
+    "action_list": [
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div/a, text=Sign in \u2192)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[1]/a, text=)",
+            2
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/div/a, text=Sign up)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/div/div/a, text=Sign in)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/div/div[1]/a, text=Sign in)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/div/div[2]/react-partial-anchor/button, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/div/qbsearch-input/div[1]/button, text=)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/div/qbsearch-input/div[1]/div/modal-dialog/div/div/div/div/a, text=Search syntax tips)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/button, text=Platform)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/react-partial/div/nav/ul/li[2]/div/button, text=Solutions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/react-partial/div/nav/ul/li[3]/div/button, text=Resources)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/react-partial/div/nav/ul/li[4]/div/button, text=Open Source)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/react-partial/div/nav/ul/li[5]/div/button, text=Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/react-partial/div/nav/ul/li[6]/a, text=Pricing)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[3]/div/div/a, text=Sign up)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[3]/div/div/div[1]/a, text=Sign in)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[3]/div/div/div[2]/react-partial-anchor/button, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[3]/div/div/qbsearch-input/div[1]/button, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[3]/div/react-partial/div/nav/ul/li[1]/div/button, text=Platform)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[3]/div/react-partial/div/nav/ul/li[2]/div/button, text=Solutions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[3]/div/react-partial/div/nav/ul/li[3]/div/button, text=Resources)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[3]/div/react-partial/div/nav/ul/li[4]/div/button, text=Open Source)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[3]/div/react-partial/div/nav/ul/li[5]/div/button, text=Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[3]/div/react-partial/div/nav/ul/li[6]/a, text=Pricing)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[1]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/div/a, text=Sign up)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/div/div/a, text=Sign in)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/div/qbsearch-input/div[1]/button, text=)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/div/qbsearch-input/div[1]/div/modal-dialog/div/div/div/div/a, text=Search syntax tips)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/div/qbsearch-input/div[1]/div/modal-dialog/div/div/div/form/query-builder/div[1]/div[1]/button, text=)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/button, text=Platform)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[1]/div/ul/li[1]/a, text=GitHub Copilot\nWrite better code with AI)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[1]/div/ul/li[2]/a, text=GitHub Spark\nBuild and deploy intelligent apps)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[1]/div/ul/li[3]/a, text=GitHub Models\nManage and compare prompts)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[1]/div/ul/li[4]/a, text=MCP RegistryNew\nIntegrate external tools)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[2]/div/ul/li[1]/a, text=Actions\nAutomate any workflow)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[2]/div/ul/li[2]/a, text=Codespaces\nInstant dev environments)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[2]/div/ul/li[3]/a, text=Issues\nPlan and track work)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[2]/div/ul/li[4]/a, text=Code Review\nManage code changes)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[3]/div/ul/li[1]/a, text=GitHub Advanced Security\nFind and fix vulnerabilities)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[3]/div/ul/li[2]/a, text=Code security\nSecure your code as you build)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[3]/div/ul/li[3]/a, text=Secret protection\nStop leaks before they start)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[4]/div/ul/li[1]/a, text=Why GitHub)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[4]/div/ul/li[2]/a, text=Documentation)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[4]/div/ul/li[3]/a, text=Blog)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[4]/div/ul/li[4]/a, text=Changelog)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[1]/div/div/ul/li[4]/div/ul/li[5]/a, text=Marketplace)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[2]/div/button, text=Solutions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[3]/div/button, text=Resources)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[4]/div/button, text=Open Source)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[5]/div/button, text=Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/react-partial/div/nav/ul/li[6]/a, text=Pricing)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[1]/div/details/summary, text=See what's included )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/div[2]/form[1]/button, text=Continue with Google)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/div[2]/form[2]/button, text=Continue with Apple)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/button, text=United States of America)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[1]/div[1]/div[2]/button, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[2]/focus-group/div/div[1]/action-list/div/ul/li[10]/button, text=Antigua and Barbuda)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[2]/focus-group/div/div[1]/action-list/div/ul/li[1]/button, text=Afghanistan)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[2]/focus-group/div/div[1]/action-list/div/ul/li[2]/button, text=\u00c5land)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[2]/focus-group/div/div[1]/action-list/div/ul/li[3]/button, text=Albania)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[2]/focus-group/div/div[1]/action-list/div/ul/li[4]/button, text=Algeria)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[2]/focus-group/div/div[1]/action-list/div/ul/li[5]/button, text=American Samoa)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[2]/focus-group/div/div[1]/action-list/div/ul/li[6]/button, text=Andorra)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[2]/focus-group/div/div[1]/action-list/div/ul/li[7]/button, text=Angola)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[2]/focus-group/div/div[1]/action-list/div/ul/li[8]/button, text=Anguilla)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[2]/focus-group/div/div[1]/action-list/div/ul/li[9]/button, text=Antarctica)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/details/summary, text=\"Tell me more, I can't get enough!\")",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/p[1]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/p[2]/a, text=Robots)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/p[4]/a, text=how to contribute)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/p[6]/a[1], text=public roadmap)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/p[6]/a[2], text=let us know)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/p[6]/a[3], text=join our team)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/p[7]/sub/a, text=organization README)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/ul[1]/li[1]/a, text=GitHub Sponsors)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/ul[2]/li[1]/a, text=GitHub CLI)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/ul[2]/li[2]/a, text=GitHub Desktop)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/ul[2]/li[3]/a, text=Git Large File Storage)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/article/ul[2]/li[4]/a, text=Primer)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[2]/div/div/div/a, text=README.md)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[1]/div/div/div/div/span[1]/a, text=training-kit)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[1]/div/div/p[2]/a[1], text= 4.8k)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[1]/div/div/p[2]/a[2], text= 4.4k)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[2]/div/div/div/div/span[1]/a, text=choosealicense.com)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[2]/div/div/p[2]/a[1], text= 4k)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[2]/div/div/p[2]/a[2], text= 1.5k)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[3]/div/div/div/div/span[1]/a, text=scientist)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[3]/div/div/p[2]/a[1], text= 7.6k)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[3]/div/div/p[2]/a[2], text= 482)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[4]/div/div/div/div/span[1]/a, text=gh-ost)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[4]/div/div/p[2]/a[1], text= 13.2k)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[4]/div/div/p[2]/a[2], text= 1.3k)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[5]/div/div/div/div/span[1]/a, text=github-mcp-server)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[5]/div/div/p[2]/a[1], text= 26k)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[3]/ol/li[5]/div/div/p[2]/a[2], text= 3.4k)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[1]/div/form/div/div[2]/details[1]/summary, text=Type )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[1]/div/form/div/div[2]/details[2]/summary, text=Language )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[1]/div/form/div/div[2]/details[3]/summary, text=Sort )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/div/a, text=View all repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[10]/div/div[1]/div/a, text=curated-data)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[10]/div/div[1]/div/span[2]/a, text=clearlydefined/curated-data)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[10]/div/div[1]/span/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[10]/div/div[2]/a[1], text= 17)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[10]/div/div[2]/a[2], text= 118)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[10]/div/div[2]/a[3], text= 0)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[10]/div/div[2]/a[4], text= 0)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[1]/div/div[1]/div/a, text=advisory-database)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[1]/div/div[1]/span/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[1]/div/div[2]/a[1], text= 2,112)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[1]/div/div[2]/a[2], text= 517)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[1]/div/div[2]/a[3], text= 73)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[1]/div/div[2]/a[4], text= 6)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[2]/div/div[1]/div/a, text=maintainermonth)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[2]/div/div[1]/span/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[2]/div/div[2]/a[1], text= 224)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[2]/div/div[2]/a[2], text= 48)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[2]/div/div[2]/a[3], text= 13)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[2]/div/div[2]/a[4], text=(2 issues need help))",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[2]/div/div[2]/a[5], text= 2)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[3]/div/div[1]/div/a, text=go-spdx)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[3]/div/div[1]/span/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[3]/div/div[2]/a[1], text= 44)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[3]/div/div[2]/a[2], text= 11)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[3]/div/div[2]/a[3], text= 5)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[3]/div/div[2]/a[4], text= 5)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[4]/div/div[1]/div/a, text=explore)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[4]/div/div[1]/span/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[4]/div/div[2]/a[1], text= 4,643)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[4]/div/div[2]/a[2], text= 13,914)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[4]/div/div[2]/a[3], text= 2)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[4]/div/div[2]/a[4], text= 2)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[5]/div/div[1]/div/a, text=dependabot-action)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[5]/div/div[1]/span/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[5]/div/div[2]/a[1], text= 115)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[5]/div/div[2]/a[2], text= 61)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[5]/div/div[2]/a[3], text= 0)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[5]/div/div[2]/a[4], text= 10)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[6]/div/div[1]/div/a, text=codeql-action)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[6]/div/div[1]/span/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[6]/div/div[2]/a[1], text= 1,461)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[6]/div/div[2]/a[2], text= 434)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[6]/div/div[2]/a[3], text= 145)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[6]/div/div[2]/a[4], text=(2 issues need help))",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[6]/div/div[2]/a[5], text= 14)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[7]/div/div[1]/div/a, text=gh-ost)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[7]/div/div[1]/span/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[7]/div/div[2]/a[1], text= 13,165)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[7]/div/div[2]/a[2], text= 1,349)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[7]/div/div[2]/a[3], text= 257)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[7]/div/div[2]/a[4], text=(2 issues need help))",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[7]/div/div[2]/a[5], text= 60)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[8]/div/div[1]/div/a, text=opensource.guide)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[8]/div/div[1]/span/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[8]/div/div[2]/a[1], text= 15,151)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[8]/div/div[2]/a[2], text= 15,240)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[8]/div/div[2]/a[3], text= 0)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[8]/div/div[2]/a[4], text= 2)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[9]/div/div[1]/div/a, text=octocanvas)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[9]/div/div[1]/span/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[9]/div/div[2]/a[1], text= 23)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[9]/div/div[2]/a[2], text= 14)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[9]/div/div[2]/a[3], text= 1)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[2]/div/div/ul/li[9]/div/div[2]/a[4], text= 1)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/a, text=People)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[10], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[11], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[12], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[13], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[14], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[15], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[16], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[17], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[18], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[19], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[1], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[20], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[2], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[3], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[4], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[5], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[6], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[7], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[8], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[1]/a[9], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[3]/div/div/div[2]/a, text=View all)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[10]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[11]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[12]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[1]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[2]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[3]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[4]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[5]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[6]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[7]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[8]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[4]/div/div/ul/li[9]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[5]/div/a[1], text= Ruby)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[5]/div/a[2], text= JavaScript)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[5]/div/a[3], text= TypeScript)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[5]/div/a[4], text= Go)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[5]/div/a[5], text= Python)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[6]/div/div[2]/a[1], text=custom-elements)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[6]/div/div[2]/a[2], text=github)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[6]/div/div[2]/a[3], text=web-components)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[6]/div/div[2]/a[4], text=ruby)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[6]/div/div[2]/a[5], text=actions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[7]/a[1], text=GitHub Sponsor)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[2]/div/div[7]/a[2], text=Developer Program Member)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div[2]/ul/li[1]/span/sup/a, text=*)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div[2]/ul/li[2]/span/sup/a, text=*)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div[3]/form/button, text=Try now)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div/div/a, text=SEE ALL TOPICS )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div/div/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div/div/div/button, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[1]/div[2]/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[1]/div[2]/div/button, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[2]/div[1]/div/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[2]/div[1]/div[2]/a, text=Coding accessibility: Software by the blind, for the blind)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[2]/div[2]/div[1]/div[2]/a, text=Coding accessibility: Disability as catalyst for creativity)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[2]/div[2]/div[2]/div[2]/a, text=Champion accessibility to unleash untapped potential)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[2]/div[2]/div[3]/div[2]/a, text=Coding accessibility: How Della found her voice with open source AAC)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[2]/div[2]/div[4]/div[2]/a, text=Coding accessibility: Building autonomy with AI)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[2]/div[2]/p/a, text=Tim Peacock)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[2]/div[2]/p/a, text=Violet Reed)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[2]/div/div/ul/li[1]/a, text=AI)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[2]/div/div/ul/li[2]/a, text=Application Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[2]/div/div/ul/li[3]/a, text=Career Development)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[2]/div/div/ul/li[4]/a, text=DevOps & Automation)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[2]/div/div/ul/li[5]/a, text=more topics)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[3]/div[1]/div[1]/a, text=Bridging code and community)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[3]/div[1]/div[1]/div/div/a, text=MAINTAINER)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[3]/div[1]/div[2]/a, text=Powering public goods)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[3]/div[1]/div[2]/div/div/a, text=AI)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[3]/div[2]/div[1]/a, text=Harness the power of generative AI for software development)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[3]/div[2]/div[2]/a, text=Finish your projects)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[3]/div[2]/div[3]/a, text=Get your first software developer job)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[4]/div/blockquote/a, text=We all have the potential to become who we're meant to be, even when societal and socioeconomic challenges get in our way.)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[4]/div/div/div[1]/div/a, text=ACCESSIBILITY)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[4]/div/div/div[2]/a, text=Champion accessibility to unleash untapped potential)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[5]/div[1]/div/a, text=SEE ALL THE README PODCAST \nSTORIES FROM THE README PODCAST)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[5]/div[2]/div[1]/div[2]/a, text=(De)coding conventions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[5]/div[2]/div[2]/div[2]/a, text=Kelsey Hightower\u2014Present)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[6]/div[1]/div/a, text=SEE ALL FEATURED ARTICLES \nSTORIES FROM FEATURED ARTICLES)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[6]/div[2]/div/div[1]/div/a, text=PROGRAMMING)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[6]/div[2]/div/div[2]/div/h3/a, text=Is Laravel the happiest developer community on the planet?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[7]/div[1]/div/a, text=SEE ALL DEVELOPER STORIES \nSTORIES FROM DEVELOPER STORIES)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[7]/div[2]/div[1]/div[2]/a, text=Realizing potential with AI)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[7]/div[2]/div[2]/div[2]/a, text=From fixing computers on farms to democratizing DevOps)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[7]/div[2]/div[3]/div[2]/a, text=Advancing inclusion with progressive enhancement)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[7]/div[2]/div[4]/div[2]/a, text=Putting the African open source community on the map)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[8]/div[1]/div/a, text=SEE ALL GUIDES \nSTORIES FROM GUIDES)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[8]/div[2]/div[1]/div[1]/div/a, text=CAREER DEVELOPMENT)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[8]/div[2]/div[1]/div[2]/a, text=Scaling standards and community in your organization)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[8]/div[2]/div[2]/div[1]/a, text=A beginner\u2019s guide to running and managing custom CodeQL queries)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[8]/div[2]/div[2]/div[1]/div/div/a, text=APPLICATION SECURITY)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[8]/div[2]/div[2]/div[2]/a, text=Provisioning self-hosted GitHub Actions runners on demand)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[8]/div[2]/div[2]/div[3]/a, text=Treat accessibility issues as bugs, not feature requests)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[1]/div[3]/div[8]/div[2]/div[2]/div[3]/div/div/a, text=OPEN SOURCE)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div/div/div/div[1]/div/div/ul/li[1]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div/div/div/div[1]/div/div/ul/li[2]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div/div/div/div[1]/div/div/ul/li[3]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div/div/div/div[1]/div/div/ul/li[4]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div/div/div/div[1]/div/div/ul/li[5]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div/div/div/div[2]/h4[1]/a, text=NOMINATE A DEVELOPER)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div/div/div/div[2]/h4[2]/a, text=SUPPORT THE COMMUNITY)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div/div/div/div[2]/h4[3]/a, text=SIGN UP FOR THE NEWSLETTER )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[10]/div[2]/a, text=Build your own luck)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[11]/div[2]/a, text=Intentional creation)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[12]/div[2]/a, text=Interview the interviewer)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[13]/div[2]/a, text=Hiring technical talent: An exercise in clarity, patience, and preparation)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[14]/div[2]/a, text=Making operational work more visible)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[15]/div[2]/a, text=How to hone your new superpower: teaching)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[16]/div[2]/a, text=Using \u2018Roofshots\u2019 to make impossible decisions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[17]/div[2]/a, text=The secrets to onboarding new open source contributors)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[18]/div[2]/a, text=Time management for makers)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[19]/div[2]/a, text=Get your first software developer job)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[1]/div[2]/a, text=Coding accessibility: Software by the blind, for the blind)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[20]/div[2]/a, text=Teaching in public with GitHub)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[21]/div[2]/a, text=Demystifying developer advocacy)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[22]/div[2]/a, text=Quitting a steady job to chase intuition)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[23]/div[2]/a, text=From a 3D side project to the dream job)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[2]/div[2]/a, text=Scaling standards and community in your organization)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[3]/div[2]/a, text=Turbulent times call for adaptive leadership)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[4]/div[2]/a, text=Finish your projects)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[5]/div[2]/a, text=Fusing tech and progress)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[6]/div[2]/a, text=Junior to senior: An action plan for engineering career success)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[7]/div[2]/a, text=Twitch: A game changer for developers)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[8]/div[2]/a, text=How to put the plus in \u2018staff+\u2019 engineer)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[2]/div[2]/div[9]/div[2]/a, text=What is \u201cengineering for software?\u201d)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div/div/div[1]/div/div/ul/li[1]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div/div/div[1]/div/div/ul/li[2]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div/div/div[1]/div/div/ul/li[3]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div/div/div[1]/div/div/ul/li[4]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div/div/div[1]/div/div/ul/li[5]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div/div/div[2]/h4[1]/a, text=NOMINATE A DEVELOPER)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div/div/div[2]/h4[2]/a, text=SUPPORT THE COMMUNITY)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div/div/div[2]/h4[3]/a, text=SIGN UP FOR THE NEWSLETTER )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div[2]/ul/li[1]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div[2]/ul/li[2]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div[2]/ul/li[3]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div[3]/div[2]/p[15]/a, text=lift as you climb)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div[3]/div[2]/p[17]/a, text=paper)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div[3]/div[2]/p[1]/a, text=Vets Who Code)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[3]/div[3]/div[2]/p[21]/a[1], text=The ReadME Podcast)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[4]/div/div/p/a, text=developer story)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[5]/div/div/div[1]/a, text=Make your first open source contribution in four easy steps)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[5]/div/div/div[1]/a, text=Secure cloud deployment and delivery)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[5]/div/div/div[2]/a, text=Do your part to secure the open source supply chain)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[5]/div/div/div[2]/a, text=From chaos to clarity: Use code visibility to illuminate unfamiliar code)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[5]/div/div/div[3]/a, text=Finish your projects)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[6]/div/div/div[1]/div/div/ul/li[1]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[6]/div/div/div[1]/div/div/ul/li[2]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[6]/div/div/div[1]/div/div/ul/li[3]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[6]/div/div/div[1]/div/div/ul/li[4]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[6]/div/div/div[1]/div/div/ul/li[5]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[6]/div/div/div[2]/h4[1]/a, text=NOMINATE A DEVELOPER)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[6]/div/div/div[2]/h4[2]/a, text=SUPPORT THE COMMUNITY)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div[6]/div/div/div[2]/h4[3]/a, text=SIGN UP FOR THE NEWSLETTER )",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[1]/div/div[2]/div[2]/ul/li[1]/a, text=66.5k followers)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[1]/div/div[2]/div[2]/ul/li[3]/a, text=https://github.com/about)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[1]/div/div[2]/ul/li[1]/details/summary, text=Verified)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[1]/div/div[2]/ul/li[3]/a/summary, text=Sponsor)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[1]/div/div[2]/ul/li[3]/a, text=Sponsor)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[2]/nav/div/ul/li[1]/a, text=Overview)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[2]/nav/div/ul/li[2]/a, text=Repositories\n531)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[2]/nav/div/ul/li[3]/a, text=Projects\n16)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[2]/nav/div/ul/li[4]/a, text=Packages)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[2]/nav/div/ul/li[5]/a, text=People\n215)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/header/div[2]/nav/div/ul/li[6]/a, text=Sponsoring\n12)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[10]/section/div/div/div/a, text=Get started with Team)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[10]/section/div/div/div/div/a, text=Sign up for free)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[11]/div/div/div[1]/a, text=GitHub Actions cheat sheet\n\nEverything you need to know about getting started with GitHub Actions.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[11]/div/div/div[2]/a, text=Collaboration is the key to DevOps success\n\nIn a recent TechTarget study, 70 percent of organizations reported they had adopted DevOps.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[11]/div/div/div[3]/a, text=How healthy teams build better software\n\nYour culture is key to recruiting and retaining the talent you need to ship exceptional customer experiences.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div/a, text=Customer Stories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div/a, text=Expert Services)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div/a, text=Start free for 30 days)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div/div[1]/a[1], text=Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div/div[1]/a[1], text=Introduction)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div/div[1]/a[2], text=Our Process)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div/div[1]/a[2], text=Team)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div/div[1]/a[3], text=All stories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div/div[1]/a[3], text=Services Catalog)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div/div[2]/a, text=Start a free trial )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div[1]/div/div/div/a, text=Get started with Team)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[1]/div[1]/div/div/div/div/a, text=Sign up for free)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[1]/div/div/div/div[3]/a, text=Join for free)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[1]/div/div/unveil-container/div/ul[1]/li[1]/details/summary, text=Unlimited public/private repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[1]/div/div/unveil-container/div/ul[1]/li[2]/details/summary, text=Dependabot security and version updates)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[1]/div/div/unveil-container/div/ul[1]/li[3]/details/summary, text=2,000 CI/CD minutes/month\n\nFree for public repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[1]/div/div/unveil-container/div/ul[1]/li[4]/details/summary, text=500MB of Packages storage\n\nFree for public repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[1]/div/div/unveil-container/div/ul[1]/li[5]/details/summary, text=Issues & Projects)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[1]/div/div/unveil-container/div/ul[1]/li[6]/details/summary, text=Community support)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[1]/div/div/unveil-container/div/ul[2]/li[1]/details/summary, text=GitHub Copilot Access)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[1]/div/div/unveil-container/div/ul[2]/li[2]/details/summary, text=GitHub Codespaces Access)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/div/div[3]/a, text=Continue with Team)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[10]/details/summary, text=3,000 CI/CD minutes/month\n\nFree for public repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[11]/details/summary, text=2GB of Packages storage\n\nFree for public repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[12]/details/summary, text=Web-based support)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[2]/details/summary, text=Access to GitHub Codespaces)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[3]/details/summary, text=Repository rules)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[4]/details/summary, text=Multiple reviewers in pull requests)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[5]/details/summary, text=Draft pull requests)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[6]/details/summary, text=Code owners)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[7]/details/summary, text=Required reviewers)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[8]/details/summary, text=Pages and Wikis)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[1]/li[9]/details/summary, text=Environment deployment branches and secrets)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[2]/li[1]/details/summary, text=GitHub Secret Protection)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[2]/div/div/unveil-container/div/ul[2]/li[2]/details/summary, text=GitHub Code Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/div/div[3]/div/div/div[1]/a, text=Start a free trial)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/div/div[3]/div/div/div[2]/a, text=Contact Sales)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[10]/details/summary, text=FedRAMP Tailored Authority to Operate (ATO))",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[11]/details/summary, text=SAML single sign-on)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[12]/details/summary, text=Advanced auditing)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[13]/details/summary, text=GitHub Connect)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[14]/details/summary, text=50,000 CI/CD minutes/month\n\nFree for public repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[15]/details/summary, text=50GB of Packages storage\n\nFree for public repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[2]/details/summary, text=Data residency)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[3]/details/summary, text=Enterprise Managed Users)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[4]/details/summary, text=User provisioning through SCIM)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[5]/details/summary, text=Enterprise Account to centrally manage multiple organizations)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[6]/details/summary, text=Environment protection rules)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[7]/details/summary, text=Repository rules)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[8]/details/summary, text=Audit Log API)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[1]/li[9]/details/summary, text=SOC1, SOC2, type 2 reports annually)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[1]/div[3]/div/div/unveil-container/div/ul[2]/li/details/summary, text=Premium support)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[2]/div[2]/div[1]/a, text=GitHub Copilot\n\nGet started for free with up to 2,000 completions and 50 chat requests per month.\n\nCompare plans )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[2]/div[2]/div[2]/a, text=New\nGitHub Models\n\nBring industry-leading AI into your workflow, securely, scalably, and with full developer control.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[2]/div[2]/div[3]/a, text=GitHub Advanced Security\n\nGain peace of mind with our security, privacy, and responsible AI policies.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[2]/div[2]/div[4]/a, text=GitHub Codespaces\n\nStarting at $0.18 per hour of compute and $0.07 per GB of storage.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[2]/div[2]/div[5]/a, text=Premium support\n\nGet expert help for Enterprise Cloud and Enterprise\u2014any hour your team needs it.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[2]/div[2]/div[6]/a, text=Git Large File Storage\n\n$5 per month for 50 GB bandwidth and 50 GB of storage.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div/div[3]/a, text=Compare all features)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div[1]/div/div/div/p[1]/a, text=GitHub Actions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div[2]/div[1]/div/div[2]/form/div/button, text=Contact our team)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div[2]/div[1]/div/div[2]/form/div/div/a, text=github.com/contact)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div[2]/div[1]/div[2]/div/a, text=Contact Experts )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div[2]/div[2]/a, text=Back to catalog listing )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[1]/div[1]/div[2]/a, text=Get started for free)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[1]/div[2]/a, text=Learn more about GitHub Enterprise )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[2]/div[1]/div/div[1]/ul[2]/li[1]/details/summary, text=GitHub Secret Protection)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[2]/div[1]/div/div[1]/ul[2]/li[2]/details/summary, text=GitHub Code Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[2]/div[1]/div/div[2]/a, text=Continue with Team)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[2]/div[2]/a, text=Compare all plans )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[2]/form/div[1]/div[2]/button, text=Subscribe)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[2]/form/div[2]/label/a, text=GitHub Privacy Statement)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[2]/form/div[2]/label/input, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div[1]/button[1], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div[1]/button[2], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div[1]/button[3], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div[1]/button[4], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div[1]/button[5], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div[1]/button[6], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div[1]/button[7], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div[1]/button[8], text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div[2]/div[2]/div[1]/a, text=Read the case study )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/span/a, text=\u00a0 Play video)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/span/a, text=\u00a0 Play video\nAccelerating Commerce: Mercado Libre + GitHub)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/span/a, text=\u00a0 Play video\nHow GitHub Copilot Optimizes Duolingo's Language Teaching)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[2]/div/dl/dd[3]/ul/li[1]/a, text=GitHub Enterprise)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[2]/div/dl/dd[3]/ul/li[2]/a, text=GitHub Actions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[2]/div/dl/dd[3]/ul/li[2]/a, text=GitHub Codespaces)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[2]/div/dl/dd[3]/ul/li[2]/a, text=GitHub Copilot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[2]/div/dl/dd[3]/ul/li[3]/a, text=GitHub Advanced Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[2]/div/dl/dd[3]/ul/li[3]/a, text=GitHub Copilot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[2]/div/dl/dd[3]/ul/li[3]/a, text=GitHub Issues)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[2]/div/dl/dd[3]/ul/li[4]/a, text=GitHub Copilot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/div/p[2]/a, text=free trial \nof GitHub Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/div/p[3]/a, text=other plans?\nfrom GitHub)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/story-body/div/p[13]/a, text=Mercedes-Benz Tech Innovation)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/story-body/div/p[15]/a, text=innersource)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/story-body/div/p[17]/a, text=GitHub Issues)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/story-body/div/p[19]/a, text=FOSS Manifesto)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/story-body/div/p[23]/a, text=GitHub Sponsors)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/story-body/div/p[25]/a, text=GitHub Actions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/story-body/div/p[4]/a[1], text=GitHub Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/story-body/div/p[4]/a[2], text=GitHub's APIs)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/story-body/div/p[4]/a[3], text=Codespaces )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[4]/div/div/div[3]/story-body/div/p[4]/a[4], text=GitHub Copilot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div/div/div[1]/a, text=The ReadME Project\n\nStories and voices from the developer community.\n\nLearn more \nabout The ReadME Project)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div/div/div[2]/a, text=GitHub Copilot\n\nAI pair programmer that helps you write code faster.\n\nLearn more \nabout GitHub Copilot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div/div/div[3]/a, text=Executive Insights\n\nGet expert perspectives. Stay ahead with insights from industry leaders.\n\nLearn more \nabout Executive Insights)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[1]/div[3]/div/div[2]/div/a, text=Join for free)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[1]/div[3]/div/div[3]/div/a, text=Continue with Team)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[1]/div[3]/div/div[4]/div/a[1], text=Start a free trial)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[1]/div[3]/div/div[4]/div/a[2], text=Contact Sales)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[2]/div[2]/div[1]/details/summary, text=Public repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[2]/div[3]/div[1]/details/summary, text=Private repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[10]/div[1]/details/summary, text=Multiple pull request assignees)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[11]/div[1]/details/summary, text=Repository insights)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[12]/div[1]/details/summary, text=Scheduled reminders)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[13]/div[1]/details/summary, text=Automatic code review assignment)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[14]/div[1]/details/summary, text=Environment protection rules)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[15]/div[1]/details/summary, text=Environment deployment branches and secrets)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[2]/div[1]/details/summary, text=GitHub Codespaces)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[3]/div[1]/details/summary, text=GitHub Actions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[4]/div[1]/details/summary, text=GitHub Packages)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[5]/div[1]/details/summary, text=Code reviews)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[6]/div[1]/details/summary, text=Pull requests)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[7]/div[1]/details/summary, text=Repository rules)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[8]/div[1]/details/summary, text=Code owners)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[3]/div[9]/div[1]/details/summary, text=Draft pull requests)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[4]/div[10]/div[1]/details/summary, text=Multiple issue assignees)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[4]/div[2]/div[1]/details/summary, text=Collaborators for public repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[4]/div[3]/div[1]/details/summary, text=Collaborators for private repositories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[4]/div[4]/div[1]/details/summary, text=Issues)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[4]/div[5]/div[1]/details/summary, text=Projects)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[4]/div[6]/div[1]/details/summary, text=Milestones)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[4]/div[7]/div[1]/details/summary, text=Team discussions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[4]/div[8]/div[1]/details/summary, text=Organization and team management)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[4]/div[9]/div[1]/details/summary, text=Pages and wikis)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[10]/div[1]/details/summary, text=Push protection bypass controls)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[11]/div[1]/details/summary, text=Insights in security overview)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[12]/div[1]/details/summary, text=Scan history API)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[2]/div[1]/details/summary, text=Push protection)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[3]/div[1]/details/summary, text=Secret scanning)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[4]/div[1]/details/summary, text=Provider patterns)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[5]/div[1]/details/summary, text=Provider notification)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[6]/div[1]/details/summary, text=Validity checks)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[7]/div[1]/details/summary, text=Copilot secret scanning)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[8]/div[1]/details/summary, text=Generic patterns)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[5]/div[9]/div[1]/details/summary, text=Custom patterns)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[10]/div[1]/details/summary, text=Dependabot security updates with grouped updates)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[11]/div[1]/details/summary, text=Dependabot version updates)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[12]/div[1]/details/summary, text=Insights in security overview)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[2]/div[1]/details/summary, text=Copilot Autofix)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[3]/div[1]/details/summary, text=Third party extensibility for code scanning alerts)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[4]/div[1]/details/summary, text=Contextual vulnerability intelligence and advice)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[5]/div[1]/details/summary, text=CodeQL)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[6]/div[1]/details/summary, text=Security campaigns)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[7]/div[1]/details/summary, text=Dependency graph)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[8]/div[1]/details/summary, text=Dependency review action)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[6]/div[9]/div[1]/details/summary, text=Dependabot custom auto-triage rules)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[10]/div[1]/details/summary, text=GitHub Connect)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[11]/div[1]/details/summary, text=SAML single sign-on (SSO))",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[12]/div[1]/details/summary, text=LDAP)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[13]/div[1]/details/summary, text=IP allow list)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[2]/div[1]/details/summary, text=Repository rules)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[3]/div[1]/details/summary, text=SBOMs)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[4]/div[1]/details/summary, text=Artifact attestations)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[5]/div[1]/details/summary, text=GitHub Security Advisories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[6]/div[1]/details/summary, text=Role-based access control)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[7]/div[1]/details/summary, text=Required 2FA)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[8]/div[1]/details/summary, text=Audit log)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[7]/div[9]/div[1]/details/summary, text=Audit log API)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[8]/div[2]/div[1]/details/summary, text=GitHub Apps)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[8]/div[3]/div[1]/details/summary, text=Status checks)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[8]/div[4]/div[1]/details/summary, text=Pre-receive hooks)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[9]/div[2]/div[1]/details/summary, text=Community Support)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[9]/div[3]/div[1]/details/summary, text=Standard Support)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[9]/div[4]/div[1]/details/summary, text=Premium and Premium Plus Support)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[9]/div[5]/div[1]/details/summary, text=Invoice billing)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[9]/div[6]/div[1]/details/summary, text=Self-hosted deployment)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div/div[9]/div[7]/div[1]/details/summary, text=Data residency)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div[2]/div[2]/div[1]/div[3]/div/p[2]/a[1], text=Slack)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[5]/div[2]/div[2]/div[1]/div[3]/div/p[2]/a[2], text=Jira)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[10]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[11]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[12]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[13]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[14]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[15]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[16]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[17]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[18]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[19]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[1]/div/div/a, text=Learn more )",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[20]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[21]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[22]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[23]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[24]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[25]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[26]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[27]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[28]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[29]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[2]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[30]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[31]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[32]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[33]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[34]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[35]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[36]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[37]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[38]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[39]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[3]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[40]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[41]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[42]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[4]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[5]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[6]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[7]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[8]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div/div[2]/div[9]/div/div/a, text=Learn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div[2]/div/div[1]/div/a, text=Create a free organization )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div[2]/div/div[2]/div/a, text=Continue with Team )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div[2]/div/div[2]/div/div[1]/a, text=Checkout\n\nCheck out a Git repository at a particular version.\n\nname: Checkout\nuses: actions/checkout@v2.1.0)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div[2]/div/div[3]/div/a, text=Enterprise )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div[2]/div/p/a, text=Explore GitHub Actions )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[6]/div[2]/p[2]/a, text=Check out our plans for individuals)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[7]/div/div/div[2]/div[1]/div/a, text=Read more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[7]/div/div/div[2]/div[2]/div/a, text=Read more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[7]/div/div/div[3]/div[1]/div/a, text=Explore customer stories )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[7]/div/div[2]/div[1]/a, text=Open source teams\n\nIf you manage multiple contributors, there\u2019s a free option. We also run GitHub Sponsors, where we help fund your work.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[7]/div/div[2]/div[2]/a, text=Students and teachers\n\nWe\u2019ve partnered with industry leaders to give students and teachers free access to the best developer tools\u2014for the school year and beyond.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[7]/div/div[2]/div[3]/a, text=Nonprofits\n\nWork for a government-recognized nonprofit, association, or 501(c)(3)? Get a discounted Organization on us.\n\nLearn more )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[7]/div[2]/div[1]/p/a, text=See how GitHub helps secure your applications )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[1]/div/div/div[1]/details/summary, text=Do you provide hands-on migration services?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[1]/div/div/div[2]/details/summary, text=What is the lead time for the delivery of the services?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[1]/div/div/div[3]/details/summary, text=What is the schedule like for each training?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[1]/div/div/div[4]/details/summary, text=Can the material be tailored and customized to our needs?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[1]/div/div/div[5]/details/summary, text=Can the training be provided on-site?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[1]/div/div/div[6]/details/summary, text=What I\u2019m after isn\u2019t on your list. How do we get help with a specific project?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[2]/div/div/div[2]/form/div/button, text=Contact our team)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[2]/div/div/div[2]/form/div/div/a, text=github.com/contact)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[9]/div/div/div/div[2]/form/div[1]/div[2]/button, text=Subscribe)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[9]/div/div/div/div[2]/form/div[2]/label/a, text=GitHub Privacy Statement)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[9]/div/div/div/div[2]/form/div[2]/label/input, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[9]/div/div/div[1]/div/a, text=Front App\n\nCUSTOMER STORY\n\nRead story )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[9]/div/div/div[2]/div/a, text=Tray.io\n\nCUSTOMER STORY\n\nRead story )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[9]/div/p[2]/a, text=Read more customer stories )",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div/section/div/article/div/div[2]/div[1]/aside/nav/div/div[2]/div[2]/a, text=Explore GitHub Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div/section/div/article/div/div[2]/div[2]/div[2]/div/p[1]/a, text=GitHub)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div/section/div/article/div/div[3]/div/div/div/div/section/div/div/section/a[1], text=Contact sales)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div/section/div/article/div/div[3]/div/div/div/div/section/div/div/section/a[2], text=Read more about data residency)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div/section/div/header/div[1]/nav/ol/li[1]/a, text=Newsroom)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div/section/div/header/div[1]/nav/ol/li[2]/a, text=Press Releases)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/div/div/a, text=Education)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/div/div/a, text=Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/div/div/a, text=Features)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/div/div/a, text=Social Impact)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[1]/a, text=Advanced Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[1]/a, text=GitHub Copilot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[1]/a, text=Students)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[1]/div/a, text=Focus Areas)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[1]/div/button, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[2]/a, text=Developers)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[2]/a, text=Premium Support)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[2]/a, text=Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[2]/a, text=Teachers)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[3]/a, text=Actions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[3]/a, text=Employees)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[3]/a, text=Schools)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[4]/a, text=Codespaces)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[4]/a, text=Insights)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[4]/a, text=Partners)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[5]/a, text=GitHub for Nonprofits)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[5]/a, text=Issues)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[6]/a, text=Code review)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[6]/a, text=Get exclusive discounts for verified nonprofits)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[7]/a, text=Discussions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[1]/div/nav/div/ul/li[8]/a, text=Code search)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div/div/div/section/div/div[1]/div/div/a[1], text=Start using projects)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div/div/div/section/div/div[1]/div/div/a[2], text=Contact sales)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div/div/div[2]/div/div/section/div/div/div/div/a[1], text=Read articles)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div/div/div[2]/div/div/section/div/div/div/div/a[1], text=Start a 30-day free trial)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div/div/div[2]/div/div/section/div/div/div/div/a[2], text=Check out media)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div/div/div[2]/div/div/section/div/div/div/div/a[2], text=Contact sales)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div[1]/div/div[2]/div/div/section/div/div/div/div/a, text=Join GitHub Education)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div[3]/div/section[1]/div[1]/div[3]/a, text=Learn more about students)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div[3]/div/section[2]/div[1]/div[3]/a, text=Learn more about teachers)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div[3]/div/section[3]/div[1]/div[3]/a, text=Learn more about schools)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[2]/div[3]/div/section[4]/div[1]/div[3]/a, text=Learn more about partners)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[3]/div/div[2]/section/div/div/section/a[1], text=Join GitHub Education)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[3]/div/div[2]/section/div/div/section/a[2], text=Learn more)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[3]/div/div[3]/div/div/div[1]/div/div/div/h3/a, text=About GitHub Classroom)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[3]/div/div[3]/div/div/div[2]/div/div/div/h3/a, text=Community Discussions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[3]/div/div[3]/div/div/div[3]/div/div/div/h3/a, text=GitHub Skills)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[3]/div/div[4]/section/details[1]/summary, text=What is GitHub Education?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[3]/div/div[4]/section/details[2]/summary, text=Why join GitHub Education?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/div[3]/div/div[4]/section/details[3]/summary, text=How do I join the GitHub Education?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[1]/div/div/div/div/div/div/div/div/button, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[1]/div/div/div/section[1]/div[1]/div[3]/a, text=Read the articles)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[1]/div/div/div/section[2]/div[1]/div[3]/a, text=Check out the media posts)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[1]/div/div/div/section[2]/div[1]/div[3]/a, text=Learn more)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[2]/div/div/div/section/div[2]/div[2]/ul/li[1]/span/a, text=GitHub Advanced Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[2]/div/div/div/section/div[2]/div[2]/ul/li[3]/span/a, text=flexible data residency)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[2]/div/div/div[1]/section/div/div/section/a[1], text=Email GitHub Social Impact)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[2]/div/div/div[1]/section/div/div/section/a[2], text=Get exclusive discounts for verified nonprofits)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[2]/div/div/div[2]/section/details[1]/summary, text=Where can I access GitHub\u2019s nonprofit discount?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[2]/div/div/div[2]/section/details[2]/summary, text=Who is eligible to receive discounted GitHub products?)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[2]/div/div/div[2]/section/details[3]/section/div/p/a, text=here)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[2]/div/div/div[2]/section/details[3]/summary, text=How can I get pro-bono volunteering support from GitHub employees?)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[2]/div/div/div[2]/section/details[4]/summary, text=Do GitHub employees volunteer in person, or also virtually?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[3]/div/div/div/div/div/div[1]/div/div/div/h3/a, text=The future of AI-powered software optimization (and how it can help your team))",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[3]/div/div/div/div/div/div[2]/div/div/div/h3/a, text=Developers still need the right to challenge junk patents)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[3]/div/div/div/div/div/div[3]/div/div/div/h3/a, text=Social Impact at GitHub Universe 2025)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[3]/div/div/div/section/div/div/section/a[1], text=Get exclusive discounts for verified nonprofits)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[3]/div/div/div/section/div/div/section/a[2], text=Email GitHub Social Impact)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[3]/div/div/div/section[1]/div[1]/div[3]/a, text=Explore all features)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[3]/div/div/div/section[2]/div[1]/div[3]/a, text=Explore Copilot for Business)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[3]/div/div/div/section[3]/div[1]/div[3]/a, text=Read the Octoverse 2025 report)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[3]/div/div/div/section[4]/div[1]/div[3]/a, text=Explore the GitHub Marketplace)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[4]/div/div/div/div[2]/div[1]/div/div/div/h3/a, text=GitHub CLI)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[4]/div/div/div/div[2]/div[2]/div/div/div/h3/a, text=GitHub Mobile)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[4]/div/div/div/section/div[2]/div[2]/ul/li[1]/span/a[1], text=custom roles)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[4]/div/div/div/section/div[2]/div[2]/ul/li[1]/span/a[2], text=teams)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[5]/div/div/div/div[2]/div[1]/div/div/div/h3/a, text=Mercado Libre developers code 50% faster with GitHub Copilot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[5]/div/div/div/div[2]/div[2]/div/div/div/h3/a, text=Wayfair migrates 15,000 repositories to GitHub, saving $150,000 a year)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[5]/div/div/div/div[2]/div[3]/div/div/div/h3/a, text=TELUS saves $16.9 million by unifying DevOps on GitHub)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[1]/div/div/div[1]/div/div/div/h3/a, text=Get executive insights built for leaders and admins)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[1]/div/div/div[2]/div/div/div/h3/a, text=Stay ahead with our quarterly product roadmap webinar)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[1]/div/div/div[3]/div/div/div/h3/a, text=Accelerate adoption with proven guidance)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[1]/div/div/div[4]/div/div/div/h3/a, text=See the cost savings and ROI of GitHub Enterprise Cloud)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[1]/div/div/div[5]/div/div/div/h3/a, text=Discover why GitHub leads the Forrester Wave\u2122 for DevOps platforms)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[1]/div/div/div[6]/div/div/div/h3/a, text=Explore the full documentation for GitHub Enterprise Cloud)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[1]/section/div/div/section/a[1], text=Start a 30-day free trial)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[1]/section/div/div/section/a[1], text=Start using projects)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[1]/section/div/div/section/a[2], text=Contact sales)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[1]/div/button[1], text=About GitHub Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[1]/div/button[2], text=Using GitHub Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[1]/div/button[3], text=Choosing your plan)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[1]/div/button[4], text=Getting started with enterprise software development platforms)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[2]/div[1]/details[1]/summary, text=What is GitHub Enterprise?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[2]/div[1]/details[2]/summary, text=Why should organizations use GitHub Enterprise)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[2]/div[1]/details[3]/summary, text=Who uses GitHub Enterprise?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[2]/div[1]/details[4]/summary, text=What is GitHub Enterprise Cloud?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[2]/div[1]/details[5]/summary, text=What is GitHub Enterprise Server?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[2]/div[1]/details[6]/summary, text=How secure is GitHub Enterprise?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/div/div/div[3]/div[2]/div[1]/details[7]/summary, text=Is GitHub Enterprise free?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/section/details[1]/summary, text=What is GitHub Issues?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/section/details[2]/summary, text=What are Projects?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/section/details[3]/summary, text=What plans have access to Projects?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[2]/section/details[4]/summary, text=Will the new Projects experience be available in GitHub Enterprise Server?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div/section[6]/div/div/div[3]/div/div/p[2]/a, text=here)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[1]/div[2]/div[1]/div/section/div/div/div/div/a[1], text=Contact sales)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[1]/div[2]/div[1]/div/section/div/div/div/div/a[2], text=Contact GitHub PR Team)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[1]/div/div/div/div[1]/header/a, text=View all)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[1]/div/div/div/div[2]/div/div/div[1]/div/div/div/h3/a, text=GitHub Introduces Coding Agent For GitHub Copilot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[1]/div/div/div/div[2]/div/div/div[2]/div/div/div/h3/a, text=GitHub Brings Data Residency to the United States with GitHub Enterprise Cloud)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/h3/a, text=GitHub Copilot Introduces Agent Mode and Next Edit Suggestions to Boost Productivity of Every Organization)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[2]/div/div/div/div[2]/div/div/div[1]/div/div/div/h3/a, text=GitHub recognized as a Leader in the Gartner\u00ae Magic Quadrant\u2122 for AI Code Assistants)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[2]/div/div/div/div[2]/div/div/div[2]/div/div/div/h3/a, text=GitHub recognized as a Leader by IDC MarketScape)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[2]/div/div/div/div[2]/div/div/div[3]/div/div/div/h3/a, text=GitHub recognized in The Forrester Wave\u2122: DevOps Platforms, Q2 2025)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[1]/header/a, text=View all)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[2]/div/div/div[1]/div/div/div/h3/a, text=AI breaks coding language barriers, unlocks opportunities for native developers: GitHub CEO Thomas Dohmke)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[2]/div/div/div[2]/div/div/div/h3/a, text=GitHub CEO envisions India as AI powerhouse)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[2]/div/div/div[3]/div/div/div/h3/a, text=The tireless teammate: How agentic AI is reshaping development teams)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[2]/div/div/div[4]/div/div/div/h3/a, text=AI-powered coding pulls in almost $1bn of funding to claim \u2018killer app\u2019 status)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[2]/div/div/div[5]/div/div/div/h3/a, text=38% dos desenvolvedores dizem ser incentivados a usar IA na codifica\u00e7\u00e3o)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[2]/div/div/div[6]/div/div/div/h3/a, text=GitHub: Developers have embraced AI, but companies are slow to catch up)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[3]/div/div/div[1]/div/div/div/h3/a, text=EY)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[3]/div/div/div[2]/div/div/div/h3/a, text=Accenture)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[3]/div/div/div[3]/div/div/div/h3/a, text=Carlsberg)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[3]/div/div/div/div[3]/header/a, text=View all customer stories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[4]/div/div/div[2]/div/div/div[1]/div/div/div/h3/a, text=Explore GitHub)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[4]/div/div/div[2]/div/div/div[2]/div/div/div/h3/a, text=Media Kit)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[4]/div/div/div[2]/div/div/div[3]/div/div/div/h3/a, text=Executive Insights)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[4]/div/div/div[3]/div/section/div/div/section/a[1], text=Contact sales)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/react-app/div/div/div[2]/section[4]/div/div/div[3]/div/section/div/div/section/a[2], text=Contact GitHub PR Team)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/div[1]/div/ol/li/p/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/div[2]/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[1]/div[1]/div[5]/a, text=\u00a0\n\u00a0\nExplore the latest tools from Universe '25\n\u00a0)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[1]/div[1]/div[7]/div[2]/button, text=)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[1]/div[2]/div/div[1]/div/button[1], text=Code)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[1]/div[2]/div/div[1]/div/button[2], text=Plan)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[1]/div[2]/div/div[1]/div/button[3], text=Collaborate)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[1]/div[2]/div/div[1]/div/button[4], text=Automate)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[1]/div[2]/div/div[1]/div/button[5], text=Secure)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[1]/div[3]/div/div/button, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[2]/div/div[1]/div/div[2]/div[3]/button, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[2]/div/div[2]/div/div/div[1]/div/div/a, text=Explore GitHub Copilot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[2]/div/div[2]/div/div/div[2]/div[1]/div/a, text=Read customer story)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[2]/div/div[2]/div/div/div[2]/div[2]/div/a, text=Read industry report)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[2]/div/div[3]/div/div/div[2]/dl/div[1]/dd/div/div/a, text=Explore GitHub Actions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[2]/div/div[3]/div/div/div[2]/dl/div[1]/dt/button, text=Automate your path to production)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[2]/div/div[3]/div/div/div[2]/dl/div[2]/dt/button, text=Code instantly from anywhere)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[2]/div/div[3]/div/div/div[2]/dl/div[3]/dt/button, text=Keep momentum on the go)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[2]/div/div[3]/div/div/div[2]/dl/div[4]/dd/div/div/a, text=Explore GitHub Marketplace)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[2]/div/div[3]/div/div/div[2]/dl/div[4]/dt/button, text=Shape your toolchain)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[3]/div[1]/div/div[2]/div[3]/div[1]/div/a, text=Explore GitHub Advanced Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[3]/div[2]/div/div[1]/div[1]/div/div[1]/a, text=Learn about GitHub Code Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[3]/div[2]/div/div[1]/div[2]/div/div[1]/a, text=Learn about Dependabot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[3]/div[2]/div/div[1]/div[3]/div/div[1]/a, text=Learn about GitHub Secret Protection)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[3]/div[2]/div/div[2]/div[1]/div/div/p/span/span/sup/a, text=1)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[3]/div[2]/div/div[2]/div[2]/div/div/p/span/span/sup/a, text=1)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[4]/div/div[2]/div/div/div[1]/div/div/a, text=Explore GitHub Projects)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[4]/div/div[3]/div/div/div[2]/dl/div[1]/dd/div/div/a, text=Explore GitHub Issues)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[4]/div/div[3]/div/div/div[2]/dl/div[1]/dt/button, text=Keep track of your tasks)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[4]/div/div[3]/div/div/div[2]/dl/div[2]/dt/button, text=Share ideas and ask questions)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[4]/div/div[3]/div/div/div[2]/dl/div[3]/dt/button, text=Review code changes together)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[4]/div/div[3]/div/div/div[2]/dl/div[4]/dt/button, text=Fund open source projects)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[5]/div[1]/div[2]/div/div[1]/div/button[1], text=By industry)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[5]/div[1]/div[2]/div/div[1]/div/button[2], text=By size)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[5]/div[1]/div[2]/div/div[1]/div/button[3], text=By use case)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[5]/div[1]/div[4]/div/div/div[1]/a, text=Technology\n\nFigma streamlines development and strengthens security\n\nRead customer story)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[5]/div[1]/div[4]/div/div/div[2]/a, text=Automotive\n\nMercedes-Benz standardizes source code and automates onboarding\n\nRead customer story)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[5]/div[1]/div[4]/div/div/div[3]/a, text=Financial services\n\nMercado Libre cuts coding time by 50%\n\nRead customer story)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[6]/div/section/div/div/div/a, text=Try GitHub Copilot free)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[6]/div/section/div/div/div/form/section/div/button, text=Sign up for GitHub)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div/div/a, text=)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div/nav/ul/li[1]/a, text=Terms)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div/nav/ul/li[2]/a, text=Privacy)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div/nav/ul/li[3]/a, text=Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div/nav/ul/li[4]/a, text=Status)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div/nav/ul/li[5]/a, text=Community)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div/nav/ul/li[6]/a, text=Docs)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div/nav/ul/li[7]/a, text=Contact)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div/nav/ul/li[8]/cookie-consent-link/button, text=Manage cookies)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div/nav/ul/li[9]/cookie-consent-link/button, text=Do not share my personal information)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[10]/a, text=Compare GitHub)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[1]/a, text=Features)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[2]/a, text=Enterprise)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[3]/a, text=Copilot)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[4]/a, text=AI)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[5]/a, text=Security)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[6]/a, text=Pricing)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[7]/a, text=Team)",
+            3
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[8]/a, text=Resources)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[1]/ul/li[9]/a, text=Roadmap)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[2]/ul/li[1]/a, text=Developer API)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[2]/ul/li[2]/a, text=Partners)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[2]/ul/li[3]/a, text=Education)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[2]/ul/li[4]/a, text=GitHub CLI)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[2]/ul/li[5]/a, text=GitHub Desktop)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[2]/ul/li[6]/a, text=GitHub Mobile)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[2]/ul/li[7]/a, text=GitHub Marketplace)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[2]/ul/li[8]/a, text=MCP Registry)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[3]/ul/li[1]/a, text=Docs)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[3]/ul/li[2]/a, text=Community Forum)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[3]/ul/li[3]/a, text=Professional Services)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[3]/ul/li[4]/a, text=Premium Support)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[3]/ul/li[5]/a, text=Skills)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[3]/ul/li[6]/a, text=Status)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[3]/ul/li[7]/a, text=Contact GitHub)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[4]/ul/li[10]/a, text=Shop)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[4]/ul/li[1]/a, text=About)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[4]/ul/li[2]/a, text=Why GitHub)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[4]/ul/li[3]/a, text=Customer stories)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[4]/ul/li[4]/a, text=Blog)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[4]/ul/li[5]/a, text=The ReadME Project)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[4]/ul/li[6]/a, text=Careers)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[4]/ul/li[7]/a, text=Newsroom)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[4]/ul/li[8]/a, text=Inclusion)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/nav[4]/ul/li[9]/a, text=Social Impact)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/section/a[1], text=)",
+            2
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[1]/div/section/a[2], text=Subscribe)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[1]/ul/li[2]/a, text=Terms)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[1]/ul/li[3]/a[1], text=Privacy)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[1]/ul/li[3]/a[2], text=(Updated 02/2024)\n02/2024)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[1]/ul/li[4]/a, text=Sitemap)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[1]/ul/li[5]/a, text=What is Git?)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[1]/ul/li[6]/cookie-consent-link/button, text=Manage cookies)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[1]/ul/li[7]/cookie-consent-link/button, text=Do not share my personal information)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/locale-selector/experimental-action-menu/button, text= English )",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/locale-selector/experimental-action-menu/div/div/div/ul/li[1]/a, text=English)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/locale-selector/experimental-action-menu/div/div/div/ul/li[2]/a, text=Portugu\u00eas (Brasil))",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/locale-selector/experimental-action-menu/div/div/div/ul/li[3]/a, text=Espa\u00f1ol (Am\u00e9rica Latina))",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/locale-selector/experimental-action-menu/div/div/div/ul/li[4]/a, text=\u65e5\u672c\u8a9e)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/locale-selector/experimental-action-menu/div/div/div/ul/li[5]/a, text=\ud55c\uad6d\uc5b4)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/ul/li[1]/a, text=GitHub on LinkedIn)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/ul/li[2]/a, text=GitHub on Instagram)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/ul/li[3]/a, text=GitHub on YouTube)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/ul/li[4]/a, text=GitHub on X)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/ul/li[5]/a, text=GitHub on TikTok)",
+            1
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/ul/li[6]/a, text=GitHub on Twitch)",
+            0
+        ],
+        [
+            "ClickAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/footer/div[2]/div/nav[2]/ul/li[7]/a, text=GitHub\u2019s organization on GitHub)",
+            1
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[2]/header/div/div[2]/div/div/qbsearch-input/div[1]/div/modal-dialog/div/div/div/form/query-builder/div[1]/div[1]/div/div[2]/input, text=Search)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[4]/header/div/div[2]/div/div/qbsearch-input/div[1]/div/modal-dialog/div/div/div/form/query-builder/div[1]/div[1]/div/div[2]/input, text=Search)",
+            1
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/div[1]/div/auto-check/input[1], text=Email*)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/div[2]/div/div[1]/visible-password/auto-check/input[1], text=Password*)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/div[3]/div[2]/div[1]/auto-check/input, text=Username*)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/div/main/div/div[2]/div[2]/div/div[2]/div/signup-form/form/div[1]/signups-marketing-consent-fields/div[1]/div[2]/select-panel/dialog-helper/dialog/div[1]/div[2]/remote-input/primer-text-field/div[1]/input, text=Filter)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div/div/div/div[1]/div/div/div[4]/div/div[1]/div/form/div/div[1]/input, text=)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div[2]/div[1]/div/div[2]/form/fieldset/div/dl[1]/dd/input, text=Full name)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div[2]/div[1]/div/div[2]/form/fieldset/div/dl[2]/dd/input, text=Business email)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div[2]/div[1]/div/div[2]/form/fieldset/div/dl[3]/dd/input, text=Company)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[2]/div[2]/div[1]/div/div[2]/form/fieldset/div/dl[4]/dd/input, text=What can we help you with?)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[2]/form/div[1]/div[1]/input, text=Email Address *)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[3]/div/div/div/div[2]/form/div[2]/label/input, text=)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[2]/div/div/div[2]/form/fieldset/div/dl[1]/dd/input, text=Full name)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[2]/div/div/div[2]/form/fieldset/div/dl[2]/dd/input, text=Business email)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[2]/div/div/div[2]/form/fieldset/div/dl[3]/dd/input, text=Company)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[8]/div[2]/div/div/div[2]/form/fieldset/div/dl[4]/dd/input, text=What can we help you with?)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[9]/div/div/div/div[2]/form/div[1]/div[1]/input, text=Email Address *)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[5]/main/div[9]/div/div/div/div[2]/form/div[2]/label/input, text=)",
+            0
+        ],
+        [
+            "RandomInputAction(locator=ElementLocator.XPATH, location=/html/body/div[1]/div[7]/main/react-app/div/div/div/section[6]/div/section/div/div/div/form/section/div/div/span/input, text=Enter your email)",
+            0
+        ],
+        [
+            "RestartAction(restart_url=https://github.com)",
+            1
+        ],
+        [
+            "RestartAction(restart_url=https://github.com/#footnote-1)",
+            3
+        ],
+        [
+            "RestartAction(restart_url=https://github.com/customer-stories/duolingo)",
+            1
+        ],
+        [
+            "RestartAction(restart_url=https://github.com/readme)",
+            1
+        ],
+        [
+            "RestartAction(restart_url=https://github.com/readme/topics/career-development)",
+            4
+        ],
+        [
+            "RestartAction(restart_url=https://github.com/social-impact/insights)",
+            2
+        ]
+    ],
+    "state_list": [
+        {
+            "info": "ActionExecuteFailedState(action=RestartAction(restart_url=https://github.com/#footnote-1))"
+        },
+        {
+            "info": "ActionExecuteFailedState(action=RestartAction(restart_url=https://github.com/readme))"
+        },
+        {
+            "info": "ActionExecuteFailedState(action=RestartAction(restart_url=https://github.com/readme/topics/career-development))"
+        },
+        {
+            "info": "ActionExecuteFailedState(action=RestartAction(restart_url=https://github.com/social-impact/insights))"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=194, action_execution_time_histogram=[193, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/pricing)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[98, 3, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/#footnote-1)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=91, action_execution_time_histogram=[90, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/#footnote-1)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=82, action_execution_time_histogram=[81, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/social-impact/insights)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=80, action_execution_time_histogram=[79, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/customer-stories/mercado-libre)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=76, action_execution_time_histogram=[75, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/social-impact)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=96, action_execution_time_histogram=[92, 3, 1, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/readme/topics/career-development)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=129, action_execution_time_histogram=[128, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/services/)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=90, action_execution_time_histogram=[89, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=83, action_execution_time_histogram=[80, 3, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/team)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=84, action_execution_time_histogram=[82, 2, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/customer-stories/duolingo)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=81, action_execution_time_histogram=[80, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/features/issues)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=176, action_execution_time_histogram=[174, 2, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/github)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=99, action_execution_time_histogram=[98, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/enterprise)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=82, action_execution_time_histogram=[81, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/readme/guides/engineering-career-success)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=90, action_execution_time_histogram=[89, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=101, action_execution_time_histogram=[93, 8, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=62, action_execution_time_histogram=[61, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/features/issues)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=80, action_execution_time_histogram=[79, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/education)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=52, action_execution_time_histogram=[51, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/#footnote-1)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=68, action_execution_time_histogram=[67, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/newsroom/press-releases/data-residency-in-us)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=80, action_execution_time_histogram=[76, 4, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/social-impact/insights)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=79, action_execution_time_histogram=[78, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/services/actions-training)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=24, action_execution_time_histogram=[23, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/github-copilot/pro)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=111, action_execution_time_histogram=[109, 2, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/readme)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=8, action_execution_time_histogram=[8, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/signup?return_to=%2Faccount%2Forganizations%2Fnew%3Fplan%3Dbusiness%26plan_duration%3Dyear)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=3, action_execution_time_histogram=[1, 2, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/#footnote-1)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=87, action_execution_time_histogram=[86, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/customer-stories/mercedes-benz)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=0, action_execution_time_histogram=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/team)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=79, action_execution_time_histogram=[78, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/readme/guides/adaptive-leadership)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=12, action_execution_time_histogram=[11, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/signup?return_to=%2Faccount%2Forganizations%2Fnew%3Fplan%3Dbusiness%26plan_duration%3Dyear)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=81, action_execution_time_histogram=[80, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/social-impact/insights)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=76, action_execution_time_histogram=[75, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/readme/guides/adaptive-leadership)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=2, action_execution_time_histogram=[1, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/#footnote-1)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=0, action_execution_time_histogram=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/customer-stories/mercado-libre)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=87, action_execution_time_histogram=[86, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/newsroom)"
+        },
+        {
+            "info": "ActionSetWithExecutionTimesState(action_number=8, action_execution_time_histogram=[7, 1, 0, 0, 0, 0, 0, 0, 0, 0], url=https://github.com/signup?return_to=%2Faccount%2Forganizations%2Fnew%3Fplan%3Dbusiness%26plan_duration%3Dyear)"
+        },
+        {
+            "info": "OutOfDomainState(action=RestartAction(restart_url=https://github.com))"
+        },
+        {
+            "info": "OutOfDomainState(action=RestartAction(restart_url=https://github.com/customer-stories/duolingo))"
+        },
+        {
+            "info": "OutOfDomainState(action=RestartAction(restart_url=https://github.com/readme/topics/career-development))"
+        },
+        {
+            "info": "OutOfDomainState(action=RestartAction(restart_url=https://github.com/social-impact/insights))"
+        }
+    ],
+    "url_count": {
+        "https://github.com": 9999,
+        "https://github.com/": 5,
+        "https://github.com/#footnote-1": 9,
+        "https://github.com/customer-stories/duolingo": 2,
+        "https://github.com/customer-stories/mercado-libre": 2,
+        "https://github.com/customer-stories/mercedes-benz": 1,
+        "https://github.com/education": 1,
+        "https://github.com/enterprise": 1,
+        "https://github.com/features/issues": 3,
+        "https://github.com/github": 3,
+        "https://github.com/github-copilot/pro": 2,
+        "https://github.com/newsroom": 1,
+        "https://github.com/newsroom/press-releases/data-residency-in-us": 1,
+        "https://github.com/pricing": 1,
+        "https://github.com/readme": 2,
+        "https://github.com/readme/guides/adaptive-leadership": 3,
+        "https://github.com/readme/guides/engineering-career-success": 1,
+        "https://github.com/readme/topics/career-development": 5,
+        "https://github.com/services/": 1,
+        "https://github.com/services/actions-training": 1,
+        "https://github.com/signup?return_to=%2Faccount%2Forganizations%2Fnew%3Fplan%3Dbusiness%26plan_duration%3Dyear": 2,
+        "https://github.com/social-impact": 2,
+        "https://github.com/social-impact/insights": 6,
+        "https://github.com/team": 4
+    }
+}

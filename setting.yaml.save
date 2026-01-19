@@ -1,0 +1,197 @@
+default_profile: github-marl-3h-marg-dql-5agent
+default_output_path: ./webtest_output/result
+default_model_path: ./webtest_model
+default_session: test_session
+default_restart_interval: 60
+default_continuous_restart_threshold: 5
+default_enable_screen_shot: True
+
+profiles:
+  github-marl-3h-marg-dql-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --window-size=1280,1000
+      # - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.marg
+      class: Marg
+      params:
+        agent_type: dql
+        alpha: 1
+        gamma: 0.5
+        epsilon: 0.5
+        initial_q_value: 10.0
+
+  github-marl-3h-qtran-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      # - --window-size=1280,1000
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.marg_d
+      class: MargD
+      params:
+        model_module: model.dense_net
+        model_class: DenseNet
+        algo_type: qtran
+        using_mix: T
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        reward_function: A
+        batch_size: 32
+        mix_batch_size: 16
+        learning_rate: 0.001
+        max_random: 0.9
+        min_random: 0.3
+        update_target_interval: 8
+        update_network_interval: 4
+        update_mixing_network_interval: 1
+        gamma: 0.5
+
+  github-marl-3h-nndql-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      # - --window-size=1280,1000
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.marg_d
+      class: MargD
+      params:
+        model_module: model.dense_net
+        model_class: DenseNet
+        algo_type: nndql
+        using_mix: F
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        reward_function: A
+        batch_size: 32
+        mix_batch_size: 16
+        learning_rate: 0.001
+        max_random: 0.9
+        min_random: 0.3
+        update_target_interval: 8
+        update_network_interval: 4
+        update_mixing_network_interval: 1
+        gamma: 0.5
+
+  github-marl-3h-nn-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      # - --window-size=1280,1000
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.marg_d
+      class: MargD
+      params:
+        model_module: model.dense_net
+        model_class: DenseNet
+        algo_type: nn
+        using_mix: F
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        reward_function: A
+        batch_size: 32
+        mix_batch_size: 16
+        learning_rate: 0.001
+        max_random: 0.9
+        min_random: 0.3
+        update_target_interval: 8
+        update_network_interval: 4
+        update_mixing_network_interval: 1
+        gamma: 0.5

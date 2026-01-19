@@ -1,0 +1,5 @@
+{'level': 'WARNING', 'message': 'chrome-error://chromewebdata/ 6774:10 "crbug/1173575, non-JS module files deprecated."', 'source': 'console-api', 'timestamp': 1768581055646}
+{'level': 'WARNING', 'message': 'chrome-error://chromewebdata/ 6774:10 "crbug/1173575, non-JS module files deprecated."', 'source': 'console-api', 'timestamp': 1768581056615}
+{'level': 'WARNING', 'message': 'chrome-error://chromewebdata/ 6774:10 "crbug/1173575, non-JS module files deprecated."', 'source': 'console-api', 'timestamp': 1768581057786}
+{'level': 'SEVERE', 'message': 'chrome-error://chromewebdata/ - Not allowed to load local resource: chrome-error://chromewebdata/#buttons', 'source': 'security', 'timestamp': 1768581102906}
+{'level': 'SEVERE', 'message': 'https://github.com/ - Failed to load resource: net::ERR_CONNECTION_CLOSED', 'source': 'network', 'timestamp': 1768581111714}

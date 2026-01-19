@@ -1,0 +1,5 @@
+2026-01-16 15:29:17,089 - __main__ - INFO - [Debug] 程序已启动
+2026-01-16 15:29:17,089 - __main__ - INFO - [Debug] Chrome Options 配置完成
+2026-01-16 15:29:17,089 - __main__ - INFO - [Debug] profile is github-marl-3h-shaq-5agent
+2026-01-16 15:29:17,592 - web_test.multi_agent_thread - INFO - SHAQ initializing on device: cpu
+2026-01-16 15:29:18,637 - __main__ - ERROR - 程序运行时出错: <class 'ModuleNotFoundError'> - No module named 'gensim'
