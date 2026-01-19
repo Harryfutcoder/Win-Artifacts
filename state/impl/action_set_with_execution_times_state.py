@@ -140,14 +140,22 @@ class ActionSetWithExecutionTimesState(WebState):
 
     def __eq__(self, other: object) -> bool:
         if isinstance(other, ActionSetWithExecutionTimesState):
+            # 防御性检查：确保两个对象都有 action_dict 属性
+            if not hasattr(self, 'action_dict') or not hasattr(other, 'action_dict'):
+                return False
+            if not hasattr(self, 'url') or not hasattr(other, 'url'):
+                return False
             return (self.action_dict.keys() == other.action_dict.keys()) and (self.url == other.url)
         return False
 
     def __hash__(self) -> int:
         hash_value = 0
-        for action in self.action_dict.keys():
-            hash_value += hash(action)
-        hash_value += hash(self.url)
+        # 防御性检查：确保 action_dict 存在
+        if hasattr(self, 'action_dict'):
+            for action in self.action_dict.keys():
+                hash_value += hash(action)
+        if hasattr(self, 'url'):
+            hash_value += hash(self.url)
         return hash_value
 
     def __lt__(self, other: object) -> bool:

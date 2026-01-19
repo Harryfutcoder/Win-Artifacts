@@ -68,11 +68,14 @@ class Marg(multi_agent.multi_agent_system.MultiAgentSystem):
         if len(actions) == 0:
             return self.R_PENALTY
         if isinstance(state, ActionSetWithExecutionTimesState):
-            assert self.action_dict[action] is not None
-            if self.action_dict[action] == 0:
+            # 注意：action_dict 是 state 的属性，不是 self 的属性
+            if action not in state.action_dict:
+                return self.R_PENALTY
+            execution_time = state.action_dict[action]['execution_time']
+            if execution_time == 0:
                 return 1.0
             else:
-                return 1.0 / float(self.action_dict[action])
+                return 1.0 / float(execution_time)
         return self.R_PENALTY
 
     def update(self, web_state: WebState, html: str, agent_name: str):

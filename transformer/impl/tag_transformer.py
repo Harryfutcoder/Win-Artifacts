@@ -18,18 +18,13 @@ from state.impl.action_set_with_execution_times_state import ActionSetWithExecut
 from state.web_state import WebState
 from transformer.utils.state_analysis import get_state_embedding
 from transformer.transformer import Transformer
-
-
-def load_embedding_model():
-    import gensim.downloader as api
-    wv_from_bin = api.load("glove-wiki-gigaword-200")
-    print("Loaded vocab size %i" % len(list(wv_from_bin.index_to_key)))
-    return wv_from_bin
+from transformer.utils.word2vec_cache import get_word2vec_model
 
 
 class TagTransformer(Transformer):
     def __init__(self):
-        self.wv_from_bin = load_embedding_model()
+        # 使用全局缓存的 Word2Vec 模型，避免重复加载（~45秒）
+        self.wv_from_bin = get_word2vec_model()
         self.state_tensor_table = defaultdict(Tensor)
         self.action_tensor_table = defaultdict(Tensor)
 

@@ -422,14 +422,26 @@ class BenchmarkRunner:
         sys.argv = [sys.argv[0], '--profile', profile]
         
         try:
-            # 重新加载模块以使用新的 argv
-            if 'config.cli_options' in sys.modules:
-                importlib.reload(sys.modules['config.cli_options'])
-            if 'config.settings' in sys.modules:
-                importlib.reload(sys.modules['config.settings'])
-            if 'config' in sys.modules:
-                importlib.reload(sys.modules['config'])
+            # 完全清除相关模块缓存，然后重新导入
+            # 这比 reload() 更可靠，确保所有模块都使用新的配置
+            modules_to_remove = [
+                'web_test.multi_agent_thread',
+                'web_test.webtest_multi_agent',
+                'multi_agent.multi_agent_system',
+                'config',
+                'config.settings',
+                'config.cli_options',
+            ]
+            # 还需要删除 agent 实现模块的缓存
+            for mod_name in list(sys.modules.keys()):
+                if mod_name.startswith('multi_agent.impl.'):
+                    modules_to_remove.append(mod_name)
             
+            for mod_name in modules_to_remove:
+                if mod_name in sys.modules:
+                    del sys.modules[mod_name]
+            
+            # 重新导入模块（会使用新的 sys.argv）
             from config import settings
             from web_test.webtest_multi_agent import WebtestMultiAgent
             
@@ -443,11 +455,11 @@ class BenchmarkRunner:
                 settings.agent['params']['alive_time'] = duration
             logger.info(f"已覆盖 alive_time: {original_alive_time} -> {duration}秒")
             
-            # 创建 Chrome 选项
+            # 创建 Chrome 选项（使用 settings 对象而不是 config 字典）
             chrome_options = Options()
-            for arg in config.get('browser_arguments', []):
+            for arg in settings.browser_arguments:
                 chrome_options.add_argument(arg)
-            chrome_options.binary_location = config.get('browser_path', '')
+            chrome_options.binary_location = settings.browser_path
             
             # 创建测试实例
             webtest = WebtestMultiAgent(chrome_options)
@@ -471,13 +483,50 @@ class BenchmarkRunner:
                         )
                         novelty = 1 - max_sim
                     
-                    # 获取奖励（如果可用）
+                    # 获取奖励 - 使用统一的基于状态新颖度的奖励计算
+                    # 这样可以公平比较不同算法的探索效率
                     reward = 0.0
-                    if hasattr(webtest.multi_agent_system, 'get_reward'):
-                        try:
+                    algo_class = webtest.multi_agent_system.__class__.__name__
+                    try:
+                        if algo_class == 'Marg':
+                            # Marg 原生使用基于动作执行次数的奖励，为了公平比较
+                            # 这里使用与 SHAQ/MargD 相同的基于状态新颖度的奖励计算
+                            from state.impl.action_set_with_execution_times_state import ActionSetWithExecutionTimesState
+                            R_A_BASE_HIGH = 50.0
+                            R_A_BASE_MIDDLE = 10.0
+                            R_A_MIN_SIM_LINE = 0.7
+                            R_A_MIDDLE_SIM_LINE = 0.85
+                            
+                            if isinstance(web_state, ActionSetWithExecutionTimesState):
+                                # 计算与已知状态的最大相似度
+                                max_sim = -1.0
+                                state_dict = webtest.multi_agent_system.state_dict
+                                for temp_state in state_dict.keys():
+                                    if web_state == temp_state:
+                                        continue
+                                    if hasattr(web_state, 'similarity'):
+                                        sim = web_state.similarity(temp_state)
+                                        if sim > max_sim:
+                                            max_sim = sim
+                                
+                                # 基于新颖度的奖励（与 SHAQ/MargD 相同）
+                                if max_sim < R_A_MIN_SIM_LINE:
+                                    reward = R_A_BASE_HIGH  # 50 分
+                                elif max_sim < R_A_MIDDLE_SIM_LINE:
+                                    reward = R_A_BASE_MIDDLE  # 10 分
+                                else:
+                                    # 重复访问的状态，奖励递减
+                                    visited_time = state_dict.get(web_state, 0)
+                                    if visited_time == 0:
+                                        reward = 2.0
+                                    else:
+                                        reward = 2.0 / float(visited_time)
+                        elif hasattr(webtest.multi_agent_system, 'get_reward'):
+                            # SHAQ/MargD 风格的调用 (web_state, agent_name)
                             reward = webtest.multi_agent_system.get_reward(web_state, agent_name)
-                        except:
-                            pass
+                    except Exception as e:
+                        # 如果有任何错误，记录但不中断
+                        pass
                     
                     monitor.record_step(
                         step_time=step_time,
@@ -543,6 +592,19 @@ class BenchmarkRunner:
             duration: 每个配置的测试时长
             dry_run: 是否干跑
         """
+        # 预加载 Word2Vec 模型，避免在第一个算法测试时花费 45 秒加载
+        # 这样可以确保所有算法的测试时间都是公平的
+        if not dry_run:
+            try:
+                logger.info("预加载 Word2Vec 模型（避免影响测试时间）...")
+                from transformer.utils.word2vec_cache import preload_word2vec_model, get_cache_info
+                preload_word2vec_model()
+                cache_info = get_cache_info()
+                logger.info(f"Word2Vec 模型已缓存: 加载时间 {cache_info['load_time']:.1f}s, "
+                           f"词汇量 {cache_info['vocab_size']}")
+            except Exception as e:
+                logger.warning(f"预加载 Word2Vec 模型失败（非致命错误）: {e}")
+        
         for profile in profiles:
             logger.info(f"\n{'='*60}")
             logger.info(f"测试配置: {profile}")

@@ -23,7 +23,7 @@ profiles:
       - www.github.com
       - github.com
     browser_arguments:
-      - --window-size=1280,1000
+      - --headless
     action_detector:
       module: action.detector.combination_detector
       class: CombinationDetector
@@ -89,7 +89,7 @@ profiles:
       - www.github.com
       - github.com
     browser_arguments:
-      - --window-size=1280,1000
+      - --headless
     action_detector:
       module: action.detector.combination_detector
       class: CombinationDetector
@@ -144,7 +144,7 @@ profiles:
       - www.github.com
       - github.com
     browser_arguments:
-      - --window-size=1280,1000
+      - --headless
     action_detector:
       module: action.detector.combination_detector
       class: CombinationDetector
@@ -182,7 +182,7 @@ profiles:
       - www.github.com
       - github.com
     browser_arguments:
-      #- --window-size=1280,1000
+      #- --headless
       - --headless
     action_detector:
       module: action.detector.combination_detector
@@ -221,7 +221,7 @@ profiles:
       - www.github.com
       - github.com
     browser_arguments:
-      - --window-size=1280,1000
+      - --headless
       # - --headless
     action_detector:
       module: action.detector.combination_detector
@@ -271,7 +271,7 @@ profiles:
       - www.github.com
       - github.com
     browser_arguments:
-      # - --window-size=1280,1000
+      # - --headless
       - --headless
     action_detector:
       module: action.detector.combination_detector
@@ -323,7 +323,7 @@ profiles:
       - www.github.com
       - github.com
     browser_arguments:
-      #- --window-size=1280,1000
+      #- --headless
       - --headless
     action_detector:
       module: action.detector.combination_detector

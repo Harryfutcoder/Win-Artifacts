@@ -3352,3 +3352,5 @@ urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=6191
 2026-01-19 13:26:56,565 - web_test.multi_agent_thread - INFO - Thread 0: Webdriver restart successfully
 2026-01-19 13:26:56,598 - web_test.multi_agent_thread - INFO - Thread 1: Webdriver restart successfully
 2026-01-19 13:26:56,976 - web_test.multi_agent_thread - INFO - Thread 3: Webdriver restart successfully
+2026-01-19 13:31:04,520 - web_test.multi_agent_thread - INFO - SHAQ: Using CPU
+2026-01-19 13:31:49,838 - web_test.multi_agent_thread - INFO - SHAQ initialized with 5 agents, Shapley method: fast, async_learning: True, shapley_exploration: True
