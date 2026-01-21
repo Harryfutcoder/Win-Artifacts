@@ -369,6 +369,8 @@ class BenchmarkRunner:
         'qmix': 'github-marl-3h-qtran-5agent',  # qtran 配置可用于 qmix 对比
         'nndql': 'github-marl-3h-nndql-5agent',
         'nn': 'github-marl-3h-nn-5agent',
+        'hybrid': 'github-marl-3h-hybrid-5agent',
+        'shaq-qtran': 'github-marl-3h-hybrid-5agent',
     }
     
     def __init__(self, config_path: str = "settings.yaml"):
@@ -409,7 +411,9 @@ class BenchmarkRunner:
         agent_class = profile_config.get('agent', {}).get('class', '')
         algo_type = profile_config.get('agent', {}).get('params', {}).get('algo_type', '')
         
-        if 'shaq' in agent_module.lower() or agent_class.lower() == 'shaq':
+        if 'hybrid' in agent_module.lower() or agent_class.lower() == 'shaqqqtranhybrid':
+            return 'HYBRID'
+        elif 'shaq' in agent_module.lower() or agent_class.lower() == 'shaq':
             return 'SHAQ'
         elif 'marg_d' in agent_module.lower() or agent_class.lower() == 'margd':
             if algo_type == 'qtran':

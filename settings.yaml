@@ -56,18 +56,15 @@ profiles:
         min_random: 0.1          # 最终探索率
         # 学习参数
         batch_size: 32           # 批次大小
-        gamma: 0.99              # 折扣因子
+        gamma: 0.5               # 折扣因子（与 QTRAN 对齐）
         learning_rate: 0.001     # 学习率
-        # 网络更新参数
-        update_target_interval: 100   # 目标网络更新间隔
-        update_network_interval: 10   # 训练网络更新间隔
+        # 网络更新参数（优化：与 QTRAN 对齐以提高速度）
+        update_target_interval: 20    # 目标网络更新间隔（原100）
+        update_network_interval: 4    # 训练网络更新间隔（原10，与QTRAN一致）
         # SHAQ 特有参数 - Lovasz 扩展
-        shapley_samples: 5       # 采样点数（仅 multipoint/gradient 方法使用）
-        shapley_method: fast     # Shapley 计算方法:
-                                 #   - fast: 最快，单次梯度计算 O(1)
-                                 #   - gradient: 多次梯度计算取平均
-                                 #   - multipoint: 最精确，沿排列路径积分 O(n*samples)
-        shapley_update_interval: 5   # 每 N 步计算一次 Shapley（减少开销）
+        shapley_samples: 3       # 采样点数（减少以提高速度）
+        shapley_method: fast     # Shapley 计算方法: fast 最快
+        shapley_update_interval: 10  # 每 N 步计算一次 Shapley（原5，减少开销）
         # SHAQ 特有优势 - Shapley 引导探索
         use_shapley_exploration: true   # 使用 Shapley 引导探索策略
         shapley_exploration_bonus: 0.5  # 探索奖励系数
@@ -255,6 +252,62 @@ profiles:
         update_network_interval: 4
         update_mixing_network_interval: 1
         gamma: 0.5
+
+  # SHAQ-QTRAN Hybrid: 结合两者优势
+  github-marl-3h-hybrid-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver-3
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.shaq_qtran_hybrid
+      class: SHAQQTRANHybrid
+      params:
+        agent_num: 5
+        entry_url: https://github.com
+        alive_time: 10800
+        algo_type: hybrid
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        # 与 QTRAN 对齐的参数
+        max_random: 0.9
+        min_random: 0.3
+        batch_size: 32
+        mix_batch_size: 16
+        learning_rate: 0.001
+        update_target_interval: 8
+        update_network_interval: 4
+        update_mixing_network_interval: 1
+        gamma: 0.5
+        # SHAQ 特有参数（低频率）
+        shapley_update_interval: 20
+        shapley_weight: 0.3
 
   github-marl-3h-nndql-5agent:
     agent_num: 5

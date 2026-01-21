@@ -594,13 +594,7 @@ class SHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
     
     def get_reward(self, web_state: WebState, agent_name: str) -> float:
         """
-        计算奖励 - 优化版本：强化探索激励。
-        
-        优化点：
-        1. 增加新状态奖励
-        2. 对重复状态增加惩罚
-        3. 新增 URL 多样性奖励
-        4. 动态探索衰减
+        计算奖励 - 保持原始逻辑，性能优化版本。
         """
         if self.reward_function != "A":
             return 0.0
@@ -610,7 +604,7 @@ class SHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         
         # 计算与已知状态的最大相似度
         max_sim = -1.0
-        for temp_state in self.state_list[-200:]:  # 只看最近200个状态，提高效率
+        for temp_state in self.state_list[-200:]:
             if isinstance(temp_state, (OutOfDomainState, ActionExecuteFailedState, SameUrlState)):
                 continue
             if web_state == temp_state:
@@ -619,35 +613,28 @@ class SHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
             if sim > max_sim:
                 max_sim = sim
         
-        # 基于新颖度的奖励 - 优化版
+        # 基于新颖度的奖励
         if max_sim < self.R_A_MIN_SIM_LINE:
-            # 非常新颖的状态：高奖励
             r_state = self.R_A_BASE_HIGH
         elif max_sim < self.R_A_MIDDLE_SIM_LINE:
-            # 中等新颖：中等奖励
             r_state = self.R_A_BASE_MIDDLE
         else:
-            # 重复状态：使用指数衰减惩罚
             visited_time = self.state_dict.get(web_state, 0)
             if visited_time == 0:
                 r_state = 5.0
             else:
-                # 指数衰减：访问越多，奖励越低
                 r_state = 5.0 * (self.R_REPEAT_PENALTY ** visited_time)
-                # 最低不低于 0.1
                 r_state = max(0.1, r_state)
         
-        # URL 多样性奖励 - 新增
+        # URL 多样性奖励
         r_url = 0.0
         current_url = getattr(web_state, 'url', None)
         if current_url:
-            # 提取 URL 路径
             from urllib.parse import urlparse
             parsed = urlparse(current_url)
             url_path = parsed.path
             
             if url_path and url_path not in self.visited_url_paths:
-                # 发现新的 URL 路径，给予奖励
                 r_url = self.R_URL_DIVERSITY_BONUS
                 self.visited_url_paths.add(url_path)
             
@@ -663,20 +650,15 @@ class SHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         else:
             exec_count = self.action_count.get(prev_action, 0)
             if exec_count == 0:
-                r_action = 5.0  # 增加首次执行奖励
+                r_action = 5.0
             else:
-                # 使用指数衰减
                 r_action = 5.0 * (0.5 ** exec_count)
                 r_action = max(0.1, r_action)
         
-        # 时间因子 - 添加探索衰减
+        # 时间探索因子
         time_diff = (datetime.now() - self.start_time).total_seconds()
         progress = time_diff / self.alive_time
-        
-        # 前期强调探索，后期强调利用
-        # 探索系数：从 1.5 衰减到 1.0
-        exploration_factor = 1.5 - 0.5 * progress
-        exploration_factor = max(1.0, exploration_factor)
+        exploration_factor = max(1.0, 1.5 - 0.5 * progress)
         
         # 最终奖励
         base_reward = r_state + r_action + r_url
