@@ -805,32 +805,30 @@ class MultiObjectiveRewardSystem:
         self.R_CONSOLE_ERROR = 200.0     # 控制台错误
         
         # ============================================================
-        # 【核心层】伪 ELOC - 论文重点！（强化！）
+        # 【核心层】伪 ELOC - 论文重点！
         # 论文证明：ELOC 比 Activity Coverage 更能预测 Bug
         # 
-        # 【重要修改】大幅提高核心层权重
-        # 原因：Web 测试的目的是发现 Bug 和覆盖代码，不仅仅是跳转 URL
+        # 【2026-01-26 修复】平衡核心层和基础层，避免 DOM 变化奖励过高导致
+        # Agent 陷入"疯狂输入"模式（输入框自动补全会频繁触发 DOM 变化）
         # ============================================================
-        self.R_NEW_API_ENDPOINT = 50.0   # 新 API 端点 → Method Coverage（提高！比 URL 更重要）
-        self.R_REQUEST_DIVERSITY = 25.0  # 请求多样性 → Instruction Coverage（提高）
-        self.R_DOM_COMPLEXITY_INCREASE = 35.0  # DOM 复杂度增加 → Branch Coverage（提高！）
-        self.R_NEW_DOMAIN = 30.0         # 新域名请求 → 跨模块覆盖
-        self.R_JS_EXECUTION = 10.0       # JS 执行 → ELOC
-        self.R_DOM_STRUCTURE_CHANGE = 40.0  # DOM 结构变化（即使 URL 不变）
-        # 【新增】API 响应熵奖励 - ASE 2024 核心洞察
-        # 即使 URL 相同，不同响应结构 = 触发不同服务器逻辑 = 更高 ELOC
-        self.R_NEW_API_RESPONSE_STRUCTURE = 60.0  # 新响应结构（比新 URL 更重要！）
-        self.R_API_DIVERSITY_BONUS = 20.0         # API 多样性奖励
+        self.R_NEW_API_ENDPOINT = 30.0   # 新 API 端点 → Method Coverage
+        self.R_REQUEST_DIVERSITY = 15.0  # 请求多样性 → Instruction Coverage
+        self.R_DOM_COMPLEXITY_INCREASE = 15.0  # 【修复】降低！避免输入框自动补全导致的高奖励
+        self.R_NEW_DOMAIN = 20.0         # 新域名请求 → 跨模块覆盖
+        self.R_JS_EXECUTION = 8.0        # JS 执行 → ELOC
+        self.R_DOM_STRUCTURE_CHANGE = 20.0  # 【修复】降低！DOM 结构变化
+        # API 响应熵奖励 - ASE 2024 核心洞察
+        self.R_NEW_API_RESPONSE_STRUCTURE = 35.0  # 新响应结构
+        self.R_API_DIVERSITY_BONUS = 15.0         # API 多样性奖励
         
         # ============================================================
-        # 【基础层】Activity Coverage - 最低优先级（可能误导！）
-        # 论文警告：这个指标与 Bug 相关性不稳定
-        # 【重要修改】降低基础层权重，避免仅追求 URL 跳转
+        # 【基础层】Activity Coverage
+        # 【2026-01-26 修复】提高基础层奖励，鼓励 URL 探索
         # ============================================================
-        self.R_NEW_STATE = 3.0           # 进一步降低
-        self.R_NEW_URL = 8.0             # 进一步降低（API 变化 > URL 变化）
-        self.R_NEW_ACTION = 2.0          # 进一步降低
-        self.R_DEPTH_BONUS = 5.0         # URL 深度降低
+        self.R_NEW_STATE = 10.0          # 【修复】提高！鼓励探索新状态
+        self.R_NEW_URL = 25.0            # 【修复】大幅提高！新 URL 是核心探索指标
+        self.R_NEW_ACTION = 5.0          # 【修复】提高！鼓励尝试新动作
+        self.R_DEPTH_BONUS = 8.0         # URL 深度奖励
         
         # 惩罚
         self.R_PENALTY = -1.0
@@ -993,8 +991,8 @@ class MultiObjectiveRewardSystem:
         self.synergy_total += synergy_reward
         self.synergy_count += 1
         
-        logger.debug(f"[协同增益] Agent {agent_name} 触发 {contrib_type}，"
-                    f"与 {unique_agents} 协同，奖励 +{synergy_reward:.1f}")
+        logger.debug(f"[Synergy Bonus] Agent {agent_name} triggered {contrib_type}, "
+                    f"synergy with {unique_agents} agents, reward +{synergy_reward:.1f}")
         
         return synergy_reward
     
@@ -1070,18 +1068,18 @@ class MultiObjectiveRewardSystem:
             # URL 增长放缓 → 基础层（Activity）边际效用低
             weights['base'] *= 0.6
             weights['core'] *= 1.3  # 转向深度挖掘
-            logger.debug(f"[动态权重] URL 增长放缓 ({url_growth:.2f})，降低基础层权重")
+            logger.debug(f"[Dynamic Weight] URL growth slowing ({url_growth:.2f}), reducing base tier weight")
         
         if api_growth < self.GROWTH_THRESHOLD:
             # API 增长放缓 → 核心层边际效用低
             weights['core'] *= 0.8
             weights['target'] *= 1.3  # 转向找 Bug
-            logger.debug(f"[动态权重] API 增长放缓 ({api_growth:.2f})，转向目标层")
+            logger.debug(f"[Dynamic Weight] API growth slowing ({api_growth:.2f}), shifting to target tier")
         
         if state_growth > self.GROWTH_THRESHOLD * 2:
             # 状态发现仍然活跃 → 保持探索
             weights['base'] *= 1.2
-            logger.debug(f"[动态权重] 状态发现活跃 ({state_growth:.2f})，保持探索")
+            logger.debug(f"[Dynamic Weight] State discovery active ({state_growth:.2f}), maintaining exploration")
         
         # 归一化（可选）
         total = sum(weights.values())
@@ -1278,16 +1276,17 @@ class MultiObjectiveRewardSystem:
         if html:
             dom_metrics = self.pseudo_eloc_tracker.compute_dom_complexity(html)
             
-            # 【强化】DOM 复杂度增加的奖励
-            if dom_metrics['complexity_delta'] > 0.05:
-                complexity_reward = self.R_DOM_COMPLEXITY_INCREASE * dom_metrics['complexity_delta'] * 10
+            # DOM 复杂度增加的奖励
+            # 【2026-01-26 修复】移除 *10 乘数，避免输入框自动补全获得过高奖励
+            if dom_metrics['complexity_delta'] > 0.1:  # 提高阈值，过滤小变化
+                complexity_reward = self.R_DOM_COMPLEXITY_INCREASE * min(dom_metrics['complexity_delta'], 0.5)
                 core_reward += complexity_reward
                 breakdown['core:dom_complexity'] = complexity_reward
             
-            # 【新增】DOM 结构显著变化奖励
+            # DOM 结构显著变化奖励
             # 理论依据：即使 URL 没变，DOM 结构变化说明触发了代码路径
-            # 这是 SHAQ 比 QMIX 的关键优势场景："填表->提交" 的多步依赖
-            if dom_metrics['complexity_delta'] > 0.15:
+            # 【2026-01-26 修复】提高阈值到 0.25，避免输入框小变化触发
+            if dom_metrics['complexity_delta'] > 0.25:
                 structure_change_reward = self.R_DOM_STRUCTURE_CHANGE
                 core_reward += structure_change_reward
                 breakdown['core:dom_structure_change'] = structure_change_reward
@@ -1634,20 +1633,20 @@ class RoleBasedRewardSystem:
         switch_reason = None
         
         if current_role == 'exploiter' and consecutive_low:
-            # Exploiter 废了 → 强制切换为 Explorer
+            # Exploiter exhausted -> switch to Explorer
             new_role = 'explorer'
-            switch_reason = f"连续{self.CONSECUTIVE_LOW_STEPS}步低贡献(Shapley<{threshold:.3f})"
+            switch_reason = f"{self.CONSECUTIVE_LOW_STEPS} consecutive low contribution steps (Shapley<{threshold:.3f})"
         elif current_role == 'explorer' and consecutive_high:
-            # Explorer 发现了好区域 → 切换为 Exploiter 深挖
+            # Explorer found good area -> switch to Exploiter
             new_role = 'exploiter'
-            switch_reason = f"连续{self.CONSECUTIVE_LOW_STEPS}步高贡献(Shapley>{high_threshold:.3f})"
+            switch_reason = f"{self.CONSECUTIVE_LOW_STEPS} consecutive high contribution steps (Shapley>{high_threshold:.3f})"
         
         if new_role != current_role:
             self.agent_roles[agent_name] = new_role
             self.role_switch_count[agent_name] += 1
-            # 清空历史，重新开始计数
+            # Clear history, restart counting
             self.agent_shapley_history[agent_name] = []
-            logger.info(f"[角色切换] Agent {agent_name}: {current_role} → {new_role} ({switch_reason})")
+            logger.info(f"[Role Switch] Agent {agent_name}: {current_role} -> {new_role} ({switch_reason})")
     
     def get_agent_role(self, agent_name: str) -> str:
         """
@@ -1927,6 +1926,9 @@ class SHAQv2(multi_agent.multi_agent_system.MultiAgentSystem):
         
         # DOM 编码器
         self.dom_encoder = DOMStructureEncoder()
+        
+        # 【2026-01-26 新增】ICM 好奇心：已见过的 DOM 签名集合
+        self._seen_dom_signatures: Set[int] = set()
         
         # 经验回放
         self.replay_buffer = ReplayBuffer(capacity=1000)
@@ -2267,12 +2269,12 @@ class SHAQv2(multi_agent.multi_agent_system.MultiAgentSystem):
                 agent_name=agent_name  # 【新增】
             )
             
-            # 日志：显示各层贡献
+            # Log: show tier contributions
             if self.learn_step_count % 50 == 0:
-                tier_info = f"目标:{breakdown.get('_target_reward', 0):.1f} " \
-                           f"核心:{breakdown.get('_core_reward', 0):.1f} " \
-                           f"基础:{breakdown.get('_base_reward', 0):.1f}"
-                logger.debug(f"[{agent_name}] 三层奖励: {tier_info}")
+                tier_info = f"target:{breakdown.get('_target_reward', 0):.1f} " \
+                           f"core:{breakdown.get('_core_reward', 0):.1f} " \
+                           f"base:{breakdown.get('_base_reward', 0):.1f}"
+                logger.debug(f"[{agent_name}] Three-tier reward: {tier_info}")
         else:
             # 回退到混合模式（没有 performance_logs 时）
             total_reward, breakdown = self.reward_system.compute_coverage_reward(
@@ -2283,10 +2285,24 @@ class SHAQv2(multi_agent.multi_agent_system.MultiAgentSystem):
         
         # ============================================================
         # ICM 好奇心奖励（补充探索）
+        # 【2026-01-26 修复】使用 DOM 结构新颖性作为好奇心奖励
+        # 原理：页面结构越新颖（未见过），好奇心奖励越高
         # ============================================================
-        if self.use_icm:
-            curiosity_reward = self.icm.compute_intrinsic_reward()
-            total_reward += curiosity_reward * self.icm_weight
+        if self.use_icm and html:
+            # 计算 DOM 结构签名的新颖性
+            dom_signature = self.dom_encoder.extract_structure_signature(html)
+            signature_hash = hash(dom_signature)
+            
+            if signature_hash not in self._seen_dom_signatures:
+                self._seen_dom_signatures.add(signature_hash)
+                # 新结构 → 高好奇心奖励
+                curiosity_reward = 15.0 * self.icm_weight  # 基础好奇心奖励
+                total_reward += curiosity_reward
+                logger.debug(f"[{agent_name}] ICM novelty reward: {curiosity_reward:.2f}")
+            else:
+                # 已见过的结构 → 小惩罚，鼓励探索新区域
+                curiosity_reward = -2.0 * self.icm_weight
+                total_reward += curiosity_reward
         
         # ============================================================
         # 角色分工 + JBS 检测
@@ -2304,7 +2320,7 @@ class SHAQv2(multi_agent.multi_agent_system.MultiAgentSystem):
             is_jbs, jbs_penalty = self.role_system.detect_jbs(current_url)
             if is_jbs:
                 total_reward *= jbs_penalty
-                logger.debug(f"[{agent_name}] JBS 检测: {current_url}, 惩罚系数: {jbs_penalty:.2f}")
+                logger.debug(f"[{agent_name}] JBS detected: {current_url}, penalty factor: {jbs_penalty:.2f}")
             
             # 更新历史
             self.role_system.update_agent_history(agent_name, current_url, False, False)
@@ -2655,53 +2671,53 @@ class SHAQv2(multi_agent.multi_agent_system.MultiAgentSystem):
         report = self.get_diagnostic_report()
         
         logger.info("=" * 60)
-        logger.info("SHAQ v2 诊断报告（三层奖励系统）")
+        logger.info("SHAQ v2 Diagnostic Report (Three-Tier Reward System)")
         logger.info("=" * 60)
         
-        # 【新增】三层奖励分析
-        logger.info("\n【三层奖励分析】（基于 ASE 2024 论文）")
+        # Three-tier reward analysis
+        logger.info("\n[Three-Tier Reward Analysis] (Based on ASE 2024 Paper)")
         tier_info = report.get('three_tier_reward', {})
         tier_totals = tier_info.get('tier_totals', {})
-        logger.info(f"  目标层 (Fault Detection): {tier_totals.get('target', 0):.2f}")
-        logger.info(f"  核心层 (伪 ELOC):        {tier_totals.get('core', 0):.2f}")
-        logger.info(f"  基础层 (Activity):       {tier_totals.get('base', 0):.2f}")
+        logger.info(f"  Target Tier (Fault Detection): {tier_totals.get('target', 0):.2f}")
+        logger.info(f"  Core Tier (Pseudo ELOC):       {tier_totals.get('core', 0):.2f}")
+        logger.info(f"  Base Tier (Activity):          {tier_totals.get('base', 0):.2f}")
         
-        # 【新增】伪 ELOC 统计
-        logger.info("\n【伪 ELOC 指标】（Method/ELOC Coverage 代理）")
+        # Pseudo ELOC statistics
+        logger.info("\n[Pseudo ELOC Metrics] (Method/ELOC Coverage Proxy)")
         pseudo_eloc = report.get('pseudo_eloc', {})
-        logger.info(f"  API 端点发现: {pseudo_eloc.get('total_api_endpoints', 0)} 个")
-        logger.info(f"  请求模式多样性: {pseudo_eloc.get('total_request_patterns', 0)} 种")
-        logger.info(f"  跨域名请求: {pseudo_eloc.get('total_domains', 0)} 个域名")
-        logger.info(f"  总请求数: {pseudo_eloc.get('total_requests', 0)}")
-        logger.info(f"  最大 DOM 深度: {pseudo_eloc.get('max_dom_depth', 0)}")
+        logger.info(f"  API Endpoints Found: {pseudo_eloc.get('total_api_endpoints', 0)}")
+        logger.info(f"  Request Pattern Diversity: {pseudo_eloc.get('total_request_patterns', 0)}")
+        logger.info(f"  Cross-Domain Requests: {pseudo_eloc.get('total_domains', 0)} domains")
+        logger.info(f"  Total Requests: {pseudo_eloc.get('total_requests', 0)}")
+        logger.info(f"  Max DOM Depth: {pseudo_eloc.get('max_dom_depth', 0)}")
         
-        # 热门 API 端点
+        # Top API endpoints
         api_endpoints = pseudo_eloc.get('api_endpoints_list', [])[:5]
         if api_endpoints:
-            logger.info("  发现的 API 端点:")
+            logger.info("  Discovered API Endpoints:")
             for ep in api_endpoints:
                 logger.info(f"    - {ep}")
         
-        # 奖励分解统计
+        # Reward breakdown statistics
         alignment = report['reward_alignment']
-        logger.info("\n【奖励分解统计】")
+        logger.info("\n[Reward Breakdown Statistics]")
         for key, value in alignment['reward_breakdown'].items():
             count = alignment['reward_counts'].get(key, 0)
-            logger.info(f"  {key}: 总计 {value:.2f} ({count} 次)")
+            logger.info(f"  {key}: total {value:.2f} ({count} times)")
         
-        # JBS 分析
+        # JBS analysis
         if report['jbs_analysis']:
             jbs = report['jbs_analysis']
-            logger.info(f"\n【JBS 分析】")
-            logger.info(f"  JBS 事件数: {jbs['jbs_events_count']}")
-            logger.info(f"  热门 URL 数: {len(jbs['hot_urls'])}")
+            logger.info(f"\n[JBS Analysis]")
+            logger.info(f"  JBS Events Count: {jbs['jbs_events_count']}")
+            logger.info(f"  Hot URL Count: {len(jbs['hot_urls'])}")
             if jbs['hot_urls']:
-                logger.info(f"  最热门 URL: {jbs['hot_urls'][0]['url']} ({jbs['hot_urls'][0]['total_visits']} 次)")
+                logger.info(f"  Hottest URL: {jbs['hot_urls'][0]['url']} ({jbs['hot_urls'][0]['total_visits']} visits)")
         
-        # 角色统计
-        logger.info("\n【角色统计】")
+        # Role statistics
+        logger.info("\n[Role Statistics]")
         for agent, stats in report['role_stats'].items():
-            logger.info(f"  Agent {agent} ({stats['role']}): {stats['states_discovered']} 状态, {stats['urls_discovered']} URL")
+            logger.info(f"  Agent {agent} ({stats['role']}): {stats['states_discovered']} states, {stats['urls_discovered']} URLs")
         
         logger.info("=" * 60)
 
@@ -2751,9 +2767,20 @@ class ActionSynergyBug:
         self.is_combination_bug = interaction_index > 0.1  # 交互指数 > 0.1 视为组合 Bug
     
     def to_dict(self) -> Dict:
+        # 序列化 trigger_actions，处理其中的 datetime 对象
+        serialized_actions = []
+        for action in self.trigger_actions:
+            serialized_action = {}
+            for k, v in action.items():
+                if isinstance(v, datetime):
+                    serialized_action[k] = v.isoformat()
+                else:
+                    serialized_action[k] = v
+            serialized_actions.append(serialized_action)
+        
         return {
             'bug_id': self.bug_id,
-            'trigger_actions': self.trigger_actions,
+            'trigger_actions': serialized_actions,
             'bug_type': self.bug_type,
             'interaction_index': self.interaction_index,
             'shapley_attribution': self.shapley_attribution,
@@ -2862,12 +2889,12 @@ class InteractionIndexAnalyzer:
         
         self.detected_bugs.append(bug)
         
-        # 日志
+        # Log
         if bug.is_combination_bug:
-            logger.info(f"[组合 Bug 发现] {bug.bug_id}: 交互指数={interaction_index:.3f}")
+            logger.info(f"[Combination Bug Found] {bug.bug_id}: interaction_index={interaction_index:.3f}")
             root_cause = bug.get_root_cause_action()
             if root_cause:
-                logger.info(f"  根因动作: {root_cause['action_key']} (贡献={root_cause['attribution_ratio']:.1%})")
+                logger.info(f"  Root cause action: {root_cause['action_key']} (contribution={root_cause['attribution_ratio']:.1%})")
     
     def _compute_action_shapley(
         self, 
@@ -2984,12 +3011,17 @@ class InteractionIndexAnalyzer:
         total_bugs = len(self.detected_bugs)
         combination_bugs = [b for b in self.detected_bugs if b.is_combination_bug]
         
+        # 正确统计 bug 类型计数
+        bug_type_counts = {}
+        for b in self.detected_bugs:
+            bug_type_counts[b.bug_type] = bug_type_counts.get(b.bug_type, 0) + 1
+        
         return {
             'total_bugs_detected': total_bugs,
             'combination_bugs_count': len(combination_bugs),
             'combination_bug_ratio': len(combination_bugs) / max(total_bugs, 1),
             'avg_interaction_index': sum(b.interaction_index for b in self.detected_bugs) / max(total_bugs, 1),
-            'bug_types': defaultdict(int, {b.bug_type: 1 for b in self.detected_bugs}),
+            'bug_types': bug_type_counts,
             'bugs': [b.to_dict() for b in self.detected_bugs],
         }
 

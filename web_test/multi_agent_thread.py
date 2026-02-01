@@ -1,6 +1,8 @@
 import logging
 import os.path
+import platform
 import threading
+import time
 from datetime import datetime
 from typing import Tuple, Optional, List, Dict
 from urllib.parse import urlparse
@@ -30,6 +32,55 @@ from utils import instantiate_class_by_module_and_class_name, get_class_by_modul
 logger = logging.getLogger(__name__)
 logger.addHandler(LogConfig.get_file_handler())
 
+# Windows 窗口隐藏功能
+_hide_windows_stop = False
+_hide_thread = None
+
+def _hide_chrome_windows():
+    """持续隐藏 Chrome 相关窗口（Windows only）"""
+    global _hide_windows_stop
+    if platform.system() != 'Windows':
+        return
+    
+    try:
+        import win32gui
+        import win32con
+    except ImportError:
+        return
+    
+    while not _hide_windows_stop:
+        def callback(hwnd, _):
+            try:
+                if win32gui.IsWindowVisible(hwnd):
+                    title = win32gui.GetWindowText(hwnd)
+                    class_name = win32gui.GetClassName(hwnd)
+                    # 隐藏 Chrome 控制台窗口和浏览器窗口，但不隐藏 Cursor
+                    if ('chrome' in title.lower() or class_name == 'Chrome_WidgetWin_1') and 'cursor' not in title.lower():
+                        win32gui.ShowWindow(hwnd, win32con.SW_HIDE)
+            except:
+                pass
+            return True
+        try:
+            win32gui.EnumWindows(callback, None)
+        except:
+            pass
+        time.sleep(0.05)
+
+def start_window_hiding():
+    """启动窗口隐藏线程"""
+    global _hide_windows_stop, _hide_thread
+    if platform.system() != 'Windows':
+        return
+    _hide_windows_stop = False
+    _hide_thread = threading.Thread(target=_hide_chrome_windows, daemon=True)
+    _hide_thread.start()
+    time.sleep(0.1)  # 等待线程启动
+
+def stop_window_hiding():
+    """停止窗口隐藏线程"""
+    global _hide_windows_stop
+    _hide_windows_stop = True
+
 
 def enable_performance_logging(options: Options) -> Options:
     """
@@ -52,14 +103,102 @@ class MultiAgentThread(threading.Thread):
         self.agent_name = agent_name
         self.multi_agent_system = multi_agent_system
         
+        # 为每个 agent 创建独立的 chrome_options（避免共享 user-data-dir 冲突）
+        self.chrome_options = self._create_agent_specific_options(chrome_options)
+        
         # 启用 performance logging（用于三层奖励系统）
-        self.chrome_options = enable_performance_logging(chrome_options)
+        self.chrome_options = enable_performance_logging(self.chrome_options)
+        
+        # 启动窗口隐藏线程（Windows only）
+        start_window_hiding()
+        
+        # 在 Windows 上隐藏 chromedriver 控制台窗口
+        if platform.system() == 'Windows':
+            from subprocess import CREATE_NO_WINDOW
+            service = Service(executable_path=settings.driver_path, creationflags=CREATE_NO_WINDOW)
+        else:
+            service = Service(executable_path=settings.driver_path)
         
         self.driver = webdriver.Chrome(
-            service=Service(executable_path=settings.driver_path),
+            service=service,
             options=self.chrome_options
         )
-        logger.info(f"Thread {self.agent_name}: Webdriver created successfully with performance logging")
+        logger.info(f"Thread {self.agent_name}: Webdriver created successfully with performance logging (hidden window)")
+        
+        # 初始化其他属性
+        self._init_after_driver()
+    
+    def _create_agent_specific_options(self, base_options: Options) -> Options:
+        """为每个 agent 创建独立的 chrome_options，确保使用独立的 user-data-dir"""
+        import random
+        
+        # 创建新的 Options 对象
+        new_options = Options()
+        new_options.binary_location = base_options.binary_location
+        
+        # 添加稳定性参数（防止 Chrome 崩溃）+ headless 模式
+        stability_args = [
+            '--headless',  # 确保 headless 模式
+            '--no-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--disable-extensions',
+            '--disable-software-rasterizer',
+            '--window-position=-2400,-2400',  # 窗口移到屏幕外
+        ]
+        for arg in stability_args:
+            new_options.add_argument(arg)
+        logger.info(f"Thread {self.agent_name}: Added stability args including --headless")
+        
+        has_user_data_dir = False
+        has_debugging_port = False
+        
+        # 复制所有参数，但替换 user-data-dir 和 remote-debugging-port
+        for arg in base_options.arguments:
+            if arg.startswith('--user-data-dir='):
+                has_user_data_dir = True
+                # 为每个 agent 创建独立的用户数据目录
+                agent_data_dir = os.path.join(
+                    os.path.abspath(settings.browser_data_path),
+                    f"agent_{self.agent_name}"
+                )
+                os.makedirs(agent_data_dir, exist_ok=True)
+                new_options.add_argument(f'--user-data-dir={agent_data_dir}')
+                logger.info(f"Thread {self.agent_name}: Using user-data-dir: {agent_data_dir}")
+            elif arg.startswith('--remote-debugging-port='):
+                has_debugging_port = True
+                # 为每个 agent 分配独立的调试端口
+                port = 9300 + int(self.agent_name) * 10 + random.randint(0, 9)
+                new_options.add_argument(f'--remote-debugging-port={port}')
+                logger.info(f"Thread {self.agent_name}: Using debugging port: {port}")
+            else:
+                new_options.add_argument(arg)
+        
+        # 如果原配置没有 user-data-dir，也要为每个 agent 添加独立的目录
+        if not has_user_data_dir:
+            agent_data_dir = os.path.join(
+                os.path.abspath(settings.browser_data_path),
+                f"agent_{self.agent_name}"
+            )
+            os.makedirs(agent_data_dir, exist_ok=True)
+            new_options.add_argument(f'--user-data-dir={agent_data_dir}')
+            logger.info(f"Thread {self.agent_name}: Using user-data-dir: {agent_data_dir}")
+        
+        # 如果原配置没有调试端口，也分配一个
+        if not has_debugging_port:
+            port = 9300 + int(self.agent_name) * 10 + random.randint(0, 9)
+            new_options.add_argument(f'--remote-debugging-port={port}')
+            logger.info(f"Thread {self.agent_name}: Using debugging port: {port}")
+        
+        # 复制实验性选项（使用正确的方法）
+        if hasattr(base_options, '_experimental_options') and base_options._experimental_options:
+            for key, value in base_options._experimental_options.items():
+                new_options.add_experimental_option(key, value)
+        
+        return new_options
+
+    def _init_after_driver(self):
+        """在 driver 创建后初始化其他属性"""
         self.action_detector_class: type = get_class_by_module_and_class_name(settings.action_detector["module"],
                                                                               settings.action_detector["class"])
         if settings.action_detector["class"] == "CombinationDetector":
@@ -272,12 +411,23 @@ class MultiAgentThread(threading.Thread):
 
     def restart_webdriver(self) -> None:
         self.driver.quit()
+        
+        # 启动窗口隐藏线程（Windows only）
+        start_window_hiding()
+        
+        # 在 Windows 上隐藏 chromedriver 控制台窗口
+        if platform.system() == 'Windows':
+            from subprocess import CREATE_NO_WINDOW
+            service = Service(executable_path=settings.driver_path, creationflags=CREATE_NO_WINDOW)
+        else:
+            service = Service(executable_path=settings.driver_path)
+        
         self.driver = webdriver.Chrome(
-            service=Service(executable_path=settings.driver_path),
+            service=service,
             options=self.chrome_options
         )
         self.driver.set_page_load_timeout(settings.page_load_timeout)
-        logger.info(f"Thread {self.agent_name}: Webdriver restart successfully")
+        logger.info(f"Thread {self.agent_name}: Webdriver restart successfully (hidden window)")
 
     def stop(self):
         self.stop_event.set()

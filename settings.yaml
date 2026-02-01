@@ -13,9 +13,9 @@ profiles:
     alive_time: 10800
     record_interval: 300  # 每 5 分钟记录一次
     page_load_timeout: 30
-    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_path: ./webTest/chrome-win/chrome.exe
     browser_data_path: ./chrome_data
-    driver_path: ./chromedriver-3
+    driver_path: ./chromedriver.exe
     resources_path: ./resources
     entry_url: https://github.com
     domains:
@@ -76,9 +76,9 @@ profiles:
     alive_time: 300
     record_interval: 60
     page_load_timeout: 30
-    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_path: ./webTest/chrome-win/chrome.exe
     browser_data_path: ./chrome_data
-    driver_path: ./chromedriver-3
+    driver_path: ./chromedriver.exe
     resources_path: ./resources
     entry_url: https://github.com
     domains:
@@ -131,9 +131,9 @@ profiles:
     record_interval: 60
     alive_time: 300
     page_load_timeout: 30
-    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_path: ./webTest/chrome-win/chrome.exe
     browser_data_path: ./chrome_data
-    driver_path: ./chromedriver-3
+    driver_path: ./chromedriver.exe
     resources_path: ./resources
     entry_url: https://github.com
     domains:
@@ -169,9 +169,9 @@ profiles:
     record_interval: 300
     alive_time: 10800
     page_load_timeout: 30
-    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_path: ./webTest/chrome-win/chrome.exe
     browser_data_path: ./chrome_data
-    driver_path: ./chromedriver-3
+    driver_path: ./chromedriver.exe
     resources_path: ./resources
     entry_url: https://github.com
     domains:
@@ -208,9 +208,9 @@ profiles:
     record_interval: 300
     alive_time: 10800
     page_load_timeout: 30
-    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_path: ./webTest/chrome-win/chrome.exe
     browser_data_path: ./chrome_data
-    driver_path: ./chromedriver-3
+    driver_path: ./chromedriver.exe
     resources_path: ./resources
     entry_url: https://github.com
     domains:
@@ -259,9 +259,9 @@ profiles:
     record_interval: 300
     alive_time: 10800
     page_load_timeout: 30
-    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_path: ./webTest/chrome-win/chrome.exe
     browser_data_path: ./chrome_data
-    driver_path: ./chromedriver-3
+    driver_path: ./chromedriver.exe
     resources_path: ./resources
     entry_url: https://github.com
     domains:
@@ -315,9 +315,9 @@ profiles:
     record_interval: 300
     alive_time: 10800
     page_load_timeout: 30
-    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_path: ./webTest/chrome-win/chrome.exe
     browser_data_path: ./chrome_data
-    driver_path: ./chromedriver-3
+    driver_path: ./chromedriver.exe
     resources_path: ./resources
     entry_url: https://github.com
     domains:
@@ -365,14 +365,72 @@ profiles:
         icm_weight: 0.5            # ICM 奖励权重
         use_role_based: true       # 启用角色分工
 
+  # P-SHAQ: Portfolio-SHAQ with Financial Pricing
+  github-marl-3h-pshaq-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./webTest/chrome-win/chrome.exe
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver.exe
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.pshaq
+      class: PSHAQ
+      params:
+        agent_num: 5
+        entry_url: https://github.com
+        alive_time: 10800
+        algo_type: pshaq
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        # 基础参数
+        max_random: 0.9
+        min_random: 0.1
+        batch_size: 32
+        learning_rate: 0.001
+        update_target_interval: 20
+        update_network_interval: 4
+        gamma: 0.5
+        shapley_update_interval: 10
+        # P-SHAQ 特有参数 (Financial Pricing)
+        risk_weight: 0.3           # Sortino Ratio 权重
+        info_weight: 0.4           # Information Premium 权重
+        use_icm: true              # 启用内在好奇心模块
+        icm_weight: 0.5            # ICM 奖励权重
+        use_role_based: true       # 启用角色分工
+
   github-marl-3h-nndql-5agent:
     agent_num: 5
     record_interval: 300
     alive_time: 10800
     page_load_timeout: 30
-    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_path: ./webTest/chrome-win/chrome.exe
     browser_data_path: ./chrome_data
-    driver_path: ./chromedriver-3
+    driver_path: ./chromedriver.exe
     resources_path: ./resources
     entry_url: https://github.com
     domains:
@@ -422,9 +480,9 @@ profiles:
     record_interval: 300
     alive_time: 10800
     page_load_timeout: 30
-    browser_path: ./chrome-mac/Chromium.app/Contents/MacOS/Chromium
+    browser_path: ./webTest/chrome-win/chrome.exe
     browser_data_path: ./chrome_data
-    driver_path: ./chromedriver-3
+    driver_path: ./chromedriver.exe
     resources_path: ./resources
     entry_url: https://github.com
     domains:
@@ -466,3 +524,438 @@ profiles:
         update_network_interval: 4
         update_mixing_network_interval: 1
         gamma: 0.5
+
+  # ============================================================
+  # ASE 论文实验配置
+  # ============================================================
+  
+  # === Baseline: IQL (Independent Q-Learning) ===
+  github-marl-3h-iql-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./webTest/chrome-win/chrome.exe
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver.exe
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.iql
+      class: IQL
+      params:
+        agent_num: 5
+        entry_url: https://github.com
+        alive_time: 10800
+        algo_type: iql
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        model_load_type: new
+        max_random: 0.9
+        min_random: 0.3
+        batch_size: 32
+        learning_rate: 0.001
+        update_target_interval: 8
+        update_network_interval: 4
+        gamma: 0.5
+        stop_update: false
+
+  # === Baseline: VDN (Value Decomposition Network) ===
+  github-marl-3h-vdn-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./webTest/chrome-win/chrome.exe
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver.exe
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.marg_d
+      class: MargD
+      params:
+        model_module: model.dense_net
+        model_class: DenseNet
+        algo_type: vdn
+        using_mix: T
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        reward_function: A
+        batch_size: 32
+        mix_batch_size: 16
+        learning_rate: 0.001
+        max_random: 0.9
+        min_random: 0.3
+        update_target_interval: 8
+        update_network_interval: 4
+        update_mixing_network_interval: 1
+        gamma: 0.5
+
+  # === 消融实验: SHAQv2 without ICM ===
+  github-marl-3h-shaqv2-no-icm-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./webTest/chrome-win/chrome.exe
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver.exe
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.shaq_v2
+      class: SHAQv2
+      params:
+        agent_num: 5
+        entry_url: https://github.com
+        alive_time: 10800
+        algo_type: shaq_v2
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        max_random: 0.9
+        min_random: 0.1
+        batch_size: 32
+        learning_rate: 0.001
+        update_target_interval: 20
+        update_network_interval: 4
+        gamma: 0.5
+        shapley_update_interval: 10
+        use_icm: false
+        icm_weight: 0.0
+        use_role_based: true
+
+  # === 消融实验: SHAQv2 without Role-based ===
+  github-marl-3h-shaqv2-no-role-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./webTest/chrome-win/chrome.exe
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver.exe
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.shaq_v2
+      class: SHAQv2
+      params:
+        agent_num: 5
+        entry_url: https://github.com
+        alive_time: 10800
+        algo_type: shaq_v2
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        max_random: 0.9
+        min_random: 0.1
+        batch_size: 32
+        learning_rate: 0.001
+        update_target_interval: 20
+        update_network_interval: 4
+        gamma: 0.5
+        shapley_update_interval: 10
+        use_icm: true
+        icm_weight: 0.5
+        use_role_based: false
+
+  # === 消融实验: SHAQv2 Base (without ICM and Role) ===
+  github-marl-3h-shaqv2-base-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./webTest/chrome-win/chrome.exe
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver.exe
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.shaq_v2
+      class: SHAQv2
+      params:
+        agent_num: 5
+        entry_url: https://github.com
+        alive_time: 10800
+        algo_type: shaq_v2
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        max_random: 0.9
+        min_random: 0.1
+        batch_size: 32
+        learning_rate: 0.001
+        update_target_interval: 20
+        update_network_interval: 4
+        gamma: 0.5
+        shapley_update_interval: 10
+        use_icm: false
+        icm_weight: 0.0
+        use_role_based: false
+
+  # ============================================================
+  # RQ5: 多网站泛化性实验
+  # 在不同类型的网站上验证 SHAQv2 的泛化能力
+  # ============================================================
+
+  # === Wikipedia 测试 ===
+  wikipedia-shaqv2-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./webTest/chrome-win/chrome.exe
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver.exe
+    resources_path: ./resources
+    entry_url: https://en.wikipedia.org
+    domains:
+      - en.wikipedia.org
+      - wikipedia.org
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.shaq_v2
+      class: SHAQv2
+      params:
+        agent_num: 5
+        entry_url: https://en.wikipedia.org
+        alive_time: 10800
+        algo_type: shaq_v2
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        max_random: 0.9
+        min_random: 0.1
+        batch_size: 32
+        learning_rate: 0.001
+        update_target_interval: 20
+        update_network_interval: 4
+        gamma: 0.5
+        shapley_update_interval: 10
+        use_icm: true
+        icm_weight: 0.5
+        use_role_based: true
+
+  # === Stack Overflow 测试 ===
+  stackoverflow-shaqv2-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./webTest/chrome-win/chrome.exe
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver.exe
+    resources_path: ./resources
+    entry_url: https://stackoverflow.com
+    domains:
+      - stackoverflow.com
+      - www.stackoverflow.com
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.shaq_v2
+      class: SHAQv2
+      params:
+        agent_num: 5
+        entry_url: https://stackoverflow.com
+        alive_time: 10800
+        algo_type: shaq_v2
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        max_random: 0.9
+        min_random: 0.1
+        batch_size: 32
+        learning_rate: 0.001
+        update_target_interval: 20
+        update_network_interval: 4
+        gamma: 0.5
+        shapley_update_interval: 10
+        use_icm: true
+        icm_weight: 0.5
+        use_role_based: true
+
+  # === Bing 搜索测试 ===
+  bing-shaqv2-5agent:
+    agent_num: 5
+    record_interval: 300
+    alive_time: 10800
+    page_load_timeout: 30
+    browser_path: ./webTest/chrome-win/chrome.exe
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver.exe
+    resources_path: ./resources
+    entry_url: https://www.bing.com
+    domains:
+      - www.bing.com
+      - bing.com
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.shaq_v2
+      class: SHAQv2
+      params:
+        agent_num: 5
+        entry_url: https://www.bing.com
+        alive_time: 10800
+        algo_type: shaq_v2
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        max_random: 0.9
+        min_random: 0.1
+        batch_size: 32
+        learning_rate: 0.001
+        update_target_interval: 20
+        update_network_interval: 4
+        gamma: 0.5
+        shapley_update_interval: 10
+        use_icm: true
+        icm_weight: 0.5
+        use_role_based: true
