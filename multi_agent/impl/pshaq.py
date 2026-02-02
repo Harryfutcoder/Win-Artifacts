@@ -139,19 +139,159 @@ class VolatilityTracker:
 
 
 # ============================================================================
-# Component 2: Portfolio Valuator (投资组合估值器)
+# Component 2: Portfolio Valuator (投资组合估值器) - 修正版
 # ============================================================================
+#
+# 【核心修正】
+# 1. 仓位 w_i = R_total 的分配比例（而非探索率调整！）
+# 2. 信息价值 = 探索价值 + 验证价值 + 深化价值（而非"私有信息"）
+# 3. R_i = w_i × R_total，约束 Σ w_i = 1
+# ============================================================================
+
+class InformationValueModel:
+    """
+    信息价值模型 - 修正版
+    
+    【原问题】：错误地将"新状态发现"类比为"私有信息"
+    【修正】：信息是共享的，区分三种贡献价值：
+    
+    1. 探索价值 (Exploration Value): 首次发现新状态
+    2. 验证价值 (Verification Value): 独立到达已知状态（确认可达）
+    3. 深化价值 (Deepening Value): 在已知状态发现新 Bug/功能
+    """
+    
+    def __init__(self, n_agents: int):
+        self.n_agents = n_agents
+        
+        # 状态发现记录：state_hash -> {discoverer, verifiers, deepeners}
+        self.state_records: Dict[str, Dict] = {}
+        
+        # Agent 贡献统计
+        self.agent_exploration: Dict[str, int] = {str(i): 0 for i in range(n_agents)}
+        self.agent_verification: Dict[str, int] = {str(i): 0 for i in range(n_agents)}
+        self.agent_deepening: Dict[str, int] = {str(i): 0 for i in range(n_agents)}
+        
+        # 价值权重
+        self.EXPLORATION_WEIGHT = 1.0   # 首发奖励
+        self.VERIFICATION_WEIGHT = 0.3  # 验证也有价值！
+        self.DEEPENING_WEIGHT = 1.5     # 深化发现更有价值
+        
+    def record_visit(
+        self, 
+        agent_name: str, 
+        state_hash: str, 
+        found_new_bug: bool = False
+    ) -> Tuple[str, float]:
+        """
+        记录 Agent 访问状态
+        
+        Returns:
+            (contribution_type, value): 贡献类型和价值
+        """
+        if state_hash not in self.state_records:
+            # 首次发现 -> 探索价值
+            self.state_records[state_hash] = {
+                'discoverer': agent_name,
+                'verifiers': set(),
+                'deepeners': set(),
+                'visit_count': 1
+            }
+            self.agent_exploration[agent_name] = self.agent_exploration.get(agent_name, 0) + 1
+            return ('exploration', self.EXPLORATION_WEIGHT)
+        
+        record = self.state_records[state_hash]
+        record['visit_count'] += 1
+        
+        if found_new_bug:
+            # 在已知状态发现新 Bug -> 深化价值
+            if agent_name not in record['deepeners']:
+                record['deepeners'].add(agent_name)
+                self.agent_deepening[agent_name] = self.agent_deepening.get(agent_name, 0) + 1
+                return ('deepening', self.DEEPENING_WEIGHT)
+        
+        if agent_name != record['discoverer'] and agent_name not in record['verifiers']:
+            # 独立到达 -> 验证价值（不是 0！）
+            record['verifiers'].add(agent_name)
+            self.agent_verification[agent_name] = self.agent_verification.get(agent_name, 0) + 1
+            return ('verification', self.VERIFICATION_WEIGHT)
+        
+        # 重复访问自己发现的状态，价值递减
+        return ('revisit', 0.1)
+    
+    def compute_total_value(self, agent_name: str) -> float:
+        """计算 Agent 的总信息价值"""
+        exploration = self.agent_exploration.get(agent_name, 0) * self.EXPLORATION_WEIGHT
+        verification = self.agent_verification.get(agent_name, 0) * self.VERIFICATION_WEIGHT
+        deepening = self.agent_deepening.get(agent_name, 0) * self.DEEPENING_WEIGHT
+        return exploration + verification + deepening
+    
+    def get_info_breakdown(self, agent_name: str) -> Dict[str, float]:
+        """获取信息价值分解"""
+        return {
+            'exploration': self.agent_exploration.get(agent_name, 0),
+            'verification': self.agent_verification.get(agent_name, 0),
+            'deepening': self.agent_deepening.get(agent_name, 0),
+            'total_value': self.compute_total_value(agent_name)
+        }
+
+
+class TeamRewardPool:
+    """
+    团队奖励池 - 用于正确的仓位分配
+    
+    【核心修正】
+    金融中的仓位 = 资金分配比例
+    MARL 中的仓位 = R_total 的分配比例
+    
+    公式：R_i = w_i × R_total，约束 Σ w_i = 1
+    """
+    
+    def __init__(self, n_agents: int):
+        self.n_agents = n_agents
+        self.current_step_base_rewards: Dict[str, float] = {}
+        self.step_counter = 0
+        
+    def record_base_reward(self, agent_name: str, base_reward: float):
+        """记录 Agent 的基础奖励（用于计算 R_total）"""
+        self.current_step_base_rewards[agent_name] = base_reward
+    
+    def compute_r_total(self) -> float:
+        """计算团队总奖励 R_total"""
+        return sum(self.current_step_base_rewards.values())
+    
+    def distribute_rewards(self, weights: Dict[str, float]) -> Dict[str, float]:
+        """
+        根据仓位分配奖励
+        
+        R_i = w_i × R_total
+        """
+        r_total = self.compute_r_total()
+        distributed = {}
+        
+        for agent_name, weight in weights.items():
+            distributed[agent_name] = weight * r_total
+        
+        return distributed
+    
+    def clear_step(self):
+        """清空当前步骤"""
+        self.current_step_base_rewards = {}
+        self.step_counter += 1
+
 
 class PortfolioValuator:
     """
-    投资组合估值器：为每个 Agent 计算综合估值
+    投资组合估值器 - 修正版
     
-    核心公式：
-        Valuation = Shapley_Value + α * Risk_Premium + β * Information_Premium
+    【核心修正】
+    1. 仓位 w_i 是 R_total 的分配比例（不是探索率调整！）
+    2. 使用正确的信息价值模型（探索+验证+深化）
+    3. R_i = w_i × R_total，约束 Σ w_i = 1
     
-    其中：
-    - Risk_Premium 基于 Sortino Ratio（只惩罚下行风险）
-    - Information_Premium 基于新状态发现（私有信息价值）
+    公式：
+        w_i^{base} = φ_i (Shapley Value，已归一化)
+        w_i^{adj} = w_i^{base} × (1 + α×(Sortino-1) + β×InfoValue)
+        w_i = w_i^{adj} / Σ w_j^{adj}  (归一化确保 Σ=1)
     """
     
     def __init__(
@@ -159,76 +299,84 @@ class PortfolioValuator:
         n_agents: int, 
         risk_weight: float = 0.3,
         info_weight: float = 0.4,
-        mar: float = 0.0  # Minimum Acceptable Return
+        mar: float = 0.0
     ):
         self.n_agents = n_agents
         self.risk_weight = risk_weight
         self.info_weight = info_weight
         self.mar = mar
         
-        # 每个 Agent 的追踪器
+        # 波动率追踪器
         self.trackers: Dict[str, VolatilityTracker] = {
             str(i): VolatilityTracker() for i in range(n_agents)
         }
         
-        # 全局新状态追踪
+        # 【修正】使用正确的信息价值模型
+        self.info_model = InformationValueModel(n_agents)
+        
+        # 【修正】团队奖励池
+        self.reward_pool = TeamRewardPool(n_agents)
+        
+        # 历史记录
+        self.valuation_history: List[Dict] = []
+        
+        # 统计
         self.total_new_states = 0
         self.agent_new_states: Dict[str, int] = {str(i): 0 for i in range(n_agents)}
         
-        # 历史估值（用于诊断）
-        self.valuation_history: List[Dict] = []
+    def update(
+        self, 
+        agent_name: str, 
+        reward: float, 
+        state_hash: str = "",
+        found_new_bug: bool = False
+    ):
+        """更新 Agent 数据"""
+        # 更新波动率追踪
+        is_new_state = state_hash and state_hash not in [
+            h for h in self.info_model.state_records.keys()
+        ]
         
-    def update(self, agent_name: str, reward: float, is_new_state: bool = False):
-        """更新 Agent 的追踪数据"""
         if agent_name in self.trackers:
             self.trackers[agent_name].update(reward, is_new_state)
-            if is_new_state:
+        
+        # 【修正】使用正确的信息价值模型
+        if state_hash:
+            contrib_type, contrib_value = self.info_model.record_visit(
+                agent_name, state_hash, found_new_bug
+            )
+            if contrib_type == 'exploration':
                 self.total_new_states += 1
                 self.agent_new_states[agent_name] = self.agent_new_states.get(agent_name, 0) + 1
     
     def compute_sortino_ratio(self, agent_name: str) -> float:
-        """
-        计算 Sortino Ratio
-        
-        Sortino = (Mean Return - MAR) / Downside Deviation
-        
-        优势：只惩罚下行风险（失败），不惩罚上行波动（探索成功）
-        """
+        """计算 Sortino Ratio"""
         tracker = self.trackers.get(agent_name)
         if not tracker or len(tracker.rewards) < 5:
-            return 1.0  # 初期给高值鼓励探索
+            return 1.0
         
         mean_return = tracker.mean_return
         downside_dev = tracker.downside_volatility
         
         sortino = (mean_return - self.mar) / downside_dev
-        
-        # 归一化到 0-2 范围
         return max(0.0, min(2.0, sortino + 1.0))
     
-    def compute_information_premium(self, agent_name: str) -> float:
+    def compute_information_value(self, agent_name: str) -> float:
         """
-        计算信息溢价
-        
-        金融启发：发现新状态 = 拥有私有信息 = 做市商价差
+        计算信息价值 - 使用修正后的三层模型
         """
-        if self.total_new_states == 0:
-            return 0.0
+        total_value = self.info_model.compute_total_value(agent_name)
         
-        agent_discoveries = self.agent_new_states.get(agent_name, 0)
+        # 归一化
+        all_values = [self.info_model.compute_total_value(str(i)) for i in range(self.n_agents)]
+        max_value = max(all_values) if all_values else 1.0
         
-        # 信息溢价 = 该 Agent 发现的新状态占比
-        info_share = agent_discoveries / max(self.total_new_states, 1)
-        
-        # 奖励探索者：发现越多新状态，溢价越高
-        return info_share * 2.0  # 最大 2.0
+        if max_value > 0:
+            return total_value / max_value
+        return 0.0
     
     def compute_upside_potential(self, agent_name: str) -> float:
-        """
-        计算上行潜力（期权价值的简化版）
-        
-        金融启发：高上行波动 = 看涨期权价值高
-        """
+        """计算上行潜力"""
         tracker = self.trackers.get(agent_name)
         if not tracker:
             return 0.0
@@ -236,12 +384,95 @@ class PortfolioValuator:
         upside_vol = tracker.upside_volatility
         downside_vol = tracker.downside_volatility
         
-        # 上行/下行比率：如果上行波动大于下行，说明有潜力
         if downside_vol < 0.01:
             return 1.0
         
         ratio = upside_vol / downside_vol
-        return min(2.0, ratio)  # 最大 2.0
+        return min(2.0, ratio)
+    
+    def compute_weights(
+        self, 
+        shapley_values: Dict[str, float],
+        remaining_steps_ratio: float = 1.0
+    ) -> Dict[str, float]:
+        """
+        计算仓位权重
+        
+        【核心】这是 R_total 的分配比例，不是探索率调整！
+        
+        公式：
+            w_i^{base} = φ_i
+            w_i^{adj} = w_i^{base} × (1 + α×(Sortino-1) + β×InfoValue + γ×Upside×TimeRatio)
+            w_i = w_i^{adj} / Σ w_j^{adj}
+        
+        约束：Σ w_i = 1
+        """
+        raw_weights = {}
+        
+        for agent_name, shapley in shapley_values.items():
+            # 1. 基础仓位 = Shapley Value
+            base_weight = shapley
+            
+            # 2. Sortino 调整
+            sortino = self.compute_sortino_ratio(agent_name)
+            sortino_adj = self.risk_weight * (sortino - 1.0)
+            
+            # 3. 信息价值调整（使用修正后的模型）
+            info_value = self.compute_information_value(agent_name)
+            info_adj = self.info_weight * info_value
+            
+            # 4. 上行潜力 × 时间因子
+            upside = self.compute_upside_potential(agent_name)
+            time_adj = 0.1 * upside * remaining_steps_ratio
+            
+            # 5. 综合调整
+            adjustment = 1.0 + sortino_adj + info_adj + time_adj
+            adjustment = max(0.1, adjustment)  # 防止负数
+            
+            raw_weights[agent_name] = base_weight * adjustment
+            
+            # 记录历史
+            self.valuation_history.append({
+                'agent': agent_name,
+                'base_weight': base_weight,
+                'sortino_adj': sortino_adj,
+                'info_adj': info_adj,
+                'time_adj': time_adj,
+                'final_raw_weight': raw_weights[agent_name]
+            })
+        
+        if len(self.valuation_history) > 1000:
+            self.valuation_history = self.valuation_history[-1000:]
+        
+        # 6. 归一化（确保 Σ w_i = 1）
+        total = sum(raw_weights.values())
+        if total > 0:
+            return {k: v / total for k, v in raw_weights.items()}
+        else:
+            return {k: 1.0 / len(raw_weights) for k in raw_weights}
+    
+    def distribute_r_total(
+        self,
+        r_total: float,
+        shapley_values: Dict[str, float],
+        remaining_steps_ratio: float = 1.0
+    ) -> Dict[str, float]:
+        """
+        分配团队总奖励
+        
+        【核心公式】R_i = w_i × R_total
+        """
+        weights = self.compute_weights(shapley_values, remaining_steps_ratio)
+        return {agent: w * r_total for agent, w in weights.items()}
+    
+    # 保留旧接口的兼容性
+    def get_portfolio_weights(
+        self, 
+        shapley_values: Dict[str, float],
+        remaining_steps_ratio: float = 1.0
+    ) -> Dict[str, float]:
+        """获取仓位权重（兼容旧接口）"""
+        return self.compute_weights(shapley_values, remaining_steps_ratio)
     
     def compute_valuation(
         self, 
@@ -249,75 +480,21 @@ class PortfolioValuator:
         shapley_value: float,
         remaining_steps_ratio: float = 1.0
     ) -> Tuple[float, Dict[str, float]]:
-        """
-        计算 Agent 的综合估值
-        
-        Args:
-            agent_name: Agent 名称
-            shapley_value: 传统 Shapley 值
-            remaining_steps_ratio: 剩余步数比例（用于时间价值）
-        
-        Returns:
-            (total_valuation, breakdown_dict)
-        """
-        # 1. 基础价值：Shapley
-        base_value = shapley_value
-        
-        # 2. 风险溢价：Sortino Ratio
-        sortino = self.compute_sortino_ratio(agent_name)
-        risk_premium = self.risk_weight * sortino
-        
-        # 3. 信息溢价：新状态发现
-        info_premium = self.info_weight * self.compute_information_premium(agent_name)
-        
-        # 4. 上行潜力（类似期权的时间价值）
-        upside = self.compute_upside_potential(agent_name)
-        time_value = 0.1 * upside * remaining_steps_ratio  # 随时间递减
-        
-        # 综合估值
-        total_valuation = base_value + risk_premium + info_premium + time_value
+        """计算估值（兼容旧接口，但内部使用新逻辑）"""
+        weights = self.compute_weights({agent_name: shapley_value}, remaining_steps_ratio)
+        weight = weights.get(agent_name, shapley_value)
         
         breakdown = {
-            'base_value': base_value,
-            'risk_premium': risk_premium,
-            'info_premium': info_premium,
-            'time_value': time_value,
-            'sortino_ratio': sortino,
-            'upside_potential': upside,
+            'base_value': shapley_value,
+            'risk_premium': self.risk_weight * self.compute_sortino_ratio(agent_name),
+            'info_premium': self.info_weight * self.compute_information_value(agent_name),
+            'time_value': 0.1 * self.compute_upside_potential(agent_name) * remaining_steps_ratio,
+            'sortino_ratio': self.compute_sortino_ratio(agent_name),
+            'upside_potential': self.compute_upside_potential(agent_name),
+            'final_weight': weight,
         }
         
-        # 记录历史
-        self.valuation_history.append({
-            'agent': agent_name,
-            'valuation': total_valuation,
-            **breakdown
-        })
-        if len(self.valuation_history) > 1000:
-            self.valuation_history = self.valuation_history[-1000:]
-        
-        return total_valuation, breakdown
-    
-    def get_portfolio_weights(
-        self, 
-        shapley_values: Dict[str, float],
-        remaining_steps_ratio: float = 1.0
-    ) -> Dict[str, float]:
-        """
-        获取投资组合权重（归一化的 Agent 估值）
-        
-        类似于 ETF 中各成分股的权重
-        """
-        valuations = {}
-        for agent_name, shapley in shapley_values.items():
-            val, _ = self.compute_valuation(agent_name, shapley, remaining_steps_ratio)
-            valuations[agent_name] = max(0.01, val)  # 确保正数
-        
-        # 归一化
-        total = sum(valuations.values())
-        if total > 0:
-            return {k: v / total for k, v in valuations.items()}
-        else:
-            return {k: 1.0 / len(valuations) for k in valuations}
+        return weight, breakdown
     
     def get_diagnostic_report(self) -> Dict:
         """获取诊断报告"""
@@ -327,6 +504,7 @@ class PortfolioValuator:
         }
         
         for agent_name, tracker in self.trackers.items():
+            info_breakdown = self.info_model.get_info_breakdown(agent_name)
             report['agent_metrics'][agent_name] = {
                 'mean_return': tracker.mean_return,
                 'volatility': tracker.volatility,
@@ -334,7 +512,8 @@ class PortfolioValuator:
                 'upside_vol': tracker.upside_volatility,
                 'new_state_rate': tracker.new_state_rate,
                 'sortino_ratio': self.compute_sortino_ratio(agent_name),
-                'info_premium': self.compute_information_premium(agent_name),
+                'info_value': self.compute_information_value(agent_name),
+                'info_breakdown': info_breakdown,  # 探索/验证/深化分解
             }
         
         return report
@@ -541,56 +720,63 @@ class PSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         self, 
         agent_name: str, 
         base_reward: float,
-        is_new_state: bool = False
+        state_hash: str = "",
+        found_new_bug: bool = False
     ) -> float:
         """
-        计算投资组合调整后的奖励
+        计算投资组合调整后的奖励 - 修正版
         
-        核心创新：用金融定价替代简单的奖励
+        【核心修正】
+        原来的错误：R_i = R_base × V_i（用估值放大奖励）
+        修正后：R_i = w_i × R_total（用仓位分配团队奖励）
+        
+        由于多 Agent 异步执行，这里使用简化版：
+        R_i = base_reward × (w_i × n_agents)
+        
+        这等价于：如果所有 Agent 贡献相同，按仓位重新分配
         """
-        # 1. 更新追踪器
-        self.portfolio_valuator.update(agent_name, base_reward, is_new_state)
+        # 1. 更新追踪器（使用修正后的信息价值模型）
+        self.portfolio_valuator.update(agent_name, base_reward, state_hash, found_new_bug)
         
-        # 2. 获取当前 Shapley 值
-        shapley = self.cached_shapley_values.get(agent_name, 1.0 / self.agent_num)
+        # 2. 记录到团队奖励池
+        self.portfolio_valuator.reward_pool.record_base_reward(agent_name, base_reward)
         
-        # 3. 计算投资组合估值
+        # 3. 获取仓位权重
         remaining_ratio = self._get_remaining_steps_ratio()
-        valuation, breakdown = self.portfolio_valuator.compute_valuation(
-            agent_name, shapley, remaining_ratio
+        weights = self.portfolio_valuator.compute_weights(
+            self.cached_shapley_values, remaining_ratio
         )
+        weight = weights.get(agent_name, 1.0 / self.agent_num)
         
-        # 4. 调整奖励：基础奖励 * 估值倍数
-        adjusted_reward = base_reward * valuation
+        # 4.【修正】使用仓位分配奖励
+        # 简化版：R_i = base_reward × (w_i × n_agents)
+        # 这保证了如果所有 Agent 贡献相同，总奖励不变
+        adjusted_reward = base_reward * weight * self.agent_num
         
         # 日志（每100步记录一次）
         if self.learn_step_count % 100 == 0:
-            logger.debug(f"[P-SHAQ Valuation] Agent {agent_name}: "
-                        f"base={base_reward:.2f}, valuation={valuation:.3f}, "
+            info_breakdown = self.portfolio_valuator.info_model.get_info_breakdown(agent_name)
+            logger.debug(f"[P-SHAQ Reward] Agent {agent_name}: "
+                        f"base={base_reward:.2f}, weight={weight:.3f}, "
                         f"adjusted={adjusted_reward:.2f}, "
-                        f"sortino={breakdown['sortino_ratio']:.2f}, "
-                        f"info_premium={breakdown['info_premium']:.2f}")
+                        f"info_breakdown={info_breakdown}")
         
         return adjusted_reward
     
     def choose_action(self, agent_name: str, state: WebState, action_list: List[WebAction]) -> WebAction:
-        """选择动作（与 SHAQv2 类似，但使用投资组合权重调整探索率）"""
+        """
+        选择动作
+        
+        【修正】不再用仓位调整探索率！
+        仓位是用于 R_total 分配的，不是用于调整 ε 的。
+        使用标准的时间衰减 ε-greedy。
+        """
         if len(action_list) == 0:
             return RestartAction()
         
-        # 获取投资组合权重
-        weights = self.portfolio_valuator.get_portfolio_weights(
-            self.cached_shapley_values,
-            self._get_remaining_steps_ratio()
-        )
-        agent_weight = weights.get(agent_name, 1.0 / self.agent_num)
-        
-        # 探索率：权重高的 Agent 探索更多
+        # 【修正】标准 ε-greedy，不用仓位调整
         progress = 1.0 - self._get_remaining_steps_ratio()
-        base_epsilon = self.max_random - (self.max_random - self.min_random) * progress
-        
-        # 权重调整：高权重 Agent 更积极探索
-        epsilon = base_epsilon * (0.8 + 0.4 * agent_weight * self.agent_num)
+        epsilon = self.max_random - (self.max_random - self.min_random) * progress
         epsilon = min(self.max_random, max(self.min_random, epsilon))
         
         if random.random() < epsilon:
@@ -811,7 +997,12 @@ class PSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         return tensor.float()
     
     def get_action_algorithm(self, web_state: WebState, html: str, agent_name: str) -> WebAction:
-        """动作选择 - P-SHAQ 核心：使用投资组合权重调整探索率"""
+        """
+        动作选择 - 修正版
+        
+        【修正】仓位是用于 R_total 分配的，不是用于调整探索率的！
+        使用标准的时间衰减 ε-greedy 策略。
+        """
         self.update_state_records(web_state, html, agent_name)
         
         actions = web_state.get_action_list()
@@ -840,23 +1031,13 @@ class PSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         
         logger.info(f"[{agent_name}] P-SHAQ max Q: {max_val:.4f}")
         
-        # P-SHAQ 核心：使用投资组合权重调整 ε-greedy
+        # 【修正】标准 ε-greedy，不再用仓位调整探索率
         time_diff = (datetime.now() - self.start_time).total_seconds()
         time_diff = min(time_diff, self.alive_time)
         
-        base_epsilon = self.max_random - min(time_diff / self.alive_time * 2, 1.0) * (
+        epsilon = self.max_random - min(time_diff / self.alive_time * 2, 1.0) * (
             self.max_random - self.min_random
         )
-        
-        # 使用投资组合权重调整探索率
-        weights = self.portfolio_valuator.get_portfolio_weights(
-            self.cached_shapley_values,
-            self._get_remaining_steps_ratio()
-        )
-        agent_weight = weights.get(agent_name, 1.0 / self.agent_num)
-        
-        # 高权重 Agent 更积极探索（金融启发：高估值股票更受关注）
-        epsilon = base_epsilon * (0.8 + 0.4 * agent_weight * self.agent_num)
         epsilon = min(self.max_random, max(self.min_random, epsilon))
         
         if random.uniform(0, 1) < epsilon:
@@ -906,11 +1087,16 @@ class PSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         self.learn_agent(agent_name)
     
     def get_reward(self, web_state: WebState, html: str, agent_name: str) -> float:
-        """计算奖励 - 使用 P-SHAQ 投资组合调整"""
+        """
+        计算奖励 - 修正版
+        
+        【核心修正】使用仓位分配 R_total，而非用估值放大奖励
+        公式：R_i = w_i × R_total（简化版：R_i = base × w_i × n_agents）
+        """
         # 基础奖励：使用三层奖励系统
         browser_logs, performance_logs = self.get_agent_logs(agent_name)
         
-        base_reward, _ = self.reward_system.compute_three_tier_reward(
+        base_reward, breakdown = self.reward_system.compute_three_tier_reward(
             web_state=web_state,
             action=self.prev_action_dict.get(agent_name),
             browser_logs=browser_logs,
@@ -920,21 +1106,14 @@ class PSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
             agent_name=agent_name
         )
         
-        # 检查是否是新状态
+        # 检查是否是新状态和是否发现新 Bug
         state_hash = self.dom_encoder.compute_structure_hash(html) if html else ""
-        is_new_state = state_hash and hash(state_hash) not in self._seen_dom_signatures
-        if is_new_state and state_hash:
-            self._seen_dom_signatures.add(hash(state_hash))
+        found_new_bug = breakdown.get('target:js_error', 0) > 0 or breakdown.get('target:http_error', 0) > 0
         
-        # P-SHAQ 核心：投资组合调整
-        self.portfolio_valuator.update(agent_name, base_reward, is_new_state)
-        
-        # 计算调整后的奖励
-        shapley = self.cached_shapley_values.get(agent_name, 1.0 / self.agent_num)
-        remaining_ratio = self._get_remaining_steps_ratio()
-        valuation, _ = self.portfolio_valuator.compute_valuation(agent_name, shapley, remaining_ratio)
-        
-        adjusted_reward = base_reward * valuation
+        # 【修正】使用正确的仓位分配方法
+        adjusted_reward = self._compute_portfolio_adjusted_reward(
+            agent_name, base_reward, state_hash, found_new_bug
+        )
         
         return adjusted_reward
     

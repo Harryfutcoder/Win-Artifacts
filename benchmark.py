@@ -703,6 +703,10 @@ class BenchmarkRunner:
         'pshaq': 'github-marl-3h-pshaq-5agent',
         'p-shaq': 'github-marl-3h-pshaq-5agent',
         'portfolio-shaq': 'github-marl-3h-pshaq-5agent',
+        # JD-PSHAQ: Jump Diffusion P-SHAQ
+        'jdpshaq': 'github-marl-3h-jdpshaq-5agent',
+        'jd-pshaq': 'github-marl-3h-jdpshaq-5agent',
+        'jd_pshaq': 'github-marl-3h-jdpshaq-5agent',
         # ASE 论文实验配置
         'iql': 'github-marl-3h-iql-5agent',
         'vdn': 'github-marl-3h-vdn-5agent',
@@ -765,7 +769,9 @@ class BenchmarkRunner:
         agent_class = profile_config.get('agent', {}).get('class', '')
         algo_type = profile_config.get('agent', {}).get('params', {}).get('algo_type', '')
         
-        if 'pshaq' in agent_module.lower() or agent_class.lower() == 'pshaq':
+        if 'jd_pshaq' in agent_module.lower() or agent_class.lower() == 'jdpshaq':
+            return 'JD-PSHAQ'
+        elif 'pshaq' in agent_module.lower() or agent_class.lower() == 'pshaq':
             return 'P-SHAQ'
         elif 'shaq_v2' in agent_module.lower() or agent_class.lower() == 'shaqv2':
             return 'SHAQv2'
@@ -1517,7 +1523,8 @@ class BenchmarkVisualizer:
     # 论文风格配色（区分度高，打印友好）
     # 注意：匹配时按 key 长度降序，避免 'SHAQ' 错误匹配 'SHAQv2' 或 'P-SHAQ'
     COLORS = {
-        'P-SHAQ': '#17becf',    # 青色 (新算法，突出显示)
+        'JD-PSHAQ': '#e41a1c',  # 鲜红色 (跳跃扩散，最新算法)
+        'P-SHAQ': '#17becf',    # 青色 (金融定价)
         'SHAQv2': '#2ca02c',    # 绿色
         'SHAQ': '#1f77b4',      # 蓝色
         'QTRAN': '#ff7f0e',     # 橙色
