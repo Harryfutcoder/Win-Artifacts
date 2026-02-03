@@ -1077,6 +1077,21 @@ class TeamRewardAggregator:
         """记录 Agent 的基础奖励"""
         self.current_step_rewards[agent_name] = reward
     
+    def record_adjusted_reward(self, agent_name: str, base_reward: float, 
+                                adjusted_reward: float, exploration_bonus: float):
+        """
+        【v3.0 新增】记录调整后的奖励，用于追踪探索红利效果
+        """
+        if not hasattr(self, 'adjusted_reward_history'):
+            self.adjusted_reward_history = []
+        self.adjusted_reward_history.append({
+            'agent': agent_name,
+            'base': base_reward,
+            'adjusted': adjusted_reward,
+            'bonus': exploration_bonus,
+            'step': self.step_counter
+        })
+    
     def compute_r_total(self) -> float:
         """计算团队总奖励"""
         return sum(self.current_step_rewards.values())
@@ -1358,8 +1373,31 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         dynamic_temp = 0.5 + 1.5 * remaining_time
         self.weight_calculator.set_temperature(dynamic_temp)
         
-        # 学习
-        self.learn_agent(agent_name, base_reward)
+        # 【v3.0 关键修复】计算包含探索红利的最终奖励
+        # 之前直接使用 base_reward，导致探索红利完全失效！
+        # 现在使用 compute_adjusted_reward 将探索红利加到奖励中
+        adjusted_reward = self.weight_calculator.compute_adjusted_reward(
+            agent_name,
+            base_reward,
+            exploration_bonus_scale=1.0  # 探索红利缩放因子
+        )
+        
+        # 计算探索红利用于记录
+        exploration_bonus = adjusted_reward - base_reward
+        
+        # 【v3.0 新增】记录调整后的奖励，追踪探索红利效果
+        self.team_aggregator.record_adjusted_reward(
+            agent_name, base_reward, adjusted_reward, exploration_bonus
+        )
+        
+        # 每 100 步打印一次探索红利统计（调试用）
+        if self.learn_step_count % 100 == 0 and exploration_bonus > 0.01:
+            logger.debug(f"[JD-PSHAQ v3.0] {agent_name}: base={base_reward:.2f}, "
+                        f"bonus={exploration_bonus:.2f}, final={adjusted_reward:.2f}")
+        
+        # 【修复】使用包含探索红利的 adjusted_reward 进行学习
+        # R_final = R_base + β × ExplorationBonus
+        self.learn_agent(agent_name, adjusted_reward)
     
     def _compute_base_reward(self, web_state: WebState, html: str, 
                               agent_name: str, found_bug: bool = False) -> float:
