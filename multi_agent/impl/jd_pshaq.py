@@ -1385,7 +1385,8 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         
         # 动作多样性
         if isinstance(web_state, ActionSetWithExecutionTimesState):
-            reward += min(web_state.action_number * 0.1, 5.0)
+            action_count = len(web_state.get_action_list())
+            reward += min(action_count * 0.1, 5.0)
         
         # 【修正】Bug 发现奖励（这会触发 JD 模型中的正向跳跃）
         if found_bug:

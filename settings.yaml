@@ -423,6 +423,63 @@ profiles:
         icm_weight: 0.5            # ICM 奖励权重
         use_role_based: true       # 启用角色分工
 
+  # JD-PSHAQ v3.0 Dry Run: 快速验证配置（3 agents，60秒）
+  jdpshaq-v3-dryrun:
+    agent_num: 3
+    record_interval: 15
+    alive_time: 60
+    page_load_timeout: 30
+    browser_path: ./webTest/chrome-win/chrome.exe
+    browser_data_path: ./chrome_data
+    driver_path: ./chromedriver.exe
+    resources_path: ./resources
+    entry_url: https://github.com
+    domains:
+      - www.github.com
+      - github.com
+    browser_arguments:
+      - --headless
+    action_detector:
+      module: action.detector.combination_detector
+      class: CombinationDetector
+      detectors:
+        - module: action.detector.click_action_detector
+          class: ClickActionDetector
+        - module: action.detector.random_input_action_detector
+          class: RandomInputActionDetector
+        - module: action.detector.random_select_action_detector
+          class: RandomSelectActionDetector
+    state:
+      module: state.impl.action_set_with_execution_times_state
+      class: ActionSetWithExecutionTimesState
+    agent:
+      module: multi_agent.impl.jd_pshaq
+      class: JDPSHAQ
+      params:
+        agent_num: 3
+        entry_url: https://github.com
+        alive_time: 60
+        algo_type: jd_pshaq_v3
+        reward_function: A
+        transformer_module: transformer.impl.tag_transformer
+        transformer_class: TagTransformer
+        model_module: model.dense_net
+        model_class: DenseNet
+        # 基础参数
+        max_random: 0.8
+        min_random: 0.2
+        batch_size: 16
+        learning_rate: 0.001
+        update_target_interval: 10
+        update_network_interval: 2
+        gamma: 0.5
+        shapley_update_interval: 5
+        # JD-PSHAQ v3.0 特有参数
+        alpha: 0.3
+        beta: 0.2
+        gamma_info: 0.2
+        temperature: 1.0
+
   # JD-PSHAQ: Jump Diffusion P-SHAQ (基于跳跃扩散 SDE)
   github-marl-3h-jdpshaq-5agent:
     agent_num: 5
