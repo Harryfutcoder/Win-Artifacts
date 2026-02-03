@@ -44,7 +44,7 @@ FIGURE_DIR = WORKSPACE / "benchmark_figures"
 REPORT_FILE = WORKSPACE / "ase_experiment_results" / "final_report.txt"
 PYTHON_EXE = r"D:\Anaconda\python.exe"
 
-ALGORITHMS = ['shaqv2', 'shaq', 'qtran', 'vdn', 'nndql', 'pshaq']
+ALGORITHMS = ['shaqv2', 'shaq', 'qtran', 'vdn', 'nndql', 'pshaq', 'jdpshaq']
 
 # Test parameters
 DURATION = 10800  # 3 hours per run

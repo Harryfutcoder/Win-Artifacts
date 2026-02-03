@@ -49,45 +49,45 @@ def configure_chrome_options():
 
 
 def main():
-    print("[Debug] 程序已启动")
-    logger.info("[Debug] 程序已启动")
+    print("[Debug] Program started")
+    logger.info("[Debug] Program started")
 
-    # 配置 Chrome 选项
+    # Configure Chrome options
     chrome_options = configure_chrome_options()
-    print("[Debug] Chrome Options 配置完成")
-    logger.info("[Debug] Chrome Options 配置完成")
+    print("[Debug] Chrome Options configured")
+    logger.info("[Debug] Chrome Options configured")
 
-    # 加载 Profile 配置
-    print(f"[Debug] 加载配置文件，使用的 profile: {settings.profile}")
+    # Load Profile configuration
+    print(f"[Debug] Loading config, using profile: {settings.profile}")
     logger.info(f"[Debug] profile is {settings.profile}")
 
     try:
         if settings.agent_num == 1:
-            print("[Debug] 初始化单 Agent...")
+            print("[Debug] Initializing single Agent...")
             webtest = Webtest(chrome_options)
-            print("[Debug] Webtest 初始化完成")
+            print("[Debug] Webtest initialized")
         else:
-            print(f"[Debug] 初始化多 Agent ({settings.agent_num} 个)...")
+            print(f"[Debug] Initializing multi Agent ({settings.agent_num} agents)...")
             webtest = WebtestMultiAgent(chrome_options)
-            print("[Debug] WebtestMultiAgent 初始化完成")
+            print("[Debug] WebtestMultiAgent initialized")
 
-        print("[Debug] 启动 Webtest 和 DataCollector")
+        print("[Debug] Starting Webtest and DataCollector")
         data_collector = DataCollectorMultiAgent(webtest)
         data_collector.start()
         webtest.start()
 
-        print("[Debug] 正在等待测试完成...")
+        print("[Debug] Waiting for test to complete...")
         time.sleep(settings.alive_time)
 
-        print("[Debug] 测试完成，清理进程...")
+        print("[Debug] Test completed, cleaning up...")
         webtest.stop()
         data_collector.stop()
         data_collector.join()
 
-        print("[Debug] 程序运行完成")
+        print("[Debug] Program completed")
     except Exception as e:
-        print(f"[Error] 程序运行时出错: {type(e)} - {str(e)}")
-        logger.error(f"程序运行时出错: {type(e)} - {str(e)}")
+        print(f"[Error] Program error: {type(e)} - {str(e)}")
+        logger.error(f"Program error: {type(e)} - {str(e)}")
         raise e
     os.makedirs(settings.output_path, exist_ok=True)
     os.makedirs(settings.model_path, exist_ok=True)
