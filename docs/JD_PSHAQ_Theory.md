@@ -1,5 +1,16 @@
-# JD-PSHAQ: Jump Diffusion Portfolio-SHAQ
-## 基于默顿跳跃扩散过程的多智能体 Web 测试信度分配算法
+# JD-IQL: Jump Diffusion Independent Q-Learning (v3.1)
+## 基于默顿跳跃扩散过程的多智能体探索激励算法
+
+> **架构说明 (v3.1)**
+> 
+> 本算法的本质是 **IQL (Independent Q-Learning) + Jump Diffusion Exploration Bonus**
+> 
+> 它**不是**真正的 SHAQ，因为：
+> 1. 没有使用 Mixing Network 计算联合 Q 值 ($Q_{tot}$)
+> 2. 没有使用 Lovász 扩展计算真正的 Shapley 值梯度
+> 3. 每个 Agent 独立训练，没有价值函数层面的交互
+> 
+> 保留部分"SHAQ"术语是为了历史参考。实际核心贡献在于 **Jump Diffusion 探索激励机制**。
 
 ---
 

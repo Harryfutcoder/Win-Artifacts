@@ -1,7 +1,7 @@
 """
-JD-PSHAQ: Jump Diffusion Portfolio-SHAQ (v3.0)
+JD-IQL: Jump Diffusion Independent Q-Learning (v3.1)
 
-基于 Merton 跳跃扩散模型的多智能体信度分配算法
+基于 Merton 跳跃扩散模型的多智能体探索激励算法
 
 ==========================================================
 VERSION HISTORY
@@ -12,7 +12,27 @@ v3.0: 【重大修正 - 基于 Copilot 深度审查】
       1. 对 Q-Value 建模（而非 Reward）- 正确的"资产"定义
       2. 加法探索红利（而非乘法权重）- 稳定梯度
       3. 诚实命名（PerformanceScore，不是 Shapley）
+v3.1: 【架构诚实化 - 基于深度代码审查】
+      1. 承认算法本质是 IQL（Independent Q-Learning）+ JD 探索激励
+      2. 删除未使用的 Mixing Network（节省 GPU 显存）
+      3. 删除死代码（finalize_step 等未调用的方法）
+      4. 重命名为 JD-IQL 避免 SHAQ 误导
 ==========================================================
+
+【v3.1 架构说明】
+=================
+本算法的本质是：
+  IQL (Independent Q-Learning) + Jump Diffusion Exploration Bonus
+
+它**不是**真正的 SHAQ，因为：
+1. 没有使用 Mixing Network 计算联合 Q 值 (Q_tot)
+2. 没有使用 Lovász 扩展计算真正的 Shapley 值梯度
+3. 每个 Agent 独立训练，没有价值函数层面的交互
+
+它的核心贡献是：
+1. 使用 Merton Jump Diffusion SDE 建模 Q 值演化
+2. 基于金融期权理论计算探索红利（加法项）
+3. 通过 JD-Sortino Ratio 评估 Agent 的风险调整性能
 
 核心理论：
 ==========
@@ -38,16 +58,10 @@ R_final = R_base + β × ExplorationBonus
 - 加法红利不会破坏原始奖励结构
 - 高波动/高潜力的 Agent 获得额外探索奖励
 
-【v3.0 诚实命名】PerformanceScore：
-==================================
-之前的"Shapley Value"实际上是简化的 KPI 打分，不是真正的边际贡献。
-改名为 PerformanceScore 避免学术误导。
-
 参考文献：
 =========
 - Merton, R.C. (1976). "Option Pricing When Underlying Stock Returns Are Discontinuous"
 - Kou, S.G. (2002). "A Jump-Diffusion Model for Option Pricing"
-- Wang et al. "SHAQ: Incorporating Shapley Value Theory into Multi-Agent Q-Learning"
 """
 
 import math
@@ -1096,35 +1110,30 @@ class TeamRewardAggregator:
         """计算团队总奖励"""
         return sum(self.current_step_rewards.values())
     
-    def finalize_step(
-        self,
-        weight_calculator: PortfolioWeightCalculator,
-        shapley_values: Dict[str, float],
-        remaining_time_ratio: float
-    ) -> Dict[str, float]:
+    # 【v3.1 标记为死代码】finalize_step 从未被调用
+    # 保留代码供参考，但明确标注为未使用
+    # def finalize_step(...) -> Dict[str, float]:
+    #     """
+    #     【DEAD CODE - 从未被调用】
+    #     原计划用于团队奖励分配，但实际实现使用了加法探索红利
+    #     """
+    #     pass
+    
+    def get_exploration_bonus_stats(self) -> Dict:
         """
-        完成一步，分配奖励
-        
-        Returns:
-            每个 Agent 的最终奖励
+        【v3.1 新增】获取探索红利统计
+        用于诊断和调试 JD 模型是否生效
         """
-        r_total = self.compute_r_total()
+        if not hasattr(self, 'adjusted_reward_history') or not self.adjusted_reward_history:
+            return {'count': 0, 'avg_bonus': 0, 'max_bonus': 0}
         
-        # 分配奖励
-        distributed = weight_calculator.distribute_reward(
-            r_total, shapley_values, remaining_time_ratio
-        )
-        
-        # 更新追踪器
-        for agent_name, reward in distributed.items():
-            is_new = self.current_step_rewards.get(agent_name, 0) > 0
-            weight_calculator.update(agent_name, reward, is_new)
-        
-        # 清空当前步骤
-        self.current_step_rewards = {}
-        self.step_counter += 1
-        
-        return distributed
+        bonuses = [r['bonus'] for r in self.adjusted_reward_history]
+        return {
+            'count': len(bonuses),
+            'avg_bonus': sum(bonuses) / len(bonuses) if bonuses else 0,
+            'max_bonus': max(bonuses) if bonuses else 0,
+            'nonzero_count': sum(1 for b in bonuses if b > 0.01)
+        }
 
 
 # ============================================================================
@@ -1133,17 +1142,31 @@ class TeamRewardAggregator:
 
 class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
     """
-    JD-PSHAQ: Jump Diffusion Portfolio-SHAQ
+    JD-IQL: Jump Diffusion Independent Q-Learning (v3.1)
+    
+    =====================================================================
+    【架构说明 - v3.1 诚实化】
+    =====================================================================
+    本算法的本质是：
+        IQL (Independent Q-Learning) + Jump Diffusion Exploration Bonus
+    
+    它**不是**真正的 SHAQ，因为：
+    1. 没有 Mixing Network 计算联合 Q 值 (Q_tot)
+    2. 没有 Lovász 扩展计算 Shapley 值梯度
+    3. 每个 Agent 独立训练，无价值函数层面交互
+    
+    保留 JDPSHAQ 类名是为了向后兼容。
+    =====================================================================
     
     核心创新：
-    1. 使用 Merton 跳跃扩散 SDE 建模 Agent 价值演化
+    1. 使用 Merton 跳跃扩散 SDE 建模 Agent Q 值演化
     2. JD-Sortino Ratio 区分扩散风险和跳跃风险
-    3. Merton 期权定价评估上行潜力
-    4. 仓位作为 R_total 的分配比例（而非探索率调节）
+    3. 基于期权理论计算探索红利（加法项）
+    4. R_final = R_base + β × ExplorationBonus
     
-    与 P-SHAQ 的关键区别：
-    - P-SHAQ: R_i = R_base × V_i（估值放大）
-    - JD-PSHAQ: R_i = w_i × R_total（仓位分配）
+    与真正 SHAQ 的区别：
+    - SHAQ: 通过 Mixing Network 联合训练，梯度传播到所有 Agent
+    - JD-IQL: 每个 Agent 独立训练，仅通过奖励塑形交互
     """
     
     def __init__(self, params: Dict):
@@ -1223,10 +1246,10 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         # 团队奖励聚合器
         self.team_aggregator = TeamRewardAggregator(self.agent_num)
         
-        # Shapley 混合网络
-        self.mixing_network = ShapleyMixingNetwork(n_agents=self.agent_num, embed_dim=64).to(self.device)
-        self.target_mixing_network = ShapleyMixingNetwork(n_agents=self.agent_num, embed_dim=64).to(self.device)
-        self.target_mixing_network.load_state_dict(self.mixing_network.state_dict())
+        # 【v3.1 删除】Mixing Network 未使用，浪费 GPU 显存
+        # 本算法本质是 IQL + JD Exploration，不需要 Mixing Network
+        # self.mixing_network = ShapleyMixingNetwork(...)  # REMOVED
+        # self.target_mixing_network = ShapleyMixingNetwork(...)  # REMOVED
         
         # DOM 编码器
         self.dom_encoder = DOMStructureEncoder()
@@ -1597,25 +1620,33 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         return adjusted_reward
     
     def get_diagnostic_report(self) -> str:
-        """诊断报告 (v3.0)"""
+        """诊断报告 (v3.1)"""
         report_lines = [
             "=" * 70,
-            "JD-PSHAQ Diagnostic Report (v3.0 - Q-Value SDE)",
+            "JD-IQL Diagnostic Report (v3.1 - Honest Architecture)",
             "=" * 70,
-            f"Algorithm: Jump Diffusion Portfolio-SHAQ v3.0",
+            f"Algorithm: Jump Diffusion IQL (NOT SHAQ)",
+            f"Architecture: IQL + JD Exploration Bonus",
             f"Agents: {self.agent_num}",
             f"Learn Steps: {self.learn_step_count}",
             f"Remaining Time: {self._get_remaining_time_ratio():.1%}",
             "",
-            "--- v3.0 Key Improvements ---",
-            "1. SDE models Q-Value (not instant reward) - correct asset definition",
-            "2. Returns: Q-value changes (proper jump diffusion)",
-            "3. JD-Sortino: Only penalizes negative jumps",
-            "4. Reward: R_final = R_base + ExplorationBonus (additive, not multiplicative!)",
-            "5. PerformanceScore (honest naming, not 'Shapley')",
+            "--- v3.1 Honest Changes ---",
+            "1. Renamed to JD-IQL (not SHAQ - no Mixing Network)",
+            "2. Removed dead code (unused Mixing Network, finalize_step)",
+            "3. Core: IQL with additive exploration bonus",
             "",
-            "--- JD Parameters ---",
+            "--- Exploration Bonus Stats ---",
         ]
+        
+        # 添加探索红利统计
+        bonus_stats = self.team_aggregator.get_exploration_bonus_stats()
+        report_lines.append(f"Total Bonus Records: {bonus_stats['count']}")
+        report_lines.append(f"Avg Exploration Bonus: {bonus_stats['avg_bonus']:.4f}")
+        report_lines.append(f"Max Exploration Bonus: {bonus_stats['max_bonus']:.4f}")
+        report_lines.append(f"Non-zero Bonus Count: {bonus_stats['nonzero_count']}")
+        report_lines.append("")
+        report_lines.append("--- JD Parameters ---")
         
         diag = self.weight_calculator.get_diagnostic()
         report_lines.append(f"Version: {diag.get('version', 'v3.0')}")
