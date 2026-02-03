@@ -159,7 +159,16 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         
         # 探索红利
         exploration_bonus = self.bonus_calculator.compute_bonus(agent_name)
-        final_reward = base_reward + exploration_bonus
+        
+        # 【v3.2 关键修复】应用 Shapley 权重到基础奖励
+        # 这是 Portfolio-SHAQ 的核心：贡献大的 Agent 获得更高奖励
+        # 之前的代码直接 final_reward = base_reward + bonus，完全忽略了 Shapley 权重！
+        shapley_weights = F.softmax(self.shapley_values_cache, dim=0)
+        weight = shapley_weights[int(agent_name)].item()
+        
+        # 最终奖励 = (基础奖励 × 贡献权重 × Agent数量) + 探索红利
+        # 乘以 agent_num 是为了保持奖励总量级不变
+        final_reward = (base_reward * weight * self.agent_num) + exploration_bonus
         
         if exploration_bonus > 0.01:
             self.bonus_history.append(exploration_bonus)

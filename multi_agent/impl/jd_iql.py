@@ -159,21 +159,40 @@ class JumpDiffusionTracker:
 # ============================================================================
 
 class ExplorationBonusCalculator:
+    # 【v1.1 修复】添加 Bonus 上限，防止 Reward Hacking
+    # 如果 Bonus 过大，Agent 可能会倾向于制造 Q 值震荡而不是优化真正的目标
+    MAX_BONUS = 5.0  # 最大红利上限
+    DECAY_RATE = 0.999  # 衰减率，随时间逐渐降低红利影响
+    
     def __init__(self, n_agents: int, beta: float = 1.0):
         self.trackers: Dict[str, JumpDiffusionTracker] = {
             str(i): JumpDiffusionTracker() for i in range(n_agents)
         }
         self.beta = beta
+        self.step_count = 0
 
     def update(self, agent_name: str, q_value: float, reward: float, is_new_state: bool, found_bug: bool):
         if agent_name in self.trackers:
             self.trackers[agent_name].update(q_value, reward, is_new_state, found_bug)
+        self.step_count += 1
 
     def compute_bonus(self, agent_name: str) -> float:
         if agent_name not in self.trackers:
             return 0.0
+        
         raw_bonus = self.trackers[agent_name].get_exploration_bonus()
-        return self.beta * math.tanh(raw_bonus)
+        
+        # 1. 使用 tanh 进行初步截断
+        scaled_bonus = self.beta * math.tanh(raw_bonus)
+        
+        # 2. 应用硬上限
+        scaled_bonus = min(scaled_bonus, self.MAX_BONUS)
+        
+        # 3. 应用时间衰减（训练后期降低探索红利，更专注于利用）
+        decay = self.DECAY_RATE ** (self.step_count / 1000)
+        scaled_bonus *= decay
+        
+        return scaled_bonus
 
     def get_diagnostic(self) -> Dict:
         stats = {}
