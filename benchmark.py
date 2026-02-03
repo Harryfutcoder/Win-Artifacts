@@ -703,10 +703,14 @@ class BenchmarkRunner:
         'pshaq': 'github-marl-3h-pshaq-5agent',
         'p-shaq': 'github-marl-3h-pshaq-5agent',
         'portfolio-shaq': 'github-marl-3h-pshaq-5agent',
-        # JD-PSHAQ: Jump Diffusion P-SHAQ
+        # JD-PSHAQ: Jump Diffusion P-SHAQ (完整版，有 Mixing Network)
         'jdpshaq': 'github-marl-3h-jdpshaq-5agent',
         'jd-pshaq': 'github-marl-3h-jdpshaq-5agent',
         'jd_pshaq': 'github-marl-3h-jdpshaq-5agent',
+        # JD-IQL: Jump Diffusion IQL (轻量版，无 Mixing Network)
+        'jdiql': 'github-marl-3h-jdiql-5agent',
+        'jd-iql': 'github-marl-3h-jdiql-5agent',
+        'jd_iql': 'github-marl-3h-jdiql-5agent',
         # ASE 论文实验配置
         'iql': 'github-marl-3h-iql-5agent',
         'vdn': 'github-marl-3h-vdn-5agent',
@@ -769,7 +773,9 @@ class BenchmarkRunner:
         agent_class = profile_config.get('agent', {}).get('class', '')
         algo_type = profile_config.get('agent', {}).get('params', {}).get('algo_type', '')
         
-        if 'jd_pshaq' in agent_module.lower() or agent_class.lower() == 'jdpshaq':
+        if 'jd_iql' in agent_module.lower() or agent_class.lower() == 'jdiql':
+            return 'JD-IQL'
+        elif 'jd_pshaq' in agent_module.lower() or agent_class.lower() == 'jdpshaq':
             return 'JD-PSHAQ'
         elif 'pshaq' in agent_module.lower() or agent_class.lower() == 'pshaq':
             return 'P-SHAQ'
