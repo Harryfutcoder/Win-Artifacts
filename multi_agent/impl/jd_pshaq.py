@@ -1,386 +1,458 @@
 """
-JD-PSHAQ: Jump Diffusion Portfolio-SHAQ (v3.2 - Full Theory)
+JD-PSHAQ: Jump Diffusion Portfolio-SHAQ
 
-【算法本质】
-SHAQ (Shapley Q-Learning) + Jump Diffusion Exploration Bonus
+【核心思想】
+Agent = 个股，MARL奖励分配 = 持仓管理
 
-【适用场景】
-强协作、理论验证、高精度信度分配场景。
-这是一个"重型"算法，计算开销大，但理论性质完备。
+通过量化金融的视角来做信度分配：
+1. Shapley 值 = 历史贡献 → 基础持仓
+2. JD-Sortino = 风险调整收益 → 风险指标（只惩罚下行风险）
+3. Option Value = 探索潜力 → 预期指标（高波动=高期权价值）
+4. 最终持仓 = Shapley × Softmax(α·Sortino + β·Option + γ·Info)
 
-【核心机制】
-1. 联合价值函数: Q_tot(s, a) = MixingNetwork(Q_1, ..., Q_n)
-2. 真实 Shapley Value: ϕ_i = ∂Q_tot / ∂Q_i (Lovász Extension)
-3. 期权探索红利: Bonus_i = OptionValue(σ_i, λ_i)
-4. 双重信度分配: Weight_i = Softmax(ϕ_i + Bonus_i)
+【Web Testing 特性】
+- 奖励稀疏：大部分时间奖励为0
+- Jump：发现Bug时奖励猛增
+- Bug分布：假设服从泊松过程
 
-【与 JD-IQL 的区别】
-- JD-IQL: 独立训练，无 Mixing Network，计算高效
-- JD-PSHAQ: 联合训练，有 Mixing Network，理论完备
+【与 SHAQv2 的关系】
+继承 SHAQv2，添加"持仓分配"机制：
+- SHAQv2 提供 Shapley 值计算
+- JD-PSHAQ 添加 JD 参数估计 + 持仓权重计算 + 按持仓分配奖励
 """
 
 import math
-import random
-import threading
 import numpy as np
-from collections import defaultdict, deque
+from collections import deque
+from dataclasses import dataclass
+from typing import Dict, List, Optional
 from datetime import datetime
-from typing import Dict, Optional, List
 
 import torch
-import torch.nn as nn
-import torch.optim as optim
 import torch.nn.functional as F
 
-import multi_agent.multi_agent_system
-from action.impl.restart_action import RestartAction
-from action.web_action import WebAction
-from model.replay_buffer import ReplayBuffer
-from model.mixing_network import ShapleyMixingNetwork
-from state.impl.action_set_with_execution_times_state import ActionSetWithExecutionTimesState
-from state.impl.out_of_domain_state import OutOfDomainState
+from multi_agent.impl.shaq_v2 import SHAQv2
 from state.web_state import WebState
-from utils import instantiate_class_by_module_and_class_name
+from action.web_action import WebAction
 from web_test.multi_agent_thread import logger
 
-# 复用 JD-IQL 的数学组件
-from multi_agent.impl.jd_iql import JumpDiffusionTracker, ExplorationBonusCalculator
-from multi_agent.impl.shaq_v2 import DOMStructureEncoder
+
+# ============================================================================
+# Component 1: Jump Diffusion Tracker (跳跃扩散参数估计)
+# ============================================================================
+
+@dataclass
+class JDParams:
+    """跳跃扩散参数"""
+    mu: float = 0.0           # 漂移率（平均收益）
+    sigma: float = 0.1        # 扩散波动率（常规波动）
+    lambda_jump: float = 0.0  # 跳跃强度（总体）
+    lambda_pos: float = 0.0   # 正向跳跃强度（发现Bug）
+    lambda_neg: float = 0.0   # 负向跳跃强度（失败）
+    jump_mean: float = 0.0    # 跳跃幅度均值
+    jump_std: float = 0.0     # 跳跃幅度标准差
 
 
-class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
+class JumpDiffusionTracker:
+    """
+    追踪单个 Agent 的 Q 值变化，估计跳跃扩散参数
+    
+    类比：追踪单只股票的收益率分布
+    """
+    
+    def __init__(self, window_size: int = 100):
+        self.window_size = window_size
+        self.returns = deque(maxlen=window_size)  # Q值收益率序列
+        self.q_history = deque(maxlen=window_size)
+        self.rewards = deque(maxlen=window_size)
+        
+        # EMA 平滑
+        self.Q_EMA_ALPHA = 0.3
+        self._q_ema = 0.0
+        
+        # 估计的参数
+        self.params = JDParams()
+        
+        # 量化指标
+        self.jd_sortino = 0.0      # JD-Sortino 比率
+        self.option_value = 0.0    # 期权价值（探索潜力）
+        self.info_premium = 0.0    # 信息溢价
+        
+        # 统计
+        self.new_state_count = 0
+        self.total_steps = 0
+        self.jump_count = 0
+
+    def update(self, q_value: float, reward: float, is_new_state: bool):
+        """更新跟踪器"""
+        self.total_steps += 1
+        self.rewards.append(reward)
+        
+        # EMA 平滑 Q 值
+        if self.total_steps == 1:
+            self._q_ema = q_value
+        else:
+            self._q_ema = self.Q_EMA_ALPHA * q_value + (1 - self.Q_EMA_ALPHA) * self._q_ema
+        
+        # 计算收益率 r_t = (Q_t - Q_{t-1}) / |Q_{t-1}|
+        if len(self.q_history) > 0:
+            prev_q = self.q_history[-1]
+            if abs(prev_q) > 1e-6:
+                ret = (self._q_ema - prev_q) / (abs(prev_q) + 1e-6)
+                ret = max(-5.0, min(5.0, ret))  # 裁剪极端值
+                self.returns.append(ret)
+        
+        self.q_history.append(self._q_ema)
+        
+        if is_new_state:
+            self.new_state_count += 1
+        
+        # 定期重新估计参数
+        if self.total_steps % 10 == 0 and len(self.returns) > 20:
+            self._estimate_parameters()
+
+    def _estimate_parameters(self):
+        """
+        矩估计法估计跳跃扩散参数
+        
+        基于 3σ 规则区分：
+        - |r - μ| ≤ 3σ → 扩散（Diffusion）
+        - |r - μ| > 3σ → 跳跃（Jump）
+        """
+        data = np.array(self.returns)
+        if len(data) < 5:
+            return
+        
+        # 1. 估计基本统计量
+        mu = np.mean(data)
+        std = np.std(data) + 1e-8
+        
+        # 2. 分离跳跃和扩散
+        threshold = 3 * std
+        jumps = data[np.abs(data - mu) > threshold]
+        diffusion = data[np.abs(data - mu) <= threshold]
+        
+        # 3. 估计参数
+        sigma = np.std(diffusion) if len(diffusion) > 0 else std
+        
+        n_jumps = len(jumps)
+        self.jump_count = n_jumps
+        lambda_jump = n_jumps / len(data) if len(data) > 0 else 0
+        
+        # 区分正负跳跃（正=发现Bug，负=失败）
+        pos_jumps = jumps[jumps > 0]
+        neg_jumps = jumps[jumps < 0]
+        
+        lambda_pos = len(pos_jumps) / len(data) if len(data) > 0 else 0
+        lambda_neg = len(neg_jumps) / len(data) if len(data) > 0 else 0
+        
+        jump_mean = np.mean(jumps) if n_jumps > 0 else 0
+        jump_std = np.std(jumps) if n_jumps > 0 else 0
+        
+        self.params = JDParams(
+            mu=mu, sigma=sigma,
+            lambda_jump=lambda_jump,
+            lambda_pos=lambda_pos, lambda_neg=lambda_neg,
+            jump_mean=jump_mean, jump_std=jump_std
+        )
+        
+        # 4. 计算量化指标
+        self._compute_metrics(data, mu)
+
+    def _compute_metrics(self, data: np.ndarray, mu: float):
+        """计算量化金融指标"""
+        
+        # === JD-Sortino 比率 ===
+        # 只惩罚下行风险，不惩罚好的波动（发现Bug）
+        mar = 0.0  # Minimum Acceptable Return
+        downside = data[data < mar]
+        if len(downside) > 0:
+            downside_std = np.sqrt(np.mean(downside**2))
+        else:
+            downside_std = 1e-6
+        self.jd_sortino = (mu - mar) / (downside_std + 1e-6)
+        
+        # === Option Value（期权价值 = 探索潜力）===
+        # 高波动 + 正向跳跃潜力 = 高期权价值
+        # 简化 Merton 公式: Option ≈ λ⁺ × E[J⁺] + 0.5 × σ
+        diff_component = 0.5 * self.params.sigma
+        jump_component = self.params.lambda_pos * max(0, self.params.jump_mean)
+        self.option_value = diff_component + jump_component
+        
+        # === 信息溢价 ===
+        # 新状态发现率
+        self.info_premium = self.new_state_count / max(1, self.total_steps)
+
+
+# ============================================================================
+# Component 2: Portfolio Manager (持仓管理器)
+# ============================================================================
+
+class PortfolioManager:
+    """
+    持仓管理器：将 Shapley 值 + JD 指标转换为持仓权重
+    
+    类比：基金经理根据股票的历史表现和风险指标来调整持仓
+    """
+    
+    def __init__(self, n_agents: int, alpha: float = 0.3, beta: float = 0.3, 
+                 gamma: float = 0.2, temperature: float = 1.0):
+        """
+        Args:
+            n_agents: Agent 数量
+            alpha: JD-Sortino 权重（风险调整收益）
+            beta: Option Value 权重（探索潜力）
+            gamma: Info Premium 权重（信息价值）
+            temperature: Softmax 温度（τ→∞均匀，τ→0赢家通吃）
+        """
+        self.n_agents = n_agents
+        self.alpha = alpha
+        self.beta = beta
+        self.gamma = gamma
+        self.temperature = temperature
+        
+        # 每个 Agent 的 JD Tracker
+        self.trackers: Dict[str, JumpDiffusionTracker] = {
+            str(i): JumpDiffusionTracker() for i in range(n_agents)
+        }
+        
+        # 当前持仓权重
+        self.weights: Dict[str, float] = {
+            str(i): 1.0 / n_agents for i in range(n_agents)
+        }
+        
+        # 历史记录
+        self.weight_history: List[Dict[str, float]] = []
+
+    def update_tracker(self, agent_name: str, q_value: float, reward: float, is_new_state: bool):
+        """更新指定 Agent 的 JD Tracker"""
+        if agent_name in self.trackers:
+            self.trackers[agent_name].update(q_value, reward, is_new_state)
+
+    def compute_weights(self, shapley_values: Dict[str, float]) -> Dict[str, float]:
+        """
+        计算持仓权重
+        
+        公式：
+        score_i = α × Sortino_i + β × Option_i + γ × Info_i
+        w_i = max(0, φ_i + ε) × exp((score_i - max(score)) / τ)
+        w_i = w_i / Σw_j  (归一化)
+        """
+        scores = {}
+        for name, tracker in self.trackers.items():
+            # 综合评分 = 风险调整收益 + 探索潜力 + 信息价值
+            score = (self.alpha * tracker.jd_sortino +
+                     self.beta * tracker.option_value +
+                     self.gamma * tracker.info_premium)
+            scores[name] = score
+        
+        # Softmax with temperature
+        max_score = max(scores.values()) if scores else 0
+        
+        raw_weights = {}
+        for name in self.trackers:
+            # 基础持仓 = Shapley 值（历史贡献）
+            phi = shapley_values.get(name, 1.0 / self.n_agents)
+            phi = max(0, phi + 1e-6)  # 确保非负
+            
+            # 调整因子 = Softmax(score)
+            score = scores.get(name, 0)
+            adjustment = math.exp((score - max_score) / (self.temperature + 1e-6))
+            
+            # 最终权重 = 基础持仓 × 调整因子
+            raw_weights[name] = phi * adjustment
+        
+        # 归一化
+        total = sum(raw_weights.values())
+        if total > 0:
+            self.weights = {k: v / total for k, v in raw_weights.items()}
+        else:
+            self.weights = {str(i): 1.0 / self.n_agents for i in range(self.n_agents)}
+        
+        # 记录历史
+        self.weight_history.append(self.weights.copy())
+        if len(self.weight_history) > 1000:
+            self.weight_history.pop(0)
+        
+        return self.weights
+
+    def allocate_reward(self, total_reward: float) -> Dict[str, float]:
+        """
+        按持仓比例分配总奖励
+        
+        R_i = w_i × R_total
+        """
+        return {name: w * total_reward for name, w in self.weights.items()}
+
+    def get_diagnostic(self) -> Dict:
+        """获取诊断信息"""
+        diag = {}
+        for name, tracker in self.trackers.items():
+            diag[name] = {
+                'weight': self.weights.get(name, 0),
+                'mu': tracker.params.mu,
+                'sigma': tracker.params.sigma,
+                'lambda_pos': tracker.params.lambda_pos,
+                'lambda_neg': tracker.params.lambda_neg,
+                'jd_sortino': tracker.jd_sortino,
+                'option_value': tracker.option_value,
+                'info_premium': tracker.info_premium,
+                'jump_count': tracker.jump_count
+            }
+        return diag
+
+
+# ============================================================================
+# Main Class: JD-PSHAQ
+# ============================================================================
+
+class JDPSHAQ(SHAQv2):
     """
     JD-PSHAQ: Jump Diffusion Portfolio-SHAQ
-    架构: SHAQ (Joint Training) + JD Exploration Bonus
+    
+    核心思想：Agent = 个股，奖励分配 = 持仓管理
+    
+    1. 继承 SHAQv2 获取 Shapley 值（历史贡献）
+    2. 用 JD 模型估计每个 Agent 的风险/收益特征
+    3. 计算持仓权重 = Shapley × Softmax(风险指标)
+    4. 按持仓比例分配团队奖励
     """
     
     def __init__(self, params: Dict):
+        # 调用父类初始化（SHAQv2）
         super().__init__(params)
-        self.params = params
-        self.agent_num = params.get("agent_num", 5)
-        self.beta = params.get("jd_beta", 1.0)
-        self.batch_size = params.get("batch_size", 32)
-        self.gamma = params.get("gamma", 0.99)
-        self.learning_rate = params.get("learning_rate", 0.001)
-        self.target_update_freq = params.get("target_update_freq", 100)
         
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        logger.info(f"JD-PSHAQ (Full) initialized on {self.device}")
+        # JD-PSHAQ 参数
+        self.jd_alpha = params.get("alpha", 0.3)        # Sortino 权重
+        self.jd_beta = params.get("beta", 0.3)          # Option 权重
+        self.jd_gamma = params.get("gamma_info", 0.2)   # Info 权重
+        self.jd_temperature = params.get("temperature", 1.0)
         
-        # ========== SHAQ 核心：Mixing Network ==========
-        self.mixing_network = ShapleyMixingNetwork(
-            n_agents=self.agent_num, embed_dim=64
-        ).to(self.device)
-        self.target_mixing_network = ShapleyMixingNetwork(
-            n_agents=self.agent_num, embed_dim=64
-        ).to(self.device)
-        self.target_mixing_network.load_state_dict(self.mixing_network.state_dict())
-        self.mixing_optimizer = optim.Adam(self.mixing_network.parameters(), lr=self.learning_rate)
+        # 持仓管理器
+        self.portfolio = PortfolioManager(
+            n_agents=self.agent_num,
+            alpha=self.jd_alpha,
+            beta=self.jd_beta,
+            gamma=self.jd_gamma,
+            temperature=self.jd_temperature
+        )
         
-        # ========== Agent 网络 ==========
-        self.q_eval_agent = {}
-        self.q_target_agent = {}
-        self.agent_optimizer = {}
-        self.state_list_agent = {}
+        # 权重更新频率
+        self.weight_update_interval = params.get("weight_update_interval", 10)
+        self.weight_update_counter = 0
         
-        net_module = params.get("model_module", "model.dense_net")
-        net_class = params.get("model_class", "DenseNet")
-        
-        for i in range(self.agent_num):
-            name = str(i)
-            q_eval = instantiate_class_by_module_and_class_name(net_module, net_class, params).to(self.device)
-            q_target = instantiate_class_by_module_and_class_name(net_module, net_class, params).to(self.device)
-            q_target.load_state_dict(q_eval.state_dict())
-            
-            self.q_eval_agent[name] = q_eval
-            self.q_target_agent[name] = q_target
-            self.agent_optimizer[name] = optim.Adam(q_eval.parameters(), lr=self.learning_rate)
-            self.state_list_agent[name] = []
-        
-        # ========== JD 组件 ==========
-        self.bonus_calculator = ExplorationBonusCalculator(n_agents=self.agent_num, beta=self.beta)
-        
-        # ========== Shapley 值缓存 ==========
-        self.shapley_values_cache = torch.zeros(self.agent_num, device=self.device)
-        
-        # ========== 经验回放 ==========
-        self.replay_buffer_agent: Dict[str, ReplayBuffer] = {
-            str(i): ReplayBuffer(capacity=1000) for i in range(self.agent_num)
-        }
-        
-        # ========== 状态追踪 ==========
-        self.learn_step_count = 0
-        self.state_list = []
-        self.action_list = []
-        self.prev_state_dict = {}
-        self.prev_action_dict = {}
-        self.prev_html_dict = {}
-        
-        self.dom_encoder = DOMStructureEncoder()
-        self._seen_dom_signatures = set()
-        
-        self.criterion = nn.MSELoss()
-        self.start_time = datetime.now()
-        self.duration = params.get("alive_time", 300)
-        
-        # 统计
-        self.bonus_history = []
-        self.shapley_history = {str(i): [] for i in range(self.agent_num)}
+        logger.info(f"JD-PSHAQ initialized: {self.agent_num} agents, "
+                   f"α={self.jd_alpha}, β={self.jd_beta}, γ={self.jd_gamma}, τ={self.jd_temperature}")
 
     def update_state_records(self, web_state: WebState, html: str, agent_name: str):
-        """更新状态记录"""
-        if web_state not in self.state_list:
-            self.state_list.append(web_state)
-        if web_state not in self.state_list_agent[agent_name]:
-            self.state_list_agent[agent_name].append(web_state)
+        """
+        重写状态更新，添加 JD 追踪
+        """
+        # 1. 调用父类方法（SHAQv2 的学习逻辑）
+        super().update_state_records(web_state, html, agent_name)
         
-        for action in web_state.get_action_list():
-            if action not in self.action_list:
-                self.action_list.append(action)
+        # 2. 获取当前 Q 值
+        try:
+            q_value = self._get_current_q_value(web_state, agent_name)
+        except Exception:
+            q_value = 0.0
         
-        if (self.prev_action_dict.get(agent_name) is None or
-            self.prev_state_dict.get(agent_name) is None or
-            not isinstance(self.prev_state_dict[agent_name], ActionSetWithExecutionTimesState)):
-            return
-        
+        # 3. 检测新状态
         state_hash = self.dom_encoder.compute_structure_hash(html) if html else ""
         is_new_state = state_hash and hash(state_hash) not in self._seen_dom_signatures
-        if is_new_state and state_hash:
-            self._seen_dom_signatures.add(hash(state_hash))
         
-        found_bug = False
+        # 4. 获取基础奖励
+        base_reward = super().get_reward(web_state, html, agent_name)
         
-        # 计算奖励
-        base_reward = self._compute_base_reward(web_state, agent_name, is_new_state, found_bug)
+        # 5. 更新 JD Tracker
+        self.portfolio.update_tracker(agent_name, q_value, base_reward, is_new_state)
         
-        # 更新 JD Tracker
-        q_value = self._get_current_q_value(web_state, agent_name)
-        self.bonus_calculator.update(agent_name, q_value, base_reward, is_new_state, found_bug)
-        
-        # 探索红利
-        exploration_bonus = self.bonus_calculator.compute_bonus(agent_name)
-        
-        # 【v3.2 关键修复】应用 Shapley 权重到基础奖励
-        # 这是 Portfolio-SHAQ 的核心：贡献大的 Agent 获得更高奖励
-        # 之前的代码直接 final_reward = base_reward + bonus，完全忽略了 Shapley 权重！
-        shapley_weights = F.softmax(self.shapley_values_cache, dim=0)
-        weight = shapley_weights[int(agent_name)].item()
-        
-        # 最终奖励 = (基础奖励 × 贡献权重 × Agent数量) + 探索红利
-        # 乘以 agent_num 是为了保持奖励总量级不变
-        final_reward = (base_reward * weight * self.agent_num) + exploration_bonus
-        
-        if exploration_bonus > 0.01:
-            self.bonus_history.append(exploration_bonus)
-            if len(self.bonus_history) > 1000:
-                self.bonus_history.pop(0)
-        
-        # 存入 Buffer
-        try:
-            prev_state_tensor = self.prev_state_dict[agent_name].to_tensor(self.device)
-            curr_state_tensor = web_state.to_tensor(self.device)
-            
-            self.replay_buffer_agent[agent_name].push(
-                prev_state_tensor, None, final_reward, curr_state_tensor, False
-            )
-        except Exception as e:
-            logger.debug(f"Buffer push error: {e}")
-        
-        # 联合学习 (只在 Agent 0 触发，确保同步)
-        if agent_name == "0":
-            self._learn_joint()
-
-    def _compute_base_reward(self, web_state: WebState, agent_name: str, 
-                             is_new_state: bool, found_bug: bool) -> float:
-        reward = 0.0
-        
-        if is_new_state:
-            reward += 10.0
-        
-        prev_state = self.prev_state_dict.get(agent_name)
-        if hasattr(web_state, 'url') and hasattr(prev_state, 'url'):
-            if web_state.url != prev_state.url:
-                reward += 5.0
-        
-        if isinstance(web_state, ActionSetWithExecutionTimesState):
-            action_count = len(web_state.get_action_list())
-            reward += min(action_count * 0.1, 5.0)
-        
-        if found_bug:
-            reward += 50.0
-        
-        return reward
+        # 6. 定期更新持仓权重
+        self.weight_update_counter += 1
+        if self.weight_update_counter % self.weight_update_interval == 0:
+            self.portfolio.compute_weights(self.cached_shapley_values)
 
     def _get_current_q_value(self, web_state: WebState, agent_name: str) -> float:
+        """获取当前状态的 Q 值"""
         try:
-            state_tensor = web_state.to_tensor(self.device)
+            actions = web_state.get_action_list()
+            if not actions:
+                return 0.0
+            
+            q_eval = self.q_eval_agent[agent_name]
+            q_eval.eval()
+            
+            action_tensors = []
+            for action in actions[:10]:
+                action_tensor = self.get_tensor(action, "", web_state)
+                action_tensors.append(action_tensor)
+            
             with torch.no_grad():
-                q_net = self.q_eval_agent[agent_name]
                 from model.dense_net import DenseNet
-                if isinstance(q_net, DenseNet):
-                    q_values = q_net(state_tensor.unsqueeze(0).unsqueeze(1))
+                if isinstance(q_eval, DenseNet):
+                    output = q_eval(torch.stack(action_tensors).unsqueeze(1).to(self.device))
                 else:
-                    q_values = q_net(state_tensor.unsqueeze(0))
-                return q_values.max().item()
+                    output = q_eval(torch.stack(action_tensors).to(self.device))
+            
+            return output.max().item()
         except Exception:
             return 0.0
 
-    def _learn_joint(self):
-        """
-        联合训练核心逻辑 (SHAQ + JD Bonus)
-        使用 Mixing Network 计算 Q_tot 并回传梯度
-        """
-        # 检查所有 Buffer 是否足够
-        for i in range(self.agent_num):
-            if len(self.replay_buffer_agent[str(i)]) < self.batch_size:
-                return
-
-        try:
-            # 1. 采样数据
-            agent_batches = {}
-            for i in range(self.agent_num):
-                agent_batches[str(i)] = self.replay_buffer_agent[str(i)].sample(self.batch_size)
-
-            # 2. 收集所有 Agent 的 Q 值
-            all_q_values = []
-            all_next_q_values = []
-            total_rewards = torch.zeros(self.batch_size, 1, device=self.device)
-            
-            for i in range(self.agent_num):
-                name = str(i)
-                batch = agent_batches[name]
-                
-                states = torch.stack([b[0].squeeze(0) for b in batch]).to(self.device)
-                rewards = torch.tensor([b[2] for b in batch], dtype=torch.float32).unsqueeze(1).to(self.device)
-                
-                total_rewards += rewards
-                
-                q_net = self.q_eval_agent[name]
-                target_net = self.q_target_agent[name]
-                
-                from model.dense_net import DenseNet
-                if isinstance(q_net, DenseNet):
-                    q = q_net(states.unsqueeze(1))
-                else:
-                    q = q_net(states)
-                all_q_values.append(q)
-                
-                with torch.no_grad():
-                    if isinstance(target_net, DenseNet):
-                        nq = target_net(states.unsqueeze(1))
-                    else:
-                        nq = target_net(states)
-                    all_next_q_values.append(nq)
-
-            # [batch_size, n_agents]
-            q_batch = torch.cat(all_q_values, dim=1)
-            next_q_batch = torch.cat(all_next_q_values, dim=1)
-            
-            # 3. 计算 Shapley 值 (在 w=0.5 处计算梯度)
-            w_shapley = torch.full(
-                (self.batch_size, self.agent_num), 0.5, 
-                device=self.device, requires_grad=True
-            )
-            q_tot_shapley = self.mixing_network(q_batch.detach(), w_shapley)
-            q_tot_shapley.sum().backward()
-            
-            shapley_values = w_shapley.grad.mean(dim=0)
-            self.shapley_values_cache = 0.9 * self.shapley_values_cache + 0.1 * shapley_values.detach()
-            
-            # 记录 Shapley 历史
-            for i in range(self.agent_num):
-                self.shapley_history[str(i)].append(self.shapley_values_cache[i].item())
-                if len(self.shapley_history[str(i)]) > 100:
-                    self.shapley_history[str(i)].pop(0)
-            
-            # 4. 计算 Q_tot (用于训练)
-            participation = torch.ones(self.batch_size, self.agent_num, device=self.device)
-            q_tot = self.mixing_network(q_batch, participation)
-            
-            with torch.no_grad():
-                target_q_tot = self.target_mixing_network(next_q_batch, participation)
-                y_tot = total_rewards + self.gamma * target_q_tot
-
-            # 5. 计算 Loss 并反向传播
-            loss = self.criterion(q_tot, y_tot)
-            
-            self.mixing_optimizer.zero_grad()
-            for i in range(self.agent_num):
-                self.agent_optimizer[str(i)].zero_grad()
-            
-            loss.backward()
-            
-            # 梯度裁剪
-            torch.nn.utils.clip_grad_norm_(self.mixing_network.parameters(), 10.0)
-            for i in range(self.agent_num):
-                torch.nn.utils.clip_grad_norm_(self.q_eval_agent[str(i)].parameters(), 10.0)
-            
-            self.mixing_optimizer.step()
-            for i in range(self.agent_num):
-                self.agent_optimizer[str(i)].step()
-            
-            self.learn_step_count += 1
-            
-            # 更新目标网络
-            if self.learn_step_count % self.target_update_freq == 0:
-                self._update_target_networks()
-
-        except Exception as e:
-            logger.debug(f"Joint learning error: {e}")
-            import traceback
-            traceback.print_exc()
-
-    def _update_target_networks(self):
-        for agent_name in self.q_eval_agent:
-            self.q_target_agent[agent_name].load_state_dict(
-                self.q_eval_agent[agent_name].state_dict()
-            )
-        self.target_mixing_network.load_state_dict(self.mixing_network.state_dict())
-
-    def set_prev(self, agent_name: str, state: WebState, action: WebAction, html: str):
-        self.prev_state_dict[agent_name] = state
-        self.prev_action_dict[agent_name] = action
-        self.prev_html_dict[agent_name] = html
-
     def get_reward(self, web_state: WebState, html: str, agent_name: str) -> float:
-        base = self._compute_base_reward(web_state, agent_name, False, False)
-        bonus = self.bonus_calculator.compute_bonus(agent_name)
+        """
+        重写奖励函数：按持仓分配
         
-        # 使用 Shapley 值计算权重分配
-        shapley = self.shapley_values_cache[int(agent_name)].item()
-        shapley_weights = F.softmax(self.shapley_values_cache, dim=0)
-        weight = shapley_weights[int(agent_name)].item()
+        1. 获取团队基础奖励
+        2. 按持仓权重分配给当前 Agent
+        """
+        # 获取基础奖励
+        base_reward = super().get_reward(web_state, html, agent_name)
         
-        # 最终奖励 = 权重 * 基础奖励 + 探索红利
-        return base * weight * self.agent_num + bonus
+        # 获取当前 Agent 的持仓权重
+        weight = self.portfolio.weights.get(agent_name, 1.0 / self.agent_num)
+        avg_weight = 1.0 / self.agent_num
+        
+        # 按持仓调整奖励
+        # 高持仓 Agent 获得更多奖励，低持仓获得更少
+        # 使用相对权重：weight / avg_weight
+        weight_factor = weight / avg_weight if avg_weight > 0 else 1.0
+        weight_factor = max(0.5, min(2.0, weight_factor))  # 限制范围 [0.5, 2.0]
+        
+        adjusted_reward = base_reward * weight_factor
+        
+        return adjusted_reward
 
-    def get_diagnostic_report(self) -> str:
+    def get_portfolio_summary(self) -> str:
+        """获取持仓摘要"""
         lines = [
             "=" * 60,
-            "JD-PSHAQ Diagnostic Report (v3.2 Full)",
+            "JD-PSHAQ Portfolio Summary",
             "=" * 60,
-            f"Architecture: SHAQ (Joint Training) + JD Exploration Bonus",
             f"Agents: {self.agent_num}",
-            f"Learn Steps: {self.learn_step_count}",
-            f"Avg Bonus: {np.mean(self.bonus_history) if self.bonus_history else 0:.4f}",
+            f"Parameters: α={self.jd_alpha}, β={self.jd_beta}, γ={self.jd_gamma}, τ={self.jd_temperature}",
             "",
-            "--- Shapley Values ---"
+            "--- Current Holdings ---"
         ]
         
-        shapley_weights = F.softmax(self.shapley_values_cache, dim=0)
-        for i in range(self.agent_num):
-            raw = self.shapley_values_cache[i].item()
-            weight = shapley_weights[i].item()
-            lines.append(f"Agent {i}: Raw={raw:.4f}, Weight={weight:.2%}")
-        
-        lines.append("")
-        lines.append("--- JD Parameters ---")
-        
-        diag = self.bonus_calculator.get_diagnostic()
+        diag = self.portfolio.get_diagnostic()
         for name, d in diag.items():
+            shapley = self.cached_shapley_values.get(name, 1.0/self.agent_num)
             lines.append(f"Agent {name}:")
+            lines.append(f"  Shapley: {shapley:.4f}, Weight: {d['weight']:.4f}")
             lines.append(f"  μ={d['mu']:.4f}, σ={d['sigma']:.4f}")
             lines.append(f"  λ⁺={d['lambda_pos']:.4f}, λ⁻={d['lambda_neg']:.4f}")
-            lines.append(f"  JD-Sortino={d['jd_sortino']:.3f}, Bonus={d['bonus']:.4f}")
+            lines.append(f"  Sortino={d['jd_sortino']:.3f}, Option={d['option_value']:.4f}, Info={d['info_premium']:.4f}")
         
         return "\n".join(lines)
+
+    def get_diagnostic_report(self) -> Dict:
+        """扩展诊断报告"""
+        report = super().get_diagnostic_report()
+        
+        report['jd_pshaq'] = {
+            'portfolio': self.portfolio.get_diagnostic(),
+            'weights': self.portfolio.weights.copy(),
+            'shapley_values': self.cached_shapley_values.copy()
+        }
+        
+        return report

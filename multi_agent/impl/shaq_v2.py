@@ -2482,7 +2482,7 @@ class SHAQv2(multi_agent.multi_agent_system.MultiAgentSystem):
                 input_tensor = torch.stack(tensors).squeeze(1).to(self.device)
             
             q_predicts = q_eval(input_tensor)
-            q_targets = torch.tensor(target_list, device=self.device).unsqueeze(-1)
+            q_targets = torch.tensor(target_list, dtype=torch.float32, device=self.device).unsqueeze(-1)
             
             loss = self.criterion(q_predicts, q_targets)
             
@@ -2535,8 +2535,8 @@ class SHAQv2(multi_agent.multi_agent_system.MultiAgentSystem):
             with torch.no_grad():
                 next_q_tot = self.target_mixing_network(agent_q_values.detach(), full_participation)
             
-            rewards = torch.tensor(rewards_batch, device=self.device).unsqueeze(-1)
-            dones = torch.tensor([float(d) for d in dones_batch], device=self.device).unsqueeze(-1)
+            rewards = torch.tensor(rewards_batch, dtype=torch.float32, device=self.device).unsqueeze(-1)
+            dones = torch.tensor([float(d) for d in dones_batch], dtype=torch.float32, device=self.device).unsqueeze(-1)
             
             target_q_tot = rewards + self.gamma * next_q_tot * (1 - dones)
             

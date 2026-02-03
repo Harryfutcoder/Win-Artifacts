@@ -276,8 +276,77 @@ class JDIQL(multi_agent.multi_agent_system.MultiAgentSystem):
         self.start_time = datetime.now()
         self.duration = params.get("alive_time", 300)
         
+        # Transformer 初始化
+        transformer_module = params.get("transformer_module", "transformer.impl.tag_transformer")
+        transformer_class = params.get("transformer_class", "TagTransformer")
+        self.transformer = instantiate_class_by_module_and_class_name(
+            transformer_module, transformer_class, params
+        )
+        
+        # ε-greedy 参数
+        self.max_random = params.get("max_random", 0.9)
+        self.min_random = params.get("min_random", 0.1)
+        
+        # 动作字典
+        self.action_dict = {}
+        
         # 统计
         self.bonus_history = []
+        
+        logger.info(f"JD-IQL v1.0 initialized: {self.agent_num} agents, β={self.beta}")
+
+    def get_tensor(self, action: WebAction, html: str, web_state: WebState) -> torch.Tensor:
+        """将动作转换为张量"""
+        return self.transformer.transform(action, html, web_state)
+
+    def get_action_algorithm(self, web_state: WebState, html: str, agent_name: str) -> WebAction:
+        """
+        动作选择 - ε-greedy with Q-Network
+        """
+        self.update_state_records(web_state, html, agent_name)
+        
+        actions = web_state.get_action_list()
+        if len(actions) == 1 and isinstance(actions[0], RestartAction):
+            return actions[0]
+        
+        q_eval = self.q_eval_agent[agent_name]
+        q_eval.eval()
+        
+        # 计算每个动作的 Q 值
+        action_tensors = []
+        for temp_action in actions:
+            action_tensor = self.get_tensor(temp_action, html, web_state)
+            action_tensors.append(action_tensor)
+        
+        q_values = []
+        from model.dense_net import DenseNet
+        if isinstance(q_eval, DenseNet):
+            for action_tensor in action_tensors:
+                with torch.no_grad():
+                    q = q_eval(action_tensor.unsqueeze(0).unsqueeze(1).to(self.device))
+                    q_values.append(q.item())
+        else:
+            for action_tensor in action_tensors:
+                with torch.no_grad():
+                    q = q_eval(action_tensor.unsqueeze(0).to(self.device))
+                    q_values.append(q.item())
+        
+        # ε-greedy 策略
+        elapsed = (datetime.now() - self.start_time).total_seconds()
+        progress = min(1.0, elapsed / self.duration)
+        epsilon = self.max_random - (self.max_random - self.min_random) * progress
+        
+        if random.random() < epsilon:
+            chosen_action = random.choice(actions)
+        else:
+            best_idx = np.argmax(q_values)
+            chosen_action = actions[best_idx]
+        
+        # 记录动作
+        if chosen_action not in self.action_dict:
+            self.action_dict[chosen_action] = len(self.action_dict)
+        
+        return chosen_action
 
     def update_state_records(self, web_state: WebState, html: str, agent_name: str):
         """更新状态记录并执行学习"""
