@@ -1,45 +1,47 @@
 """
-JD-PSHAQ: Jump Diffusion Portfolio-SHAQ
+JD-PSHAQ: Jump Diffusion Portfolio-SHAQ (v3.0)
 
 基于 Merton 跳跃扩散模型的多智能体信度分配算法
 
+==========================================================
+VERSION HISTORY
+==========================================================
+v1.0: 初版实现
+v2.0: 修正 S_t 定义（EMA 累积值），分离正负跳跃
+v3.0: 【重大修正 - 基于 Copilot 深度审查】
+      1. 对 Q-Value 建模（而非 Reward）- 正确的"资产"定义
+      2. 加法探索红利（而非乘法权重）- 稳定梯度
+      3. 诚实命名（PerformanceScore，不是 Shapley）
+==========================================================
+
 核心理论：
 ==========
-使用随机微分方程 (SDE) 建模 Agent 的价值演化：
+使用随机微分方程 (SDE) 建模 Agent 的 Q 值演化：
 
-    dS_t = μS_t dt + σS_t dW_t + S_{t-} dJ_t
+    dQ_t = μQ_t dt + σQ_t dW_t + Q_{t-} dJ_t
            ─────────  ──────────  ────────────
            漂移项      扩散项       跳跃项
 
-其中：
-- μ: 漂移率（Agent 的基础贡献率，稳定增长）
-- σ: 扩散波动率（连续的小幅探索波动）
-- W_t: 标准布朗运动
-- J_t: 复合泊松过程（稀疏的大幅跳跃，如发现 Bug）
+【v3.0 关键修正】为什么要对 Q 值建模？
+=====================================
+- Q(s,a) 代表"对未来收益的期望"，是真正的"资产"
+- 当 Agent 发现新路径时，Q 值会"跳跃"
+- 稳定高效的 Agent 有高且稳定的 Q 值（高均值，适度波动）
+- 这才符合金融 SDE 的物理意义
 
-复合泊松过程：
-    J_t = Σ_{k=1}^{N_t} Y_k
-    
-    - N_t ~ Poisson(λt): 跳跃次数
-    - Y_k ~ LogNormal(μ_J, σ_J): 跳跃大小
+【v3.0 关键修正】加法探索红利：
+==============================
+R_final = R_base + β × ExplorationBonus
 
-为什么使用跳跃扩散？
-==================
-1. Web 测试奖励的特性：大部分时间平稳，偶尔大幅跳跃（发现 Bug）
-2. 标准 GBM 无法捕获这种"尖峰厚尾"分布
-3. 跳跃扩散能区分"日常探索"和"重大发现"
+为什么是加法而非乘法？
+- 乘法权重在训练初期（参数不稳定时）会导致梯度爆炸/消失
+- 加法红利不会破坏原始奖励结构
+- 高波动/高潜力的 Agent 获得额外探索奖励
 
-估值公式：
-=========
-Valuation = Shapley × Adjustment × Time_Factor
-
-Adjustment = 1 + α×(JD_Sortino - 1) + β×Option_Value + γ×Info_Premium
-
-仓位分配（核心修正）：
-===================
-仓位 w_i = 对 R_total 的分配比例（而非调整探索率！）
-R_i = w_i × R_total
-约束: Σ w_i = 1
+【v3.0 诚实命名】PerformanceScore：
+==================================
+之前的"Shapley Value"实际上是简化的 KPI 打分，不是真正的边际贡献。
+改名为 PerformanceScore 避免学术误导。
 
 参考文献：
 =========
@@ -83,19 +85,30 @@ from multi_agent.impl.shaq_v2 import (
 
 
 # ============================================================================
-# Component 1: Jump Diffusion Process (跳跃扩散过程) - CORRECTED VERSION
+# Component 1: Jump Diffusion Process (跳跃扩散过程) - CORRECTED VERSION v3.0
 # ============================================================================
 #
-# 数学修正说明：
-# ==============
-# 原版问题：直接对瞬时奖励 R_t 计算对数收益率，导致：
-#   1. 量纲混淆：log(R_t/R_{t-1}) 与 R_t - R_{t-1} 不可比
-#   2. 语义悖论：稳定高效 Agent [10,10,10] 被判定为"无增长潜力"
-#   3. 边界问题：R_t = 0 时无法计算对数
+# 数学修正说明 v3.0 (基于 Copilot 深度审查反馈)：
+# ================================================
 #
-# 修正方案：
-#   S_t = 累积价值 (EMA 平滑的累积奖励)
-#   r_t = (S_t - S_{t-1}) / |S_{t-1}| + ε  (算术收益率，统一量纲)
+# 第一次修正 (v2.0) 的问题：
+#   - 即使用 EMA 累积值，稳定高效的 Agent 仍然会被判定为"无增长潜力"
+#   - 因为稳定的 EMA 值导致收益率趋近 0
+#
+# 第二次修正 (v3.0) 的核心改动：
+#   1. 【核心】对 Q-Value 建模，而非 Reward
+#      - Q(s,a) 代表"对未来的信心"，会在发现新路径时"跳跃"
+#      - 稳定高效的 Agent 会有高且稳定的 Q 值（高均值，低波动）
+#      - 这才是真正符合 Merton Jump Diffusion 模型的物理量
+#
+#   2. 【核心】期权价值作为"探索红利"（加法而非乘法）
+#      - R_final = R_env + β × OptionValue(σ, λ)
+#      - 高波动/高潜力的 Agent 获得额外探索奖励
+#      - 不会破坏原始 Reward 结构，避免梯度爆炸/消失
+#
+#   3. 【诚实】放弃"Shapley"命名，改为 PerformanceScore
+#      - 因为当前计算不是真正的边际贡献
+#      - 避免学术误导
 #
 # ============================================================================
 
@@ -126,59 +139,76 @@ class JumpDiffusionParams:
 
 class JumpDiffusionTracker:
     """
-    跳跃扩散过程追踪器 (修正版)
+    跳跃扩散过程追踪器 (修正版 v3.0)
     
-    核心修正：
-    1. S_t 使用 EMA 平滑的累积价值，而非瞬时奖励
+    核心修正 v3.0：
+    1. 【核心改动】对 Q-Value 建模，而非 Reward
+       - Q 值代表"期望未来收益"，是真正会"跳跃"的量
+       - 发现新路径 -> Q 值跳跃
+       - 探索迷茫 -> Q 值微小波动
     2. 统一使用算术收益率，避免量纲混淆
-    3. 分离正向跳跃和负向跳跃
+    3. 分离正向跳跃（发现）和负向跳跃（失败）
+    4. 计算"探索红利"用于加法奖励调整
     """
     
-    # 收益率计算的基准值（用于归一化）
-    REWARD_SCALE = 10.0  # Web Testing 典型奖励量级
-    EMA_ALPHA = 0.1      # EMA 平滑系数
-    MIN_VALUE = 1.0      # 最小累积价值（避免除零）
+    # Q 值的 EMA 平滑系数
+    Q_EMA_ALPHA = 0.2      # Q 值变化较快，用更大的 alpha
+    REWARD_EMA_ALPHA = 0.1 # Reward 的 EMA 用于统计
+    MIN_Q_VALUE = 0.1      # 最小 Q 值（避免除零）
+    
+    # 探索红利的缩放系数
+    EXPLORATION_BONUS_SCALE = 5.0
     
     def __init__(self, window_size: int = 100):
         self.window_size = window_size
         
-        # 原始奖励序列
+        # 原始奖励序列（用于统计）
         self.raw_rewards: deque = deque(maxlen=window_size)
         
-        # 【修正】累积价值序列 S_t = EMA(累积奖励)
-        self.cumulative_values: deque = deque(maxlen=window_size)
-        self._ema_value: float = self.MIN_VALUE  # EMA 平滑后的价值
+        # 【v3.0 核心】Q-Value 序列 - 这才是 SDE 建模的对象
+        self.q_values: deque = deque(maxlen=window_size)
+        self._q_ema: float = self.MIN_Q_VALUE  # Q 值的 EMA
         
-        # 【修正】算术收益率序列 r_t = (S_t - S_{t-1}) / |S_{t-1}|
-        self.returns: deque = deque(maxlen=window_size)
+        # 【v3.0】Q 值的收益率（变化率）
+        self.q_returns: deque = deque(maxlen=window_size)
+        
+        # 累积奖励（仍然保留用于对比）
+        self.cumulative_values: deque = deque(maxlen=window_size)
+        self._reward_ema: float = 0.0
+        self._cumulative_reward: float = 0.0
         
         self.timestamps: deque = deque(maxlen=window_size)
         
-        # 【修正】分离正向和负向跳跃
-        self.positive_jumps: List[Tuple[int, float]] = []  # 好的跳跃（发现Bug）
-        self.negative_jumps: List[Tuple[int, float]] = []  # 坏的跳跃（失败/卡住）
-        self.jump_threshold = 2.5  # z-score 阈值（约 99% 置信度）
+        # 分离正向和负向跳跃（基于 Q 值变化）
+        self.positive_jumps: List[Tuple[int, float]] = []  # Q值正向跳跃（发现新路径）
+        self.negative_jumps: List[Tuple[int, float]] = []  # Q值负向跳跃（失败/卡住）
+        self.jump_threshold = 2.5  # z-score 阈值
         
         # 累计统计
         self.total_steps = 0
         self.total_reward = 0.0
         self.new_state_count = 0
-        self.bug_count = 0  # 发现的 Bug 数量
+        self.bug_count = 0
         
-        # 参数估计
+        # 参数估计（基于 Q 值）
         self.estimated_params = JumpDiffusionParams()
         self._last_estimation_step = 0
         self._estimation_interval = 20
         
-    def update(self, reward: float, is_new_state: bool = False, 
-               found_bug: bool = False, timestamp: float = None):
+        # 【v3.0 核心】探索红利计算
+        self._exploration_bonus: float = 0.0
+        
+    def update(self, reward: float, q_value: float = None, 
+               is_new_state: bool = False, found_bug: bool = False, 
+               timestamp: float = None):
         """
-        更新追踪器
+        更新追踪器 (v3.0)
         
         Args:
             reward: 当前步奖励
+            q_value: 【v3.0 核心】当前 Q 值（用于 SDE 建模）
             is_new_state: 是否发现新状态
-            found_bug: 是否发现 Bug（触发正向跳跃）
+            found_bug: 是否发现 Bug
             timestamp: 时间戳
         """
         if timestamp is None:
@@ -188,112 +218,156 @@ class JumpDiffusionTracker:
         self.timestamps.append(timestamp)
         self.total_steps += 1
         self.total_reward += reward
+        self._cumulative_reward += reward
         
         if is_new_state:
             self.new_state_count += 1
         if found_bug:
             self.bug_count += 1
         
-        # 【修正】计算 EMA 平滑的累积价值
-        # S_t = α * R_t + (1-α) * S_{t-1}
-        # 这里 R_t 是归一化后的奖励
-        normalized_reward = reward / self.REWARD_SCALE
-        self._ema_value = (self.EMA_ALPHA * normalized_reward + 
-                          (1 - self.EMA_ALPHA) * self._ema_value)
-        # 确保最小值
-        self._ema_value = max(self._ema_value, self.MIN_VALUE)
-        self.cumulative_values.append(self._ema_value)
+        # Reward 的 EMA（用于统计）
+        self._reward_ema = (self.REWARD_EMA_ALPHA * reward + 
+                          (1 - self.REWARD_EMA_ALPHA) * self._reward_ema)
+        self.cumulative_values.append(self._cumulative_reward)
         
-        # 【修正】计算算术收益率（统一量纲）
-        if len(self.cumulative_values) >= 2:
-            prev_val = self.cumulative_values[-2]
-            curr_val = self.cumulative_values[-1]
+        # 【v3.0 核心】Q-Value 建模
+        # 如果没有提供 Q 值，使用累积奖励的 EMA 作为代理
+        if q_value is None:
+            # 代理 Q 值 = 累积奖励 / 步数 * 预期剩余步数
+            avg_reward = self._cumulative_reward / max(self.total_steps, 1)
+            estimated_remaining = 100  # 假设还有 100 步
+            q_value = avg_reward * estimated_remaining
+        
+        # Q 值的 EMA 平滑
+        self._q_ema = (self.Q_EMA_ALPHA * q_value + 
+                      (1 - self.Q_EMA_ALPHA) * self._q_ema)
+        self._q_ema = max(self._q_ema, self.MIN_Q_VALUE)
+        self.q_values.append(self._q_ema)
+        
+        # 【v3.0 核心】计算 Q 值的收益率（这才是 SDE 建模的对象！）
+        if len(self.q_values) >= 2:
+            prev_q = self.q_values[-2]
+            curr_q = self.q_values[-1]
             
-            # 算术收益率: r = (S_t - S_{t-1}) / |S_{t-1}|
-            # 这避免了对数收益率的边界问题
-            arithmetic_return = (curr_val - prev_val) / (abs(prev_val) + 1e-8)
-            self.returns.append(arithmetic_return)
+            # Q 值收益率: r_q = (Q_t - Q_{t-1}) / |Q_{t-1}|
+            q_return = (curr_q - prev_q) / (abs(prev_q) + 1e-8)
+            self.q_returns.append(q_return)
             
-            # 跳跃检测
-            self._detect_jump(arithmetic_return, found_bug)
+            # 基于 Q 值变化检测跳跃
+            self._detect_jump(q_return, found_bug)
         
         # 定期更新参数估计
         if self.total_steps - self._last_estimation_step >= self._estimation_interval:
             self._estimate_parameters()
+            self._compute_exploration_bonus()
             self._last_estimation_step = self.total_steps
     
-    def _detect_jump(self, return_value: float, found_bug: bool):
+    def _compute_exploration_bonus(self):
         """
-        跳跃检测 (修正版)
+        【v3.0 核心】计算探索红利
         
-        核心修正：区分正向跳跃和负向跳跃
-        - 正向跳跃：发现 Bug 或新状态带来的大幅收益
-        - 负向跳跃：失败或卡住导致的大幅损失
+        公式：ExplorationBonus = β × (σ + λ⁺ × E[Y⁺])
         
-        在 JD-Sortino 中，只惩罚负向跳跃
+        解释：
+        - σ: Q 值波动率 - 高波动意味着"未知"，值得探索
+        - λ⁺: 正向跳跃强度 - 高强度意味着"有潜力"
+        - E[Y⁺]: 正向跳跃期望大小
+        
+        这个红利作为【加法项】加到奖励上，而非乘法权重
         """
-        if len(self.returns) < 10:
+        params = self.estimated_params
+        
+        # 波动性贡献
+        volatility_bonus = params.sigma
+        
+        # 正向跳跃潜力贡献
+        if len(self.positive_jumps) > 0:
+            pos_sizes = [abs(j[1]) for j in self.positive_jumps[-20:]]
+            expected_pos_jump = np.mean(pos_sizes) if pos_sizes else 0.0
+        else:
+            expected_pos_jump = 0.0
+        
+        jump_bonus = params.lambda_pos * expected_pos_jump
+        
+        # 综合探索红利
+        self._exploration_bonus = self.EXPLORATION_BONUS_SCALE * (volatility_bonus + jump_bonus)
+    
+    def get_exploration_bonus(self) -> float:
+        """获取当前的探索红利（用于加法奖励调整）"""
+        return self._exploration_bonus
+    
+    def _detect_jump(self, q_return: float, found_bug: bool):
+        """
+        跳跃检测 (v3.0)
+        
+        基于 Q 值变化检测跳跃：
+        - 正向跳跃：Q 值大幅上升（发现新路径/Bug）
+        - 负向跳跃：Q 值大幅下降（失败/卡住）
+        """
+        if len(self.q_returns) < 10:
             return
-            
-        returns_array = np.array(list(self.returns)[:-1])
-        mean_r = np.mean(returns_array)
-        std_r = np.std(returns_array) + 1e-8
         
-        z_score = (return_value - mean_r) / std_r
+        # 【v3.0】使用 Q 值收益率检测跳跃
+        q_returns_array = np.array(list(self.q_returns)[:-1])
+        mean_r = np.mean(q_returns_array)
+        std_r = np.std(q_returns_array) + 1e-8
+        
+        z_score = (q_return - mean_r) / std_r
         
         if abs(z_score) > self.jump_threshold:
             if z_score > 0 or found_bug:
-                # 正向跳跃（好事！）
-                self.positive_jumps.append((self.total_steps, return_value))
+                # 正向跳跃（Q值上升 - 发现新路径！）
+                self.positive_jumps.append((self.total_steps, q_return))
                 if len(self.positive_jumps) > 50:
                     self.positive_jumps = self.positive_jumps[-50:]
             else:
-                # 负向跳跃（风险！）
-                self.negative_jumps.append((self.total_steps, return_value))
+                # 负向跳跃（Q值下降 - 失败/卡住）
+                self.negative_jumps.append((self.total_steps, q_return))
                 if len(self.negative_jumps) > 50:
                     self.negative_jumps = self.negative_jumps[-50:]
     
     def _estimate_parameters(self):
         """
-        参数估计 (修正版)
+        参数估计 (v3.0)
         
-        分别估计扩散参数和正/负向跳跃参数
+        基于 Q 值收益率估计 SDE 参数
         """
-        if len(self.returns) < 20:
+        if len(self.q_returns) < 20:
             return
-            
-        returns_array = np.array(list(self.returns))
-        n = len(returns_array)
+        
+        # 【v3.0】基于 Q 值收益率估计参数
+        q_returns_array = np.array(list(self.q_returns))
+        n = len(q_returns_array)
         
         # 识别跳跃索引
         pos_jump_indices = set()
         neg_jump_indices = set()
         
         for step, _ in self.positive_jumps:
-            idx = step - (self.total_steps - len(self.returns))
-            if 0 <= idx < len(returns_array):
+            idx = step - (self.total_steps - len(self.q_returns))
+            if 0 <= idx < len(q_returns_array):
                 pos_jump_indices.add(idx)
         
         for step, _ in self.negative_jumps:
-            idx = step - (self.total_steps - len(self.returns))
-            if 0 <= idx < len(returns_array):
+            idx = step - (self.total_steps - len(self.q_returns))
+            if 0 <= idx < len(q_returns_array):
                 neg_jump_indices.add(idx)
         
         all_jump_indices = pos_jump_indices | neg_jump_indices
         
-        # 扩散部分（非跳跃）
-        diffusion_returns = [r for i, r in enumerate(returns_array) 
+        # 扩散部分（非跳跃的 Q 值变化）
+        diffusion_returns = [r for i, r in enumerate(q_returns_array) 
                            if i not in all_jump_indices]
         
         # 正向跳跃部分
-        pos_jump_returns = [r for i, r in enumerate(returns_array) 
+        pos_jump_returns = [r for i, r in enumerate(q_returns_array) 
                           if i in pos_jump_indices]
         
         # 负向跳跃部分
-        neg_jump_returns = [r for i, r in enumerate(returns_array) 
+        neg_jump_returns = [r for i, r in enumerate(q_returns_array) 
                           if i in neg_jump_indices]
         
-        # 估计扩散参数
+        # 估计扩散参数（基于 Q 值变化）
         if len(diffusion_returns) > 5:
             self.estimated_params.mu = float(np.mean(diffusion_returns))
             self.estimated_params.sigma = float(np.std(diffusion_returns)) + 0.01
@@ -303,7 +377,7 @@ class JumpDiffusionTracker:
         self.estimated_params.lambda_neg = len(neg_jump_returns) / n if n > 0 else 0.05
         self.estimated_params.lambda_ = self.estimated_params.lambda_pos + self.estimated_params.lambda_neg
         
-        # 跳跃大小参数（使用所有跳跃）
+        # 跳跃大小参数
         all_jumps = pos_jump_returns + neg_jump_returns
         if len(all_jumps) > 2:
             jump_sizes = np.abs(all_jumps)
@@ -323,16 +397,33 @@ class JumpDiffusionTracker:
         return float(np.mean(list(self.raw_rewards)))
     
     @property
+    def mean_q_value(self) -> float:
+        """【v3.0】平均 Q 值"""
+        if len(self.q_values) == 0:
+            return 0.0
+        return float(np.mean(list(self.q_values)))
+    
+    @property
+    def current_q_value(self) -> float:
+        """【v3.0】当前 Q 值 (EMA 平滑后)"""
+        return self._q_ema
+    
+    @property
     def cumulative_value(self) -> float:
-        """当前累积价值（EMA 平滑后）"""
-        return self._ema_value
+        """累积奖励"""
+        return self._cumulative_reward
     
     @property
     def volatility(self) -> float:
-        """总波动率"""
-        if len(self.returns) < 2:
+        """【v3.0】Q 值波动率（用于 SDE 建模）"""
+        if len(self.q_returns) < 2:
             return 0.1
-        return float(np.std(list(self.returns))) + 0.01
+        return float(np.std(list(self.q_returns))) + 0.01
+    
+    @property
+    def returns(self) -> deque:
+        """【v3.0】返回 Q 值收益率序列（兼容接口）"""
+        return self.q_returns
     
     @property
     def jump_intensity(self) -> float:
@@ -362,6 +453,11 @@ class JumpDiffusionTracker:
         if self.total_steps == 0:
             return 0.0
         return self.bug_count / self.total_steps
+    
+    @property
+    def exploration_bonus(self) -> float:
+        """【v3.0 核心】探索红利（用于加法奖励调整）"""
+        return self._exploration_bonus
 
 
 # ============================================================================
@@ -649,43 +745,55 @@ class MertonOptionValuator:
 
 
 # ============================================================================
-# Component 4: Portfolio Weight Calculator (仓位计算器) - CORRECTED VERSION
+# Component 4: Portfolio Weight Calculator (仓位计算器) - CORRECTED VERSION v3.0
 # ============================================================================
 #
-# 数学修正说明：
-# ==============
-# 原版问题：
-#   1. Shapley Value 可能为负，导致 base_weight * adjustment 产生异常权重
-#   2. 调整因子使用简单加法叠加，可能导致权重分布极端化
-#   3. max(0.1, adjustment) 是临时修补，不是数学上合理的解决方案
+# 数学修正说明 v3.0：
+# ===================
+# 
+# 【核心改动】不再使用乘法权重，改用加法探索红利
 #
-# 修正方案：使用 Softmax + Temperature 机制
-#   w_i^{raw} = max(0, φ_i + ε) × exp((α×S_i + β×O_i + γ×I_i) / T)
-#   w_i = w_i^{raw} / Σ_j w_j^{raw}
+# 原版问题（v2.0 仍存在）：
+#   - R_final = w_i × R_base 会导致梯度不稳定
+#   - 训练初期参数估计不准时，w_i 剧烈震荡
+#   - 这会破坏 Q 网络的学习
 #
-#   其中 T 是温度参数：
-#   - T → ∞: 权重趋于均匀（保守分配）
-#   - T → 0: 权重趋于 one-hot（赢者通吃）
+# v3.0 修正：
+#   - R_final = R_base + β × ExplorationBonus
+#   - 探索红利是加法项，不会破坏原始奖励结构
+#   - 高波动/高潜力的 Agent 获得额外探索奖励
+#
+# 【诚实命名】放弃 "Shapley Value" 命名
+#   - 因为当前计算不是真正的边际贡献
+#   - 改名为 "PerformanceScore"
 #
 # ============================================================================
 
 class PortfolioWeightCalculator:
     """
-    仓位计算器 (修正版) - 使用 Softmax + Temperature 机制
+    仓位计算器 (v3.0) - 使用加法探索红利
     
     核心修正：
-    1. 对 Shapley Value 使用 ReLU + ε 处理负值
-    2. 使用 Softmax 而非简单乘法来合成调整因子
-    3. 引入温度参数 T 控制权重分布的平滑度
+    1. 【v3.0 核心】使用加法探索红利而非乘法权重
+       - R_final = R_base + β × ExplorationBonus
+    2. 诚实命名：PerformanceScore 而非 Shapley
+    3. 保留 Softmax + Temperature 用于统计权重（不直接用于奖励）
+    4. 最小权重保护：防止 Agent 完全停止学习
     """
     
     # 温度参数的范围
-    TEMP_MIN = 0.1   # 更尖锐的分布
-    TEMP_MAX = 10.0  # 更平滑的分布
+    TEMP_MIN = 0.1
+    TEMP_MAX = 10.0
     TEMP_DEFAULT = 1.0
     
-    # Shapley 的最小值（避免负值和零）
-    SHAPLEY_EPSILON = 0.01
+    # 性能分数的最小值
+    PERF_SCORE_EPSILON = 0.01
+    
+    # 最小权重（防止 Agent 完全停止学习）
+    MIN_WEIGHT = 0.05
+    
+    # 探索红利的全局缩放
+    EXPLORATION_BONUS_GLOBAL_SCALE = 1.0
     
     def __init__(
         self,
@@ -716,25 +824,41 @@ class PortfolioWeightCalculator:
         self.agent_new_states: Dict[str, int] = {str(i): 0 for i in range(n_agents)}
         self.agent_bugs: Dict[str, int] = {str(i): 0 for i in range(n_agents)}
         
-    def update(self, agent_name: str, reward: float, is_new_state: bool = False, 
-               found_bug: bool = False):
+    def update(self, agent_name: str, reward: float, q_value: float = None,
+               is_new_state: bool = False, found_bug: bool = False):
         """
-        更新 Agent 数据
+        更新 Agent 数据 (v3.0)
         
         Args:
             agent_name: Agent 名称
             reward: 当前奖励
+            q_value: 【v3.0】当前 Q 值（用于 SDE 建模）
             is_new_state: 是否发现新状态
             found_bug: 是否发现 Bug
         """
         if agent_name in self.trackers:
-            self.trackers[agent_name].update(reward, is_new_state, found_bug)
+            # 【v3.0】传递 Q 值用于 SDE 建模
+            self.trackers[agent_name].update(reward, q_value, is_new_state, found_bug)
             if is_new_state:
                 self.total_new_states += 1
                 self.agent_new_states[agent_name] = self.agent_new_states.get(agent_name, 0) + 1
             if found_bug:
                 self.total_bugs += 1
                 self.agent_bugs[agent_name] = self.agent_bugs.get(agent_name, 0) + 1
+    
+    def get_exploration_bonus(self, agent_name: str) -> float:
+        """
+        【v3.0 核心】获取 Agent 的探索红利
+        
+        用于加法奖励调整：R_final = R_base + β × ExplorationBonus
+        
+        Returns:
+            探索红利值
+        """
+        tracker = self.trackers.get(agent_name)
+        if not tracker:
+            return 0.0
+        return tracker.exploration_bonus * self.EXPLORATION_BONUS_GLOBAL_SCALE
     
     def compute_info_premium(self, agent_name: str) -> float:
         """
@@ -760,11 +884,14 @@ class PortfolioWeightCalculator:
     
     def compute_weights(
         self,
-        shapley_values: Dict[str, float],
+        performance_scores: Dict[str, float],
         remaining_time_ratio: float = 1.0
     ) -> Dict[str, float]:
         """
-        计算仓位权重 (修正版) - 使用 Softmax + Temperature
+        计算统计权重 (v3.0) - 使用 Softmax + Temperature
+        
+        注意：这些权重用于统计分析，不直接用于奖励计算！
+        v3.0 使用加法探索红利替代乘法权重。
         
         公式：
             score_i = α × S_i + β × O_i + γ × I_i
@@ -775,14 +902,14 @@ class PortfolioWeightCalculator:
             Dict[str, float]: 归一化的权重，满足 Σ w_i = 1
         """
         scores = {}
-        shapley_positive = {}
+        perf_positive = {}
         
-        for agent_name in shapley_values:
+        for agent_name in performance_scores:
             tracker = self.trackers.get(agent_name)
             
-            # 【修正1】对 Shapley Value 使用 ReLU + ε
+            # 【v3.0】对 PerformanceScore 使用 ReLU + ε
             # 确保基础权重始终为正
-            shapley_positive[agent_name] = max(0, shapley_values[agent_name]) + self.SHAPLEY_EPSILON
+            perf_positive[agent_name] = max(0, performance_scores[agent_name]) + self.PERF_SCORE_EPSILON
             
             if not tracker:
                 scores[agent_name] = 0.0
@@ -804,48 +931,73 @@ class PortfolioWeightCalculator:
                     self.gamma * info_premium)
             scores[agent_name] = score
         
-        # 5. 【修正3】使用 Softmax + Temperature 计算权重
-        # w_i^{raw} = φ_i^+ × exp(score_i / T)
+        # 5. 使用 Softmax + Temperature 计算权重
+        # w_i^{raw} = perf_i^+ × exp(score_i / T)
         raw_weights = {}
-        for agent_name in shapley_values:
-            shapley_base = shapley_positive[agent_name]
+        for agent_name in performance_scores:
+            perf_base = perf_positive[agent_name]
             score = scores.get(agent_name, 0.0)
             
             # Softmax with temperature
-            # 数值稳定性：减去最大值
             max_score = max(scores.values()) if scores else 0.0
             exp_score = math.exp((score - max_score) / self.temperature)
             
-            raw_weights[agent_name] = shapley_base * exp_score
+            raw_weight = perf_base * exp_score
+            # 【v3.0】最小权重保护
+            raw_weights[agent_name] = max(raw_weight, self.MIN_WEIGHT)
         
         # 6. 归一化（确保 Σ w_i = 1）
         total = sum(raw_weights.values())
         if total > 0:
             return {k: v / total for k, v in raw_weights.items()}
         else:
-            # 平均分配
             return {k: 1.0 / len(raw_weights) for k in raw_weights}
+    
+    def compute_adjusted_reward(
+        self,
+        agent_name: str,
+        base_reward: float,
+        exploration_bonus_scale: float = 1.0
+    ) -> float:
+        """
+        【v3.0 核心】计算调整后的奖励（使用加法探索红利）
+        
+        公式：R_final = R_base + β × ExplorationBonus
+        
+        这是 v3.0 的核心改动：不再使用乘法权重，而是加法红利
+        
+        Args:
+            agent_name: Agent 名称
+            base_reward: 基础奖励
+            exploration_bonus_scale: 探索红利缩放系数
+            
+        Returns:
+            调整后的奖励
+        """
+        exploration_bonus = self.get_exploration_bonus(agent_name)
+        adjusted_reward = base_reward + exploration_bonus_scale * exploration_bonus
+        return adjusted_reward
     
     def distribute_reward(
         self,
         r_total: float,
-        shapley_values: Dict[str, float],
+        performance_scores: Dict[str, float],
         remaining_time_ratio: float = 1.0
     ) -> Dict[str, float]:
         """
-        分配团队总奖励
+        分配团队总奖励（保留用于统计，不推荐直接用于训练）
         
-        核心方法：R_i = w_i × R_total
+        注意：v3.0 推荐使用 compute_adjusted_reward() 而非此方法
         
         Args:
             r_total: 团队总奖励
-            shapley_values: Shapley 值
+            performance_scores: 性能分数（不是 Shapley！）
             remaining_time_ratio: 剩余时间比例
             
         Returns:
             Dict[str, float]: 每个 Agent 的奖励
         """
-        weights = self.compute_weights(shapley_values, remaining_time_ratio)
+        weights = self.compute_weights(performance_scores, remaining_time_ratio)
         return {agent: w * r_total for agent, w in weights.items()}
     
     def set_temperature(self, temperature: float):
@@ -859,11 +1011,12 @@ class PortfolioWeightCalculator:
         self.temperature = max(self.TEMP_MIN, min(self.TEMP_MAX, temperature))
     
     def get_diagnostic(self) -> Dict:
-        """诊断报告 (增强版)"""
+        """诊断报告 (v3.0 增强版)"""
         report = {
             'total_new_states': self.total_new_states,
             'total_bugs': self.total_bugs,
             'temperature': self.temperature,
+            'version': 'v3.0 - Q-Value SDE + Additive Exploration Bonus',
             'agents': {}
         }
         
@@ -873,8 +1026,11 @@ class PortfolioWeightCalculator:
             
             report['agents'][agent_name] = {
                 'mean_return': tracker.mean_return,
+                'mean_q_value': tracker.mean_q_value,  # 【v3.0】Q 值
+                'current_q_value': tracker.current_q_value,  # 【v3.0】当前 Q 值
                 'cumulative_value': tracker.cumulative_value,
-                'volatility': tracker.volatility,
+                'volatility': tracker.volatility,  # 【v3.0】基于 Q 值变化
+                'exploration_bonus': tracker.exploration_bonus,  # 【v3.0 核心】探索红利
                 'total_jump_intensity': tracker.jump_intensity,
                 'positive_jump_intensity': tracker.positive_jump_intensity,
                 'negative_jump_intensity': tracker.negative_jump_intensity,
@@ -1065,11 +1221,11 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
             str(i): ReplayBuffer(capacity=500) for i in range(self.agent_num)
         }
         
-        # Shapley 缓存
-        self.cached_shapley_values: Dict[str, float] = {
+        # 【v3.0】性能分数缓存（诚实命名，不再叫 Shapley）
+        self.cached_performance_scores: Dict[str, float] = {
             str(i): 1.0 / self.agent_num for i in range(self.agent_num)
         }
-        self.shapley_update_counter = 0
+        self.perf_score_update_counter = 0
         
         # 追踪
         self.prev_state_dict: Dict[str, Optional[WebState]] = {str(i): None for i in range(self.agent_num)}
@@ -1086,8 +1242,9 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         # 已见状态签名
         self._seen_dom_signatures: Set[int] = set()
         
-        logger.info(f"JD-PSHAQ initialized with {self.agent_num} agents, "
-                   f"α={self.alpha}, β={self.beta}, γ={self.gamma_info}")
+        logger.info(f"JD-PSHAQ v3.0 initialized with {self.agent_num} agents, "
+                   f"α={self.alpha}, β={self.beta}, γ={self.gamma_info}"
+                   f" | Q-Value SDE + Additive Exploration Bonus")
     
     def _get_remaining_time_ratio(self) -> float:
         """剩余时间比例"""
@@ -1190,8 +1347,10 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         # 记录到团队聚合器
         self.team_aggregator.record_base_reward(agent_name, base_reward)
         
-        # 【修正】更新 JD 追踪器（传递 found_bug 参数）
-        self.weight_calculator.update(agent_name, base_reward, is_new_state, found_bug)
+        # 【v3.0】更新 JD 追踪器（传递 Q 值用于 SDE 建模）
+        # 获取当前状态的 Q 值估计
+        q_value = self._get_current_q_value(web_state, html, agent_name)
+        self.weight_calculator.update(agent_name, base_reward, q_value, is_new_state, found_bug)
         
         # 【修正】动态调整温度（训练后期降低温度，更集中分配）
         remaining_time = self._get_remaining_time_ratio()
@@ -1234,6 +1393,41 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         
         return reward
     
+    def _get_current_q_value(self, web_state: WebState, html: str, agent_name: str) -> float:
+        """
+        【v3.0 核心】获取当前状态的 Q 值估计
+        
+        用于 JD 模型的 SDE 建模
+        """
+        q_eval = self.q_eval_agent.get(agent_name)
+        if q_eval is None:
+            return 0.0
+        
+        try:
+            q_eval.eval()
+            actions = web_state.get_action_list()
+            if not actions:
+                return 0.0
+            
+            action_tensors = []
+            for action in actions:
+                action_tensor = self.get_tensor(action, html, web_state)
+                action_tensors.append(action_tensor)
+            
+            from model.dense_net import DenseNet
+            with torch.no_grad():
+                if isinstance(q_eval, DenseNet):
+                    output = q_eval(torch.stack(action_tensors).unsqueeze(1).to(self.device))
+                else:
+                    output = q_eval(torch.stack(action_tensors).to(self.device))
+            
+            # 返回最大 Q 值
+            max_q = output.max().item()
+            return max_q
+        except Exception as e:
+            logger.debug(f"Error getting Q value: {e}")
+            return 0.0
+    
     def learn_agent(self, agent_name: str, reward: float):
         """Agent 学习"""
         self.learn_step_count += 1
@@ -1250,11 +1444,11 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
             tensor, tensor, reward, None, None, False
         )
         
-        # 更新 Shapley
-        self.shapley_update_counter += 1
-        if self.shapley_update_counter >= self.shapley_update_interval:
-            self._update_shapley_values()
-            self.shapley_update_counter = 0
+        # 【v3.0】更新性能分数（诚实命名）
+        self.perf_score_update_counter += 1
+        if self.perf_score_update_counter >= self.shapley_update_interval:
+            self._update_performance_scores()
+            self.perf_score_update_counter = 0
         
         # Q-learning 更新
         if self.learn_step_count % self.update_network_interval == 0:
@@ -1264,21 +1458,29 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         if self.learn_step_count % self.update_target_interval == 0:
             self._update_target_networks()
     
-    def _update_shapley_values(self):
-        """更新 Shapley 值"""
+    def _update_performance_scores(self):
+        """
+        【v3.0】更新性能分数（诚实命名，不再叫 Shapley）
+        
+        这是一个简化的性能评估，不是真正的 Shapley 边际贡献。
+        """
         contributions = {}
-        for agent_name in self.cached_shapley_values:
+        for agent_name in self.cached_performance_scores:
             tracker = self.weight_calculator.trackers.get(agent_name)
             if tracker:
-                contrib = tracker.mean_return + 10 * tracker.new_state_rate
+                # 性能分数 = 平均奖励 + Q值增长 + 新状态发现率
+                mean_reward = tracker.mean_return
+                q_growth = tracker.current_q_value / (tracker.mean_q_value + 0.01) - 1
+                new_state_bonus = 10 * tracker.new_state_rate
+                contrib = mean_reward + q_growth + new_state_bonus
                 contributions[agent_name] = max(0.01, contrib)
             else:
                 contributions[agent_name] = 0.01
         
         total = sum(contributions.values())
         if total > 0:
-            for agent_name in self.cached_shapley_values:
-                self.cached_shapley_values[agent_name] = contributions[agent_name] / total
+            for agent_name in self.cached_performance_scores:
+                self.cached_performance_scores[agent_name] = contributions[agent_name] / total
     
     def _learn(self, agent_name: str):
         """Q-learning 更新"""
@@ -1335,43 +1537,49 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         self.prev_html_dict[agent_name] = html
     
     def get_reward(self, web_state: WebState, html: str, agent_name: str) -> float:
-        """获取奖励（使用仓位分配）"""
+        """
+        获取奖励 (v3.0)
+        
+        【核心改动】使用加法探索红利而非乘法权重
+        R_final = R_base + β × ExplorationBonus
+        
+        这解决了 v2.0 的梯度不稳定问题
+        """
         base_reward = self._compute_base_reward(web_state, html, agent_name)
         
-        # 【JD-PSHAQ 核心】使用仓位分配而非估值放大
-        weights = self.weight_calculator.compute_weights(
-            self.cached_shapley_values,
-            self._get_remaining_time_ratio()
+        # 【v3.0 核心】使用加法探索红利
+        # 这不会破坏原始奖励结构，只会鼓励高波动/高潜力的 Agent 探索
+        adjusted_reward = self.weight_calculator.compute_adjusted_reward(
+            agent_name, 
+            base_reward,
+            exploration_bonus_scale=1.0  # 可调整
         )
-        
-        # 简化：单个 Agent 的奖励 = 基础奖励 × 相对权重
-        # 完整版应该在 team_aggregator 中统一分配 R_total
-        weight = weights.get(agent_name, 1.0 / self.agent_num)
-        adjusted_reward = base_reward * weight * self.agent_num
         
         return adjusted_reward
     
     def get_diagnostic_report(self) -> str:
-        """诊断报告 (修正版)"""
+        """诊断报告 (v3.0)"""
         report_lines = [
             "=" * 70,
-            "JD-PSHAQ Diagnostic Report (Corrected Mathematical Model)",
+            "JD-PSHAQ Diagnostic Report (v3.0 - Q-Value SDE)",
             "=" * 70,
-            f"Algorithm: Jump Diffusion Portfolio-SHAQ v2.0",
+            f"Algorithm: Jump Diffusion Portfolio-SHAQ v3.0",
             f"Agents: {self.agent_num}",
             f"Learn Steps: {self.learn_step_count}",
             f"Remaining Time: {self._get_remaining_time_ratio():.1%}",
             "",
-            "--- Mathematical Model Corrections ---",
-            "1. S_t: EMA-smoothed cumulative value (not instant reward)",
-            "2. Returns: Arithmetic returns (unified dimensionality)",
-            "3. JD-Sortino: Only penalizes negative jumps (not positive!)",
-            "4. Weights: Softmax + Temperature mechanism",
+            "--- v3.0 Key Improvements ---",
+            "1. SDE models Q-Value (not instant reward) - correct asset definition",
+            "2. Returns: Q-value changes (proper jump diffusion)",
+            "3. JD-Sortino: Only penalizes negative jumps",
+            "4. Reward: R_final = R_base + ExplorationBonus (additive, not multiplicative!)",
+            "5. PerformanceScore (honest naming, not 'Shapley')",
             "",
             "--- JD Parameters ---",
         ]
         
         diag = self.weight_calculator.get_diagnostic()
+        report_lines.append(f"Version: {diag.get('version', 'v3.0')}")
         report_lines.append(f"Total New States: {diag['total_new_states']}")
         report_lines.append(f"Total Bugs Found: {diag.get('total_bugs', 0)}")
         report_lines.append(f"Temperature: {diag.get('temperature', 1.0):.2f}")
@@ -1379,8 +1587,11 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
         for agent_name, metrics in diag['agents'].items():
             report_lines.append(f"\nAgent {agent_name}:")
             report_lines.append(f"  Mean Return: {metrics['mean_return']:.2f}")
+            report_lines.append(f"  Mean Q-Value: {metrics.get('mean_q_value', 0):.3f}")  # v3.0
+            report_lines.append(f"  Current Q-Value: {metrics.get('current_q_value', 0):.3f}")  # v3.0
             report_lines.append(f"  Cumulative Value: {metrics.get('cumulative_value', 0):.3f}")
-            report_lines.append(f"  Volatility: {metrics['volatility']:.3f}")
+            report_lines.append(f"  Q-Volatility: {metrics['volatility']:.3f}")  # v3.0: based on Q
+            report_lines.append(f"  Exploration Bonus: {metrics.get('exploration_bonus', 0):.3f}")  # v3.0 核心
             report_lines.append(f"  Positive Jumps: {metrics.get('positive_jumps_count', 0)} "
                               f"(λ⁺={metrics['params'].get('lambda_pos', 0):.3f})")
             report_lines.append(f"  Negative Jumps: {metrics.get('negative_jumps_count', 0)} "
@@ -1392,14 +1603,16 @@ class JDPSHAQ(multi_agent.multi_agent_system.MultiAgentSystem):
             report_lines.append(f"  JD Params: μ={metrics['params']['mu']:.3f}, "
                               f"σ={metrics['params']['sigma']:.3f}")
         
-        # 仓位权重
+        # 统计权重（仅用于分析，不直接影响奖励）
         weights = self.weight_calculator.compute_weights(
-            self.cached_shapley_values,
+            self.cached_performance_scores,  # v3.0: 诚实命名
             self._get_remaining_time_ratio()
         )
-        report_lines.append("\n--- Portfolio Weights (R_total Distribution) ---")
+        report_lines.append("\n--- Statistical Weights (for analysis only) ---")
         for agent_name, weight in sorted(weights.items()):
-            report_lines.append(f"  Agent {agent_name}: {weight:.4f} ({weight*100:.1f}%)")
+            bonus = self.weight_calculator.get_exploration_bonus(agent_name)
+            report_lines.append(f"  Agent {agent_name}: weight={weight:.4f}, "
+                              f"exploration_bonus={bonus:.3f}")
         
         report_lines.append("=" * 60)
         
