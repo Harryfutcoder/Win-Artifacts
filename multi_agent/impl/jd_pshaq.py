@@ -231,13 +231,26 @@ class PortfolioManager:
 
     def compute_weights(self, shapley_values: Dict[str, float]) -> Dict[str, float]:
         """
-        计算持仓权重
+        计算持仓权重（两层机制）
         
-        公式：
-        score_i = α × Sortino_i + β × Option_i + γ × Info_i
-        w_i = max(0, φ_i + ε) × exp((score_i - max(score)) / τ)
-        w_i = w_i / Σw_j  (归一化)
+        【理论说明】
+        - Mixing Network 负责"短期战术协同"（梯度级别，隐式表示学习）
+        - Shapley Reward Shaping 负责"长期战略资源配置"（显式，解决稀疏奖励下梯度低效）
+        
+        【公式】
+        1. 相对权重（分蛋糕）：
+           score_i = α × Sortino_i + β × Option_i + γ × Info_i
+           relative_weight_i = Softmax(φ_i × exp(score_i / τ))
+        
+        2. 绝对质量（蛋糕大小）：
+           quality_factor = sigmoid(mean(φ)) × 2.0  ∈ [0, 2]
+           - 牛市（高Shapley均值）：quality > 1，大家多拿
+           - 熊市（低Shapley均值）：quality < 1，大家少拿
+        
+        3. 最终权重：
+           w_i = relative_weight_i × quality_factor
         """
+        # === Step 1: 计算综合评分 ===
         scores = {}
         for name, tracker in self.trackers.items():
             # 综合评分 = 风险调整收益 + 探索潜力 + 信息价值
@@ -246,7 +259,7 @@ class PortfolioManager:
                      self.gamma * tracker.info_premium)
             scores[name] = score
         
-        # Softmax with temperature
+        # === Step 2: 计算相对权重（Softmax）===
         max_score = max(scores.values()) if scores else 0
         
         raw_weights = {}
@@ -259,30 +272,59 @@ class PortfolioManager:
             score = scores.get(name, 0)
             adjustment = math.exp((score - max_score) / (self.temperature + 1e-6))
             
-            # 最终权重 = 基础持仓 × 调整因子
+            # 相对权重 = 基础持仓 × 调整因子
             raw_weights[name] = phi * adjustment
         
-        # 归一化
+        # 归一化得到相对权重
         total = sum(raw_weights.values())
         if total > 0:
-            self.weights = {k: v / total for k, v in raw_weights.items()}
+            relative_weights = {k: v / total for k, v in raw_weights.items()}
         else:
-            self.weights = {str(i): 1.0 / self.n_agents for i in range(self.n_agents)}
+            relative_weights = {str(i): 1.0 / self.n_agents for i in range(self.n_agents)}
+        
+        # === Step 3: 计算绝对质量因子（Quality Factor）===
+        # 反映整体团队表现：Shapley 均值高 → 牛市，均值低 → 熊市
+        shapley_list = list(shapley_values.values()) if shapley_values else [0]
+        avg_shapley = np.mean(shapley_list)
+        
+        # sigmoid 映射到 [0, 2]：均值为0时quality=1，均值高时quality→2，均值低时quality→0
+        self.quality_factor = 2.0 / (1.0 + math.exp(-avg_shapley * 5.0))  # 乘5放大敏感度
+        
+        # === Step 4: 最终权重 = 相对权重（不乘quality，quality在reward分配时用）===
+        self.weights = relative_weights
+        self.avg_shapley = avg_shapley
         
         # 记录历史
-        self.weight_history.append(self.weights.copy())
+        self.weight_history.append({
+            'weights': self.weights.copy(),
+            'quality': self.quality_factor,
+            'avg_shapley': avg_shapley
+        })
         if len(self.weight_history) > 1000:
             self.weight_history.pop(0)
         
         return self.weights
 
-    def allocate_reward(self, total_reward: float) -> Dict[str, float]:
+    def get_quality_factor(self) -> float:
+        """获取当前质量因子"""
+        return getattr(self, 'quality_factor', 1.0)
+
+    def allocate_reward(self, total_reward: float, agent_name: str) -> float:
         """
-        按持仓比例分配总奖励
+        按持仓比例分配奖励（考虑质量因子）
         
-        R_i = w_i × R_total
+        公式：R_i = R_base × relative_weight_i × n_agents × quality_factor
+        
+        - relative_weight_i: 相对权重（0~1，和为1）
+        - n_agents: 乘以Agent数保持总奖励池大小不变
+        - quality_factor: 绝对质量（牛市>1，熊市<1）
         """
-        return {name: w * total_reward for name, w in self.weights.items()}
+        weight = self.weights.get(agent_name, 1.0 / self.n_agents)
+        quality = self.get_quality_factor()
+        
+        # 调整后奖励 = 基础奖励 × 相对权重 × Agent数 × 质量因子
+        adjusted = total_reward * weight * self.n_agents * quality
+        return adjusted
 
     def get_diagnostic(self) -> Dict:
         """获取诊断信息"""
@@ -400,36 +442,49 @@ class JDPSHAQ(SHAQv2):
 
     def get_reward(self, web_state: WebState, html: str, agent_name: str) -> float:
         """
-        重写奖励函数：按持仓分配
+        重写奖励函数：按持仓分配（核心的"执行环节"）
         
-        1. 获取团队基础奖励
-        2. 按持仓权重分配给当前 Agent
+        【理论说明】
+        - Mixing Network 通过梯度自动分配信度（短期战术协同）
+        - Shapley Reward Shaping 通过权重显式分配奖励（长期战略资源配置）
+        - 在稀疏奖励场景下，梯度回传太慢，需要 Reward Shaping 作为启发式加速
+        
+        【公式】
+        R_i = R_base × relative_weight_i × n_agents × quality_factor
+        
+        - relative_weight: 基于 Shapley + JD 指标的相对持仓（分蛋糕）
+        - quality_factor: 基于 Shapley 均值的绝对质量（蛋糕大小）
         """
-        # 获取基础奖励
+        # 1. 获取基础奖励（大盘收益）
         base_reward = super().get_reward(web_state, html, agent_name)
         
-        # 获取当前 Agent 的持仓权重
-        weight = self.portfolio.weights.get(agent_name, 1.0 / self.agent_num)
-        avg_weight = 1.0 / self.agent_num
+        # 2. 使用 Portfolio Manager 分配奖励
+        adjusted_reward = self.portfolio.allocate_reward(base_reward, agent_name)
         
-        # 按持仓调整奖励
-        # 高持仓 Agent 获得更多奖励，低持仓获得更少
-        # 使用相对权重：weight / avg_weight
-        weight_factor = weight / avg_weight if avg_weight > 0 else 1.0
-        weight_factor = max(0.5, min(2.0, weight_factor))  # 限制范围 [0.5, 2.0]
-        
-        adjusted_reward = base_reward * weight_factor
+        # 3. 裁剪防止极端值（防止正反馈爆炸）
+        # 限制在 [0.2, 5.0] × base_reward 范围内
+        if abs(base_reward) > 1e-6:
+            ratio = adjusted_reward / base_reward
+            ratio = max(0.2, min(5.0, ratio))
+            adjusted_reward = base_reward * ratio
         
         return adjusted_reward
 
     def get_portfolio_summary(self) -> str:
         """获取持仓摘要"""
+        quality = self.portfolio.get_quality_factor()
+        avg_shapley = getattr(self.portfolio, 'avg_shapley', 0.0)
+        
         lines = [
             "=" * 60,
             "JD-PSHAQ Portfolio Summary",
             "=" * 60,
             f"Agents: {self.agent_num}",
             f"Parameters: α={self.jd_alpha}, β={self.jd_beta}, γ={self.jd_gamma}, τ={self.jd_temperature}",
+            "",
+            f"--- Market Status ---",
+            f"Avg Shapley: {avg_shapley:.4f}",
+            f"Quality Factor: {quality:.3f} ({'Bull' if quality > 1 else 'Bear'} Market)",
             "",
             "--- Current Holdings ---"
         ]
@@ -452,7 +507,9 @@ class JDPSHAQ(SHAQv2):
         report['jd_pshaq'] = {
             'portfolio': self.portfolio.get_diagnostic(),
             'weights': self.portfolio.weights.copy(),
-            'shapley_values': self.cached_shapley_values.copy()
+            'shapley_values': self.cached_shapley_values.copy(),
+            'quality_factor': self.portfolio.get_quality_factor(),
+            'avg_shapley': getattr(self.portfolio, 'avg_shapley', 0.0)
         }
         
         return report
